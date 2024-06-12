@@ -4,6 +4,11 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
+  colors: {
+    customGray: '#464646',
+    customYellow: '#F6CA30',
+    customBlue:'#2F327D',
+  },
   theme: {
     extend: {},
   },
