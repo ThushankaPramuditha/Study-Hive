@@ -10,7 +10,7 @@ const HeroSection = () => {
         <button className="bg-custom-color hover:bg-custom-color-800 text-white py-2 px-4 rounded-lg mt-5 ml-10">Join for free</button>
       </div>
       <div className="hero-image">
-        <img src={heroImage} alt="StudyHive" className="mt-20 w-full h-[95%] " />
+        <img src={heroImage} alt="StudyHive" className="mt-20 w-full h-[95%]  " />
       </div>
     </section>
   );
