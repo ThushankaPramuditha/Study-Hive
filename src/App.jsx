@@ -1,23 +1,31 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/Header';
-import Footer from './components/Footer';
 import Home from './components/Home';
-import '@fortawesome/fontawesome-free/css/all.min.css';
-import './App.css';
+import Login from './components/Login';
 
-function App() {
+
+const App = () => {
+  const location = useLocation();
+  const hideHeaderPaths = ['/login', '/signup'];
+
+  return (
+    <>
+      {!hideHeaderPaths.includes(location.pathname) && <Header />}
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+      </Routes>
+    </>
+  );
+};
+
+const AppWrapper = () => {
   return (
     <Router>
-      <div className="App">
-        <Header />
-        <Routes>
-          <Route path="/" element={<Home />} />
-        </Routes>
-        <Footer />
-      </div>
+      <App />
     </Router>
   );
-}
+};
 
-export default App;
+export default AppWrapper;

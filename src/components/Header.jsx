@@ -1,8 +1,14 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import logo from '../assets/images/logo.png';
 
 const Header = () => {
+  const navigate = useNavigate();
+
+  const handleLoginClick = () => {
+    navigate('/login');
+  };
+
   return (
     <header className="bg-yellow-200 text-white py-4">
       <div className="container mx-auto flex justify-between items-center mt-4">
@@ -14,12 +20,17 @@ const Header = () => {
           <Link to="/careers" className="text-customGray hover:text-gray-300">Careers</Link>
           <Link to="/blog" className="text-customGray hover:text-gray-300">Blog</Link>
           <Link to="/aboutus" className="text-customGray hover:text-gray-300">About Us</Link>
-          <Link to="/login"
-            className="bg-white hover:bg-orange-400 text-customGray py-2 px-4 rounded-lg"
-          >Login</Link>
+          <button
+            onClick={handleLoginClick}
+            className="bg-amber-400 hover:bg-orange-400 text-customGray py-2 px-4 rounded-lg"
+          >
+            Login
+          </button>
           <Link to="/signup"
             className="bg-amber-400 hover:bg-orange-400 text-customGray py-2 px-4 rounded-lg"
-          >Sign Up</Link>
+          >
+            Sign Up
+          </Link>
         </nav>
       </div>
     </header>
