@@ -26,11 +26,11 @@ const Login = () => {
       </div>
 
       {/* Right side content */}
-      <div className="w-1/2 h-full flex items-center justify-center p-20">
-        <div className="bg-white shadow-lg rounded-lg p-8 w-full max-w-md">
+      <div className="w-1/2 h-full flex  justify-center p-20 mt-10 ">
+        <div className="bg-white shadow-lg rounded-lg p-8 w-full max-w-md shadow-container" style={{ boxShadow: '0px 8px 24px rgba(38, 45, 118, 0.15)' }}>
           <p className="mb-6 text-center text-black font-inter text-lg font-normal">
             Welcome to StudyHive
-          </p>
+          </p> 
           <div className="flex flex-col items-center mb-6">
             <div 
               className="relative w-60 h-12 bg-[#FDF58B] rounded-full cursor-pointer flex items-center p-2.5"
