@@ -9,7 +9,7 @@ const FeaturesSection = () => {
   return (
     
     <section className="features py-12 px-5 text-center ml-10">
-    <h2 className="text-[40px] text-customBlue mb-5 font-bold">Our<span className="text-[40px] text-customYellow font-bold">Features</span></h2>
+    <h2 className="text-[40px] text-customBlue mb-5 font-bold">Our<span className="text-[40px] text-customYellow font-bold"> Features</span></h2>
       <p className="text-[26px] text-center text-customGray">These very extraordinary features, can make learning activities more efficient.</p>
 
       <div className="container flex items-row gap-5 mt-5 justify-center">

@@ -6,7 +6,7 @@ import students from '../assets/images/students.png';
 const ServiceSection = () => {
   return (
     <section className="services py-12 px-5 text-center mt-10">
-    <h2 className="text-[40px] text-customBlue mb-5 font-bold">What is<span className="text-[40px] text-customYellow font-bold">Study Hive</span></h2>
+    <h2 className="text-[40px] text-customBlue mb-5 font-bold">What is <span className="text-[40px] text-customYellow font-bold">StudyHive</span></h2>
 
         <p className="text-[24px] text-center">An all-in-one collaborative learning platform where students connect with study partners,<br></br> access quality resources, get expert help, join interactive study rooms,quizes and<br></br>  stay motivated with a gamified leaderboard.</p>
         <div className="container flex justify-center items-center gap-12 mt-20">
