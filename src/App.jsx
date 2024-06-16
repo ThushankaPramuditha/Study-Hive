@@ -3,11 +3,12 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 import Header from './components/Header';
 import Home from './components/Home';
 import Login from './components/Login';
+import ProfileSetup1 from './components/ProfileSetup1';
 
 
 const App = () => {
   const location = useLocation();
-  const hideHeaderPaths = ['/login', '/signup'];
+  const hideHeaderPaths = ['/login', '/ProfileSetup1'];
 
   return (
     <>
@@ -15,6 +16,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/ProfileSetup1" element={<ProfileSetup1 />} />
       </Routes>
     </>
   );

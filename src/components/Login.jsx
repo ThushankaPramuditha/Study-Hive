@@ -1,18 +1,25 @@
+// Login.jsx
 import React, { useState } from 'react';
 import login from '../assets/images/login.png';
 import back from '../assets/images/back.png'; // Example PNG import
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import '../App.css'; // Import the CSS file
 
 const Login = () => {
   const [isLogin, setIsLogin] = useState(true);
+  const navigate = useNavigate();
 
   const handleToggle = () => {
-    setIsLogin(!isLogin);
+    setIsLogin(!isLogin); 
+  };
+
+  const handleLogin = (event) => {
+    event.preventDefault();
+    navigate('/ProfileSetup1');
   };
 
   return (
     <div className="w-full min-h-screen flex items-start relative">
-      {/* Back icon and text in the top right corner */}
       <div className="absolute top-4 right-4 text-gray-600 text-sm cursor-pointer">
         <Link to="/" className="flex items-center">
           <img src={back} alt="Back" className="inline-block w-4 h-4 mr-0.1" />
@@ -20,13 +27,12 @@ const Login = () => {
         </Link>
       </div>
 
-      {/* Left side image */}
       <div className="relative w-1/2 h-screen flex flex-col">
         <img src={login} className="w-full h-full object-cover" alt="Login" />
       </div>
 
-      {/* Right side content */}
-      <div className="w-1/2 h-full flex  justify-center p-20 mt-10 ">
+
+      <div className="w-1/2 h-full flex justify-center p-20 mt-10">
         <div className="bg-white shadow-lg rounded-lg p-8 w-full max-w-md shadow-container" style={{ boxShadow: '0px 8px 24px rgba(38, 45, 118, 0.15)' }}>
           <p className="mb-6 text-center text-black font-inter text-lg font-normal">
             Welcome to StudyHive
@@ -50,7 +56,7 @@ const Login = () => {
           </p>
 
           {isLogin ? (
-            <form className="transition-opacity duration-500 opacity-100">
+            <form className="transition-opacity duration-500 opacity-100" onSubmit={handleLogin}>
               <div className="mb-6">
                 <label className="block mb-2 text-m font-inter text-black" htmlFor="username">
                   Username
@@ -59,7 +65,7 @@ const Login = () => {
                   type="text"
                   id="username"
                   placeholder="Enter your username"
-                  className="block w-full text-sm px-4 py-2 text-black font-inter bg-white border border-yellow-400 rounded-full focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                  className="input-field"
                 />
               </div>
               <div className="mb-4">
@@ -70,7 +76,7 @@ const Login = () => {
                   type="password"
                   id="password"
                   placeholder="Enter your password"
-                  className="block w-full px-4 py-2 text-sm text-black font-inter bg-white border border-yellow-400 rounded-full focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                  className="input-field"
                 />
                 <div className="flex justify-between items-center mt-4">
                   <div className="flex items-center">
@@ -81,7 +87,7 @@ const Login = () => {
                 </div>
               </div>
               <div className="mt-6 flex justify-end">
-                <button className="px-4 py-2 text-black font-inter bg-yellow-400 font-inter rounded-full hover:bg-yellow-500 focus:outline-none focus:bg-yellow-500 font-bold w-40 h-12">
+                <button className="px-4 py-2 text-black font-inter bg-yellow-400 rounded-full hover:bg-yellow-500 focus:outline-none focus:bg-yellow-500 font-bold w-40 h-12">
                   Login
                 </button>
               </div>
@@ -96,7 +102,7 @@ const Login = () => {
                   type="email"
                   id="email"
                   placeholder="Enter your email"
-                  className="block w-full text-sm px-4 py-2 text-black font-inter bg-white border border-yellow-400 rounded-full focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                  className="input-field"
                 />
               </div>
               <div className="mb-6">
@@ -107,7 +113,7 @@ const Login = () => {
                   type="text"
                   id="username"
                   placeholder="Enter your username"
-                  className="block w-full text-sm px-4 py-2 text-black font-inter bg-white border border-yellow-400 rounded-full focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                  className="input-field"
                 />
               </div>
               <div className="mb-4">
@@ -118,12 +124,11 @@ const Login = () => {
                   type="password"
                   id="password"
                   placeholder="Enter your password"
-                  className="block w-full px-4 py-2 text-sm text-black font-inter bg-white border border-yellow-400 rounded-full focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                  className="input-field"
                 />
-                
               </div>
               <div className="mt-6 flex justify-end">
-                <button className="px-4 py-2 text-black font-inter bg-yellow-400 font-inter rounded-full hover:bg-yellow-500 focus:outline-none focus:bg-yellow-500 font-bold w-40 h-12">
+                <button className="px-4 py-2 text-black font-inter bg-yellow-400 rounded-full hover:bg-yellow-500 focus:outline-none focus:bg-yellow-500 font-bold w-40 h-12">
                   Register
                 </button>
               </div>
