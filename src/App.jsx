@@ -4,7 +4,7 @@ import Home from './components/Home';
 import Dashboard from './components/Dashboard';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import './App.css';
-import ContentsSection from './components/ContentSection';
+
 
 function App() {
   return (
@@ -13,7 +13,6 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/dashboard" element={<Dashboard />} />
-
         </Routes>
       </div>
     </Router>
