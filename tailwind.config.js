@@ -10,7 +10,11 @@ export default {
     customBlue:'#2F327D',
   },
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'solo': "url('/path/to/your/Solostudy.jpg')",
+      }
+    },
   },
   plugins: [],
 }
