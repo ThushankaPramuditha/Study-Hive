@@ -1,13 +1,10 @@
 import React from 'react';
-import SideBar from './SideBar';
-import FeatureSection from './FeatureSection';
-import ServiceSection from './ServiceSection';
-import TestimonialSection from './testimonialSection';
+import SideBarnNavbar from './SideBarnNavbar';
 
-const Home = () => {
+const Dashboard = () => {
   return (
-    <div className="home">
-      <SideBar />
+    <div className="">
+      <SideBarnNavbar />
     
       
       {/* Add more sections as needed */}
@@ -15,4 +12,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Dashboard;
