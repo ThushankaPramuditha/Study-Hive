@@ -14,6 +14,9 @@ html {
 .bg-custom-color {
   background-color: var(--custom-color);
 }
+.bg-custom-color1 {
+  background-color: #CFDCB3;
+}
 
 .text-customGray {
   color: var(--custom-gray);
