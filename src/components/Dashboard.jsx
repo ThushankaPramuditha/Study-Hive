@@ -7,9 +7,6 @@ const Dashboard = () => {
     <div className="">
       <SideBarnNavbar />
       <DashboardContent />
-    
-      
-      {/* Add more sections as needed */}
     </div>
   );
 };

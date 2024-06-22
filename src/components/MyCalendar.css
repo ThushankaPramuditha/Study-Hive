@@ -1,0 +1,71 @@
+/* MyCalendar.css *
+  
+  /* Toolbar */
+  .rbc-toolbar {
+    background-color: #ffff;
+    color: white;
+    border-radius: 4px;
+    padding: 5px;
+  }
+  
+  .rbc-toolbar button {
+    color: white;
+    background-color: #A6B15C;
+    border: none;
+    border-radius: 3px;
+    padding: 2px 8px;
+    margin: 0 2px;
+    font-size: 12px;
+  }
+  
+  .rbc-toolbar button:hover {
+    background-color:#A6B15C;
+  }
+  
+  /* Calendar */
+  .rbc-calendar {
+    border: none;
+    font-size: 12px;
+  }
+  
+  .rbc-header {
+    padding: 5px;
+  }
+  
+  .rbc-day-slot .rbc-time-slot {
+    height: 1em;
+  }
+  
+  .rbc-time-header-cell {
+    padding: 5px;
+  }
+  
+  .rbc-time-content {
+    border-top: none;
+  }
+  
+  /* Event */
+  .rbc-event {
+    background-color:#A6B15C;
+    color: white;
+    padding: 2px 4px;
+    font-size: 12px;
+  }
+  
+  /* Month View */
+  .rbc-month-view {
+    border: none;
+  }
+  
+  .rbc-month-row {
+    padding: 2px 0;
+  }
+  
+  .rbc-date-cell {
+    padding: 2px;
+  }
+  
+  .rbc-event-label {
+    font-size: 10px;
+  }
+  
