@@ -5,7 +5,8 @@ import Dashboard from './components/Dashboard';
 import StudyRooms from './components/StudyRooms';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import './App.css';
-import ContentsSection from './components/ContentSection';
+
+
 
 function App() {
   return (
@@ -15,7 +16,6 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/home" element={<Dashboard />} />
           <Route path="/studyrooms" element={<StudyRooms />} />
-
         </Routes>
       </div>
     </Router>
