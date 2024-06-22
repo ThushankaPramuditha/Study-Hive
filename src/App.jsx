@@ -5,7 +5,8 @@ import Dashboard from './components/Dashboard';
 import StudyRooms from './components/StudyRooms';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import './App.css';
-import ContentsSection from './components/ContentSection';
+
+
 
 function App() {
   return (

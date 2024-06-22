@@ -1,6 +1,18 @@
+html {
+  scroll-behavior: smooth;
+}
+
+:root {
+  --custom-color: #A6B15C;
+  --custom-gray: #696984;
+  --custom-yellow: #F6CA30;
+  --custom-blue: #2F327D;
+  --custom-olive: #A6B15C;
+  --custom-orange: #D4944C;
+}
 
 .bg-custom-color {
-  background-color: #A6B15C;
+  background-color: var(--custom-color);
 }
 .bg-custom-color1 {
   background-color: #CFDCB3;
@@ -10,22 +22,21 @@
 }
 
 .text-customGray {
-  color: #696984;
+  color: var(--custom-gray);
 }
 
 .text-customYellow {
-  color: #F6CA30;
+  color: var(--custom-yellow);
 }
 
 .text-customBlue {
-  color: #2F327D;
+  color: var(--custom-blue);
 }
 
 .text-customOlive {
-  color: #A6B15C;
+  color: var(--custom-olive);
 }
 
-.text-customOrange{
-  color: #D4944C;
+.text-customOrange {
+  color: var(--custom-orange);
 }
-

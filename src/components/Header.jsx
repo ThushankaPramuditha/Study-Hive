@@ -13,16 +13,21 @@ const Header = () => {
           <Link to="/careers" className="text-customGray hover:text-gray-300">Careers</Link>
           <Link to="/blog" className="text-customGray hover:text-gray-300">Blog</Link>
           <Link to="/aboutus" className="text-customGray hover:text-gray-300">About Us</Link>
+          <Link to="/content" className="text-customGray hover:text-gray-300">About Us</Link>
+          <Link to="/service" className="text-customGray hover:text-gray-300">Services</Link>
+          <Link to="/testimonial" className="text-customGray hover:text-gray-300">Testimonial</Link>
           <Link to="/login"
             className="bg-white hover:bg-orange-400 text-customGray py-2 px-4 rounded-lg"
           >Login</Link>
           <Link to="/signup"
             className="bg-amber-400 hover:bg-orange-400 text-customGray py-2 px-4 rounded-lg"
           >Sign Up</Link>
+
         </nav>
       </div>
     </header>
   );
 };
+
 
 export default Header;
