@@ -11,8 +11,6 @@ const Header = () => {
         <nav className="space-x-9 mr-10">  
           <Link to="/" className="text-customGray hover:text-gray-300">Home</Link>
           <Link to="/careers" className="text-customGray hover:text-gray-300">Careers</Link>
-          <Link to="/blog" className="text-customGray hover:text-gray-300">Blog</Link>
-          <Link to="/aboutus" className="text-customGray hover:text-gray-300">About Us</Link>
           <Link to="/content" className="text-customGray hover:text-gray-300">About Us</Link>
           <Link to="/service" className="text-customGray hover:text-gray-300">Services</Link>
           <Link to="/testimonial" className="text-customGray hover:text-gray-300">Testimonial</Link>
