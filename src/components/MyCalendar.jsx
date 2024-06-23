@@ -28,7 +28,7 @@ const localizer = dateFnsLocalizer({
   locales
 });
 
-const MyBigCalendar = () => {
+const MyCalendar = () => {
   return (
     <div style={{ height: 500 }}>
       <Calendar
@@ -42,4 +42,4 @@ const MyBigCalendar = () => {
   );
 };
 
-export default MyBigCalendar;
+export default MyCalendar;

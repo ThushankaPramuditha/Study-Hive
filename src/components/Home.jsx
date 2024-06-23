@@ -17,9 +17,6 @@ const Home = () => {
       <FeatureSection />
       <TestimonialSection />
       <Footer />
-    
-      
-      {/* Add more sections as needed */}
     </div>
   );
 };
