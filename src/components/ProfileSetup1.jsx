@@ -31,7 +31,7 @@ const ProfileSetup1 = () => {
 
   // Function to finish and navigate to the next page
   const handleFinish = () => {
-    navigate('/ProfileSetup2');
+    navigate('/settings');
   };
 
   const handleFileInputChange = (e) => {
@@ -180,7 +180,6 @@ const ProfileSetup1 = () => {
               </div>
 
               <div className="absolute bottom-4 right-4">
-                {/* Next button */}
                 <NextButton onClick={handleNext} imageSrc={nextButton} />
               </div>
 
@@ -324,7 +323,7 @@ const ProfileSetup1 = () => {
                   onChange={handleFileInputChange}
                   className="input-field"
                 />
-                {/* Display image preview if available */}
+
                 {previewUrl && (
                   <img src={previewUrl} alt="Preview" className="mt-4 rounded-lg shadow-md" style={{ maxWidth: '100%', height: 'auto' }} />
                 )}

@@ -4,11 +4,11 @@ import Header from './components/Header';
 import Home from './components/Home';
 import Login from './components/Login';
 import ProfileSetup1 from './components/ProfileSetup1';
-
+import Settings from './components/Settings';  // Import the Settings component
 
 const App = () => {
   const location = useLocation();
-  const hideHeaderPaths = ['/login', '/ProfileSetup1'];
+  const hideHeaderPaths = ['/login', '/ProfileSetup1' , '/settings'];
 
   return (
     <>
@@ -17,6 +17,7 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/ProfileSetup1" element={<ProfileSetup1 />} />
+        <Route path="/settings" element={<Settings />} /> {/* Add the route for Settings */}
       </Routes>
     </>
   );
