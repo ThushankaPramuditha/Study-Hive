@@ -1,6 +1,7 @@
 import React from 'react';
 import heroImage from '../assets/images/hero-image1.png';
 
+
 const HeroSection = () => {
   return (
     <section className="hero bg-yellow-200 py-12 text-left text-black w-full h-auto md:h-[600px] mb-10 rounded-b-[75%] overflow-hidden flex flex-col md:flex-row items-center md:items-start">
@@ -22,6 +23,9 @@ const HeroSection = () => {
       </div>
     </section>
   );
+
 };
+
+
 
 export default HeroSection;

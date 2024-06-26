@@ -1,7 +1,10 @@
 import { Link } from 'react-router-dom';
 import logo from '../assets/images/logo.png';
+import '../App.css'; 
+
 
 const Header = () => {
+
   return (
     <header className="bg-yellow-200 text-white py-4">
       <div className="container mx-auto flex justify-between items-center mt-4">
@@ -25,6 +28,7 @@ const Header = () => {
       </div>
     </header>
   );
+
 };
 
 
