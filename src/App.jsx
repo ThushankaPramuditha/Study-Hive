@@ -5,6 +5,12 @@ import Dashboard from './components/Dashboard';
 import StudyRooms from './components/StudyRooms';
 import MyCalendar from './components/MyCalendar';
 import Eventcard from './components/Eventcard';
+import BoxCalendar from './components/BoxCalendar';
+import Community from './components/Community';
+import Notification from './components/Notification';
+import Performance from './components/PerformanceChart';
+import StatisticsCard from './components/StatisticsCard';
+import Reminders from './components/Reminders';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import './App.css';
 
@@ -20,6 +26,15 @@ function App() {
           <Route path="/studyrooms" element={<StudyRooms />} />
           <Route path="/mycalendar" element={<MyCalendar />} />
           <Route path="/eventcard" element={<Eventcard />} />
+          <Route path="/boxcalendar" element={<BoxCalendar />} />
+          <Route path="/community" element={<Community />} />
+          <Route path="/notification" element={<Notification />} />
+          <Route path="/performance" element={<Performance />} />
+          <Route path="/statisticscard" element={<StatisticsCard />} />
+          <Route path="/reminders" element={<Reminders />} />
+
+         
+      
         </Routes>
       </div>
     </Router>
