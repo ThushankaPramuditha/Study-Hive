@@ -9,6 +9,7 @@ html {
   --custom-blue: #2F327D;
   --custom-olive: #A6B15C;
   --custom-orange: #D4944C;
+  --custom-orange1: #D4944C40;
 }
 
 .bg-custom-color {
@@ -39,4 +40,8 @@ html {
 
 .text-customOrange {
   color: var(--custom-orange);
+}
+
+.text-customOrange1 {
+  color: var(--custom-orange1);
 }

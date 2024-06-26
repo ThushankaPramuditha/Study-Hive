@@ -1,6 +1,7 @@
 import React from 'react';
 import solo from '../assets/images/Solostudy.png';
 import group from '../assets/images/Groupstudy.png';
+// import Calendar from './BoxCalendar'; 
 
 const DashboardContent = () => {
   return (
@@ -193,6 +194,7 @@ const DashboardContent = () => {
       <div className="w-[25%]">
         <div className="border-2 h-[30%] border-black">
           <p className="text-center">Calender</p>
+          {/* <Calendar/> */}
         </div>
         <div className="">
           <div>
