@@ -19,73 +19,73 @@ const Settings = () => {
         <p className="text-2xl font-semibold mb-2">Settings Page</p>
         <p className="font-bold">
           <span className="font-light">
-            <Link to="/profile" className="underline font-bold mb-4">Go to profile</Link>
+            <Link to="/profile" className="underline font-bold mb-2">Go to profile</Link>
           </span>
         </p>
 
-        <div className="container mx-auto grid grid-cols-3 gap-8 mt-10 justify-center w-[90%]">
-          <Link to="/settings/personal-info" className="content-card bg-white p-5 my-5 rounded-lg shadow-xl transition-transform duration-300 transform hover:scale-105 w-full h-48 relative">
-            <div className="absolute top-2 left-2">
-              <img src={personalinfo} alt="Personal info" />
+        <div className="container mx-auto grid grid-cols-3 gap-4 mt-6 justify-center w-[90%]">
+          <Link to="/settings/personal-info" className="content-card bg-white p-5 my-5 rounded-lg shadow-xl transition-transform duration-300 transform hover:scale-105 w-full h-40 relative hover:shadow-yellow">
+            <div className="absolute top-5 left-5">
+              <img src={personalinfo} alt="Personal info" className='w-6 h-6'/>
             </div>
-            <h3 className="text-xl text-[#222] font-bold mb-5 mt-12">Personal info</h3>
-            <p className="text-[#717171]">Provide personal details and how we can reach you</p>
+            <h3 className=" text-[#222] font-bold mb-3 mt-9">Personal info</h3>
+            <p className="text-[#717171] text-[12px]">Provide personal details and how we can reach you</p>
           </Link>
 
-          <Link to="/settings/login-security" className="content-card bg-white p-5 my-5 rounded-lg shadow-xl transition-transform duration-300 transform hover:scale-105 w-full h-48 relative">
-            <div className="absolute top-2 left-2">
-              <img src={loginSettings} alt="Login & security" />
+          <Link to="/settings/login-security" className="content-card bg-white p-5 my-5 rounded-lg shadow-xl transition-transform duration-300 transform hover:scale-105 w-full h-40 relative">
+            <div className="absolute top-5 left-5">
+              <img src={loginSettings} alt="Login & security" className='w-6 h-6' />
             </div>
-            <h3 className="text-xl text-[#222] font-bold mb-5 mt-12">Login & security</h3>
-            <p className="text-[#717171]">Update your password and secure your account</p>
+            <h3 className=" text-[#222] font-bold mb-3 mt-9">Login & security</h3>
+            <p className="text-[#717171] text-[12px]">Update your password and secure your account</p>
           </Link>
 
-          <Link to="/settings/audio-video" className="content-card bg-white p-5 my-5 rounded-lg shadow-xl transition-transform duration-300 transform hover:scale-105 w-full h-48 relative">
-            <div className="absolute top-2 left-2">
-              <img src={audio} alt="Audio & Video" />
+          <Link to="/settings/audio-video" className="content-card bg-white p-5 my-5 rounded-lg shadow-xl transition-transform duration-300 transform hover:scale-105 w-full h-40 relative">
+            <div className="absolute top-5 left-5">
+              <img src={audio} alt="Audio & Video" className='w-6 h-6'/>
             </div>
-            <h3 className="text-xl text-[#222] font-bold mb-5 mt-12">Audio & Video</h3>
-            <p className="text-[#717171]">Review payments, payouts, coupons, and gift cards</p>
+            <h3 className="text-[#222] font-bold mb-3 mt-9">Audio & Video</h3>
+            <p className="text-[#717171] text-[12px]">Review payments, payouts, coupons, and gift cards</p>
           </Link>
 
-          <Link to="/settings/study-materials" className="content-card bg-white p-5 my-5 rounded-lg shadow-xl transition-transform duration-300 transform hover:scale-105 w-full h-48 relative">
-            <div className="absolute top-2 left-2">
-              <img src={studymaterials} alt="Study Materials" />
+          <Link to="/settings/study-materials" className="content-card bg-white p-5 my-5 rounded-lg shadow-xl transition-transform duration-300 transform hover:scale-105 w-full h-40 relative">
+            <div className="absolute top-5 left-5">
+              <img src={studymaterials} alt="Study Materials" className='w-6 h-6' />
             </div>
-            <h3 className="text-xl text-[#222] font-bold mb-5 mt-12">Study Materials</h3>
-            <p className="text-[#717171]">Manage your Study Materials</p>
+            <h3 className="text-[#222] font-bold mb-3 mt-9">Study Materials</h3>
+            <p className="text-[#717171] text-[12px]">Manage your Study Materials</p>
           </Link>
 
-          <Link to="/settings/notifications" className="content-card bg-white p-5 my-5 rounded-lg shadow-xl transition-transform duration-300 transform hover:scale-105 w-full h-48 relative">
-            <div className="absolute top-2 left-2">
-              <img src={notifications} alt="Notifications" />
+          <Link to="/settings/notifications" className="content-card bg-white p-5 my-5 rounded-lg shadow-xl transition-transform duration-300 transform hover:scale-105 w-full h-40 relative">
+            <div className="absolute top-5 left-5">
+              <img src={notifications} alt="Notifications" className='w-6 h-6'/>
             </div>
-            <h3 className="text-xl text-[#222] font-bold mb-5 mt-12">Notifications</h3>
-            <p className="text-[#717171]">Choose notification preferences and how you want to be contacted</p>
+            <h3 className="text-[#222] font-bold mb-3 mt-9">Notifications</h3>
+            <p className="text-[#717171] text-[12px]">Choose notification preferences and how you want to be contacted</p>
           </Link>
 
-          <Link to="/settings/privacy-sharing" className="content-card bg-white p-5 my-5 rounded-lg shadow-xl transition-transform duration-300 transform hover:scale-105 w-full h-48 relative">
-            <div className="absolute top-2 left-2">
-              <img src={privacy} alt="Privacy & sharing" />
+          <Link to="/settings/privacy-sharing" className="content-card bg-white p-5 my-5 rounded-lg shadow-xl transition-transform duration-300 transform hover:scale-105 w-full h-40 relative">
+            <div className="absolute top-5 left-5">
+              <img src={privacy} alt="Privacy & sharing" className='w-6 h-6' />
             </div>
-            <h3 className="text-xl text-[#222] font-bold mb-5 mt-12">Privacy & sharing</h3>
-            <p className="text-[#717171]">Manage your personal data, connected services, data sharing </p>
+            <h3 className="text-[#222] font-bold mb-3 mt-9">Privacy & sharing</h3>
+            <p className="text-[#717171] text-[12px]">Manage your personal data, connected services, data sharing </p>
           </Link>
 
-          <Link to="/settings/global-preferences" className="content-card bg-white p-5 my-5 rounded-lg shadow-xl transition-transform duration-300 transform hover:scale-105 w-full h-48 relative">
-            <div className="absolute top-2 left-2">
-              <img src={preference} alt="Global preferences" />
-            </div>
-            <h3 className="text-xl text-[#222] font-bold mb-5 mt-12">Global preferences</h3>
-            <p className="text-[#717171]">Set your default language, currency, and timezone</p>
+          <Link to="/settings/global-preferences" className="content-card bg-white p-5 my-5 rounded-lg shadow-xl transition-transform duration-300 transform hover:scale-105 w-full h-40 relative">
+            <div className="absolute top-5 left-5">
+              <img src={preference} alt="Global preferences" className='w-6 h-6' />
+            </div> 
+            <h3 className=" text-[#222] font-bold mb-3 mt-9">Global preferences</h3>
+            <p className="text-[#717171] text-[12px]">Set your default language, currency, and timezone</p>
           </Link>
 
-          <Link to="/settings/professional-hosting-tools" className="content-card bg-white p-5 my-5 rounded-lg shadow-xl transition-transform duration-300 transform hover:scale-105 w-full h-48 relative">
-            <div className="absolute top-2 left-2">
-              <img src={tools} alt="Professional hosting tools" />
+          <Link to="/settings/professional-hosting-tools" className="content-card bg-white p-5 my-5 rounded-lg shadow-xl transition-transform duration-300 transform hover:scale-105 w-full h-40 relative">
+            <div className="absolute top-5 left-5">
+              <img src={tools} alt="Professional hosting tools"  className='w-6 h-6'/>
             </div>
-            <h3 className="text-xl text-[#222] font-bold mb-5 mt-12">Professional hosting tools</h3>
-            <p className="text-[#717171]">Get professional tools if you manage several properties on Airbnb</p>
+            <h3 className="text-[#222] font-bold mb-3 mt-9">Professional hosting tools</h3>
+            <p className="text-[#717171] text-[12px]">Get professional tools if you manage several properties on Airbnb</p>
           </Link>
         </div>
       </div>
