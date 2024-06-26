@@ -16,15 +16,15 @@ const Settings = () => {
       <SideBarnNavbar />
 
       <div className="ml-[300px] mt-[20px] flex-1">
-        <p className="text-2xl font-semibold mb-2">Settings Page</p>
+        <p className="text-2xl font-semibold mb-1">Settings</p>
         <p className="font-bold">
           <span className="font-light">
-            <Link to="/profile" className="underline font-bold mb-2">Go to profile</Link>
+            <Link to="/profile" className="underline font-bold mb-2 text-[12px]">Go to profile</Link>
           </span>
         </p>
 
         <div className="container mx-auto grid grid-cols-3 gap-4 mt-6 justify-center w-[90%]">
-          <Link to="/settings/personal-info" className="content-card bg-white p-5 my-5 rounded-lg shadow-xl transition-transform duration-300 transform hover:scale-105 w-full h-40 relative hover:shadow-yellow">
+          <Link to="/Personal-info" className="content-card bg-white p-5 my-5 rounded-lg shadow-xl transition-transform duration-300 transform hover:scale-105 w-full h-40 relative hover:shadow-yellow">
             <div className="absolute top-5 left-5">
               <img src={personalinfo} alt="Personal info" className='w-6 h-6'/>
             </div>
@@ -85,7 +85,7 @@ const Settings = () => {
               <img src={tools} alt="Professional hosting tools"  className='w-6 h-6'/>
             </div>
             <h3 className="text-[#222] font-bold mb-3 mt-9">Professional hosting tools</h3>
-            <p className="text-[#717171] text-[12px]">Get professional tools if you manage several properties on Airbnb</p>
+            <p className="text-[#717171] text-[12px]">Access advanced tools for managing multiple resources efficiently</p>
           </Link>
         </div>
       </div>
