@@ -1,10 +1,11 @@
 import React from 'react';
-import SideBarnNavbar from './SideBarnNavbar';
+import SideBar from './SideBar';
 
-const Dashboard = () => {
+
+const StudyRooms = () => {
   return (
     <div className="">
-      <SideBarnNavbar />
+      <SideBar />
       <div className="flex
     mt-2 ml-[263px]">
       <div className="w-[75%]">
@@ -55,7 +56,7 @@ const Dashboard = () => {
                     <div className="w-[40px] h-[40px] rounded-[100%] border-2 ml-[-15px] border-white bg-black">
                     </div>
                   </div>
-                  <div className="flex items-center justify-between items-center">
+                  <div className="flex items-center justify-between">
                     <p className="opacity-40">20</p>
                     <i class="fa-regular fa-comments ml-4 opacity-30"></i>
                   </div>
@@ -93,7 +94,7 @@ const Dashboard = () => {
                     <div className="w-[40px] h-[40px] rounded-[100%] border-2 ml-[-15px] border-white bg-black">
                     </div>
                   </div>
-                  <div className="flex items-center justify-between items-center">
+                  <div className="flex items-center justify-between">
                     <p className="opacity-40">20</p>
                     <i class="fa-regular fa-comments ml-4 opacity-30"></i>
                   </div>
@@ -131,7 +132,7 @@ const Dashboard = () => {
                     <div className="w-[40px] h-[40px] rounded-[100%] border-2 ml-[-15px] border-white bg-black">
                     </div>
                   </div>
-                  <div className="flex items-center justify-between items-center">
+                  <div className="flex items-center justify-between ">
                     <p className="opacity-40">20</p>
                     <i class="fa-regular fa-comments ml-4 opacity-30"></i>
                   </div>
@@ -177,7 +178,7 @@ const Dashboard = () => {
                     <div className="w-[40px] h-[40px] rounded-[100%] border-2 ml-[-15px] border-white bg-black">
                     </div>
                   </div>
-                  <div className="flex items-center justify-between items-center">
+                  <div className="flex items-center justify-between ">
                     <p className="opacity-40">20</p>
                     <i class="fa-regular fa-comments ml-4 opacity-30"></i>
                   </div>
@@ -215,7 +216,7 @@ const Dashboard = () => {
                     <div className="w-[40px] h-[40px] rounded-[100%] border-2 ml-[-15px] border-white bg-black">
                     </div>
                   </div>
-                  <div className="flex items-center justify-between items-center">
+                  <div className="flex items-center justify-between ">
                     <p className="opacity-40">20</p>
                     <i class="fa-regular fa-comments ml-4 opacity-30"></i>
                   </div>
@@ -253,7 +254,7 @@ const Dashboard = () => {
                     <div className="w-[40px] h-[40px] rounded-[100%] border-2 ml-[-15px] border-white bg-black">
                     </div>
                   </div>
-                  <div className="flex items-center justify-between items-center">
+                  <div className="flex items-center justify-between">
                     <p className="opacity-40">20</p>
                     <i class="fa-regular fa-comments ml-4 opacity-30"></i>
                   </div>
@@ -344,4 +345,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default StudyRooms;

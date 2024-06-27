@@ -31,7 +31,7 @@ const Reminders = () => {
                 <div className="flex items-center">
                     <div className="flex flex-col ml-2">
                     <p className="text-sm sm:text-sm font-semibold">{reminder.name}</p>
-                    <p className="font-normal">{reminder.description}</p>
+                    <p className="font-normal text-[12px]">{reminder.description}</p>
                     </div>
                 </div>
                 </div>

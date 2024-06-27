@@ -10,6 +10,7 @@ import notifications from '../assets/images/notifications.png';
 import privacy from '../assets/images/privacy.png';
 import tools from '../assets/images/tools.png';
 
+
 const Settings = () => {
   return (
     <div className="">
