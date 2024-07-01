@@ -20,6 +20,9 @@ html {
 .bg-search {
   background-color: #d4944c42;
 }
+.bg-sidebar {
+  background-color: #FDF9C4;
+}
 
 .text-customGray {
   color: var(--custom-gray);

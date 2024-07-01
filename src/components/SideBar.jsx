@@ -3,7 +3,7 @@ import logo from '../assets/images/logo.png';
 
 const SideBar = () => {
   return (
-      <div className="fixed top-0 bottom-0 lg:left-0 p-2  w-[263px] h-full text-center bg-yellow-200">
+      <div className="fixed top-0 bottom-0 lg:left-0 p-2  w-[263px] h-full text-center bg-sidebar">
         <div className="mt-1 mr-8 flex items-center">
           <img src={logo} alt="StudyHive" className="w-full h-auto ml-5" />
         </div>
