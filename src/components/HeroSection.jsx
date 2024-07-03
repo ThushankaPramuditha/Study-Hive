@@ -1,6 +1,7 @@
 import React from 'react';
 import heroImage from '../assets/images/hero-image1.png';
 
+
 const HeroSection = () => {
   return (
     <section className="hero bg-yellow-200 py-12 text-left text-black w-full h-auto md:h-[600px] mb-10 rounded-b-[75%] overflow-hidden flex flex-col md:flex-row items-center md:items-start">
@@ -12,7 +13,7 @@ const HeroSection = () => {
           StudyHive is an interesting platform that will help you to study collaboratively & in a more interactive way.
         </p>
         <div className="flex justify-center md:justify-start mt-5">
-          <button className="bg-custom-color hover:bg-custom-color-800 text-white text-3xl font-bold py-4 px-6 rounded-3xl">
+          <button className="bg-custom-color hover:bg-custom-color-800 text-white text-2xl font-bold py-4 px-6 rounded-3xl">
             Join For Free
           </button>
         </div>
@@ -22,6 +23,9 @@ const HeroSection = () => {
       </div>
     </section>
   );
+
 };
+
+
 
 export default HeroSection;
