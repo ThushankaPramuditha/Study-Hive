@@ -1,20 +1,17 @@
 import React from 'react';
 import SideBarnNavbar from './SideBarnNavbar';
 
-const StudyRooms = () => {
+const StudyStats = () => {
   return (
     <div className="">
       <SideBarnNavbar />
       <div className="xl:flex
     mt-2 ml-[263px]">
       <div className="xl:w-[75%]">
-        <div className="ml-10">
-          <p className="text-blue-900  text-4xl font-bold">Let's Get Back To Work</p>
-          <div className="flex items-center justify-between mt-6">
-            <button className="flex items-center bg-custom-color p-2 text-sm text-white rounded-[40px] w-[170px] justify-center">Create a New Room<i class="fa-solid fa-plus text-yellow-400 ml-2"></i></button>
-            <div className="relative flex items-center">
-            <i class="fa-solid fa-magnifying-glass absolute ml-5 pointer-events-none"></i>
-            <input className="bg-search  border-none pr-3 pl-12  xl:w-[390px] h-[35px] rounded-[40px] mr-20 placeholder-black" name="search" placeholder="Search Study Rooms" autocomplete="off" aria-label="Search Study Rooms"></input>
+        <div className="ml-10 ">
+          <p className="text-blue-900  text-4xl font-bold">Your Study Statistics</p>
+          <div className="border-2 grid grid-cols-3 justifi-center items-center mt-6 mr-10">
+            <div className="place-self-center  border-2 border-black w-[280px] h-[120px]">
             </div>
           </div>
         </div>
@@ -344,4 +341,4 @@ const StudyRooms = () => {
   );
 };
 
-export default StudyRooms;
+export default StudyStats;

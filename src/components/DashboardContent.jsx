@@ -1,12 +1,13 @@
 import React from 'react';
 import solo from '../assets/images/Solostudy.png';
 import group from '../assets/images/Groupstudy.png';
-// import Calendar from './BoxCalendar'; 
+import Calendar from './BoxCalendar';
 
-const DashboardContent = () => {
+
+const DashboardContent = (sidebarToggle) => {
   return (
-    <div className="xl:flex
-    mt-2 ml-[263px]">
+    <div className={`${sidebarToggle ? "ml-[263px]" : "ml-[60px]"} xl:flex
+    mt-2 `}>
       <div className="xl:w-[75%] w-[100%]">
         <div className="ml-10">
         <p className="text-blue-900  text-2xl">Welcome, Sadun S.</p>
@@ -230,9 +231,8 @@ const DashboardContent = () => {
       <div className="h-100 border border-gray-200 hidden xl:block">
       </div>
       <div className="xl:w-[25%] flex flex-col items-center">
-        <div className="border-2 xl:h-[30%] xl:w-[100%] border-black w-[400px] h-[500px]">
-          <p className="text-center">Calender</p>
-          {/* <Calendar/> */}
+        <div className="xl:h-[30%] xl:w-[100%] flex justify-center items-center border-black w-[400px] h-[500px]">
+          <Calendar/>
         </div>
         <div className="">
           <div>
