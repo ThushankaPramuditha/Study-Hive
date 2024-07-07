@@ -8,7 +8,8 @@ const Dashboard = () => {
     <div className="">
       <SideBarnNavbar sidebarToggle={sidebarToggle}
       setSidebarToggle={setSidebarToggle}/>
-      <DashboardContent sidebarToggle={sidebarToggle}/>
+      <DashboardContent sidebarToggle={sidebarToggle}
+      setSidebarToggle={setSidebarToggle}/>
     </div>
   );
 };

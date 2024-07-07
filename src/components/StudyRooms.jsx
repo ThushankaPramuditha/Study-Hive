@@ -277,24 +277,13 @@ const StudyRooms = () => {
           <div className="flex flex-col items-center ml-2">
             <div className="flex items-center xl:w-[90%] w-[350px] h-auto bg-gray-100 rounded-[10px] justify-between m-2 p-2">
             <div className="flex items-center">
+              <div>
               <div className="ml-4 w-2 h-2 bg-gray-400 rounded">
               </div>
+              </div>
+              <div>
               <div className="ml-3 w-[52px] h-[52px] border-2 border-yellow-400 rounded-full bg-black">
               </div>
-              <div className="flex flex-col ml-2">
-                <p className="text-lg font-semibold ">Thushanka Pramuditha</p>
-                <p className="opacity-40">Offline</p>
-              </div>
-              </div>
-              <div className="mr-5 opacity-40">
-                <i class="fa-solid fa-angle-right"></i>
-              </div>
-            </div>
-            <div className="flex items-center xl:w-[90%] w-[350px] h-auto bg-gray-100 rounded-[10px] justify-between m-2 p-2">
-            <div className="flex items-center">
-              <div className="ml-4 w-2 h-2 bg-gray-400 rounded">
-              </div>
-              <div className="ml-3 w-[52px] h-[52px] border-2 border-yellow-400 rounded-full bg-black">
               </div>
               <div className="flex flex-col ml-2">
                 <p className="text-lg font-semibold ">Pramukha Thenuwara</p>
@@ -307,9 +296,13 @@ const StudyRooms = () => {
             </div>
             <div className="flex items-center xl:w-[90%] w-[350px] h-auto bg-gray-100 rounded-[10px] justify-between m-2 p-2">
             <div className="flex items-center">
+              <div>
               <div className="ml-4 w-2 h-2 bg-gray-400 rounded">
               </div>
+              </div>
+              <div>
               <div className="ml-3 w-[52px] h-[52px] border-2 border-yellow-400 rounded-full bg-black">
+              </div>
               </div>
               <div className="flex flex-col ml-2">
                 <p className="text-lg font-semibold ">Dinushanka Shyamal</p>
@@ -322,9 +315,32 @@ const StudyRooms = () => {
             </div>
             <div className="flex items-center xl:w-[90%] w-[350px] h-auto bg-gray-100 rounded-[10px] justify-between m-2 p-2">
             <div className="flex items-center">
+              <div>
               <div className="ml-4 w-2 h-2 bg-gray-400 rounded">
               </div>
+              </div>
+              <div>
               <div className="ml-3 w-[52px] h-[52px] border-2 border-yellow-400 rounded-full bg-black">
+              </div>
+              </div>
+              <div className="flex flex-col ml-2">
+                <p className="text-lg font-semibold ">Thushanka Pramuditha</p>
+                <p className="opacity-40">Offline</p>
+              </div>
+              </div>
+              <div className="mr-5 opacity-40">
+                <i class="fa-solid fa-angle-right"></i>
+              </div>
+            </div>
+            <div className="flex items-center xl:w-[90%] w-[350px] h-auto bg-gray-100 rounded-[10px] justify-between m-2 p-2">
+            <div className="flex items-center">
+              <div>
+              <div className="ml-4 w-2 h-2 bg-gray-400 rounded">
+              </div>
+              </div>
+              <div>
+              <div className="ml-3 w-[52px] h-[52px] border-2 border-yellow-400 rounded-full bg-black">
+              </div>
               </div>
               <div className="flex flex-col ml-2">
                 <p className="text-lg font-semibold ">Mahoga Harith</p>
