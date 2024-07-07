@@ -36,13 +36,9 @@ function App() {
           <Route path="/performance" element={<Performance />} />
           <Route path="/statisticscard" element={<StatisticsCard />} />
           <Route path="/reminders" element={<Reminders />} />
-<<<<<<< HEAD
           <Route path='/schedulepage' element={<SchedulePage />} />
 
 
-
-=======
->>>>>>> f0998bb4939628ec4be83a905fb09e5673cb7f1a
         </Routes>
       </div>
     </Router>
