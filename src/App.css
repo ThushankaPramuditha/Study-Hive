@@ -24,6 +24,39 @@ html {
 .bg-sidebar {
   background-color: #FDF9C4;
 }
+.clock-color1{
+  color: #A6B15C;
+  background-color: #A6B15C1A;
+}
+.clock-color2{
+  color: #F6CA30;
+  background-color: #F6CA301A;
+}
+.rank-color1{
+  color: #3067F6;
+  background-color: #3068f61A;
+}
+
+.badge-color1{
+  background-color: #E55E5E;
+}
+.badge-color2{
+  background-color: #F4C467;
+}
+.badge-color3{
+  background-color: #A6B15C;
+}
+.badge-color4{
+  background-color: #99BEF6;
+}
+
+.dumble{
+  color: #C7F064;
+}
+
+.rank-border{
+  border-color: #FDF58B;
+}
 
 .text-customGray {
   color: var(--custom-gray);
@@ -136,6 +169,10 @@ html {
 .text-color {
   color: #A9A9A9;
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> f0998bb4939628ec4be83a905fb09e5673cb7f1a
 .text-customOrange1 {
   color: var(--custom-orange1);
 

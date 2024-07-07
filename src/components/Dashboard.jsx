@@ -3,10 +3,13 @@ import SideBarnNavbar from './SideBarnNavbar';
 import DashboardContent from './DashboardContent';
 
 const Dashboard = () => {
+  const [sidebarToggle, setSidebarToggle] = React.useState(false);
   return (
     <div className="">
-      <SideBarnNavbar />
-      <DashboardContent />
+      <SideBarnNavbar sidebarToggle={sidebarToggle}
+      setSidebarToggle={setSidebarToggle}/>
+      <DashboardContent sidebarToggle={sidebarToggle}
+      setSidebarToggle={setSidebarToggle}/>
     </div>
   );
 };
