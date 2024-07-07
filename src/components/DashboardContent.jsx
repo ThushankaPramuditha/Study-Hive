@@ -1,13 +1,35 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import solo from '../assets/images/Solostudy.png';
 import group from '../assets/images/Groupstudy.png';
 import Calendar from './BoxCalendar';
 
+const DashboardContent = () => {
+  const [sidebarToggle, setSidebarToggle] = useState(false);
+  const divRef = useRef(null);
 
-const DashboardContent = (sidebarToggle) => {
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 1280) {
+        setSidebarToggle(true);
+      } else {
+        setSidebarToggle(false);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    // Call handleResize initially to set the sidebar state based on initial window size
+    handleResize();
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+
   return (
-    <div className={`${sidebarToggle ? "ml-[263px]" : "ml-[60px]"} xl:flex
-    mt-2 `}>
+    <div className={`xl:flex
+    mt-2 ml-[263px]`}>
       <div className="xl:w-[75%] w-[100%]">
         <div className="ml-10">
         <p className="text-blue-900  text-2xl">Welcome, Sadun S.</p>
@@ -15,7 +37,7 @@ const DashboardContent = (sidebarToggle) => {
         </div>
         <div className="mt-10 w-[100%]">
         <p className="text-blue-900  text-4xl text-center">Let's Find a Study Partner</p>
-        <div className="xl:flex xl:felx-col xl:justify-between pl-[10%] pr-[10%] pt-[3%]">
+        <div className="xl:flex xl:felx-col xl:justify-between pl-[10%] pr-[10%] pt-[3%] ">
           <div className="flex flex-col justify-center border-2 w-[420px] h-[340px] rounded-[50px] items-center" style={{ backgroundImage: `url(${solo})` }}>
             <p className="text-2xl text-white text-center pb-6 font-bold">Solo Study</p>
             <button className="bg-custom-color p-3 m-3 text-xl text-white w-15 rounded-[50px] w-[200px] justify-center">Start Solo Study</button>
@@ -23,7 +45,7 @@ const DashboardContent = (sidebarToggle) => {
 
           <div className="flex flex-col justify-center items-center border-2 w-[420px] h-[340px] rounded-[50px]" style={{ backgroundImage: `url(${group})` }}>
           <p className="text-2xl text-white text-center pb-6 font-bold">Group Study</p>
-          <button className="bg-custom-color p-3 m-3 text-xl text-white w-15 rounded-[50px] w-[300px]">Joing a Group Study Room</button>
+          <button className="bg-custom-color p-3 m-3 text-xl text-white w-15 rounded-[50px] w-[300px]">Join a Group Study Room</button>
           <button className="bg-custom-color1 p-3 m-3 text-xl w-15 rounded-[50px] w-[300px]">Create Group Study Room</button>
           </div>
         </div>
@@ -231,7 +253,7 @@ const DashboardContent = (sidebarToggle) => {
       <div className="h-100 border border-gray-200 hidden xl:block">
       </div>
       <div className="xl:w-[25%] flex flex-col items-center">
-        <div className="xl:h-[30%] xl:w-[100%] flex justify-center items-center border-black w-[400px] h-[500px]">
+        <div className="xl:h-[30%] xl:w-[100%] flex justify-center items-center border-black w-[400px] h-[500px] p-2">
           <Calendar/>
         </div>
         <div className="">
