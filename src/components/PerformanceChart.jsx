@@ -5,22 +5,26 @@ import { Chart as ChartJS, BarElement, CategoryScale, LinearScale, Tooltip, Lege
 ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend);
 
 const PerformanceChart = () => {
+
   const data = {
     labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
     datasets: [
       {
         label: 'Hours',
         data: [8, 4, 3, 7, 5, 2, 9],
-        backgroundColor: 'rgba(255, 205, 86, 0.8)',
+        backgroundColor: '#F6CA30',
+        borderRadius: 10, // Ensure borderRadius is a number
       },
     ],
   };
-
+  
   const options = {
     scales: {
       y: {
         beginAtZero: true,
-        width: 1,
+      },
+      x: {
+        barThickness: 10, // Set a fixed width for the bars
       },
     },
     responsive: true,

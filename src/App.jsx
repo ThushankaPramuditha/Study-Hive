@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './components/Home';
 import Dashboard from './components/Dashboard';
 import StudyRooms from './components/StudyRooms';
+import StudyStats from './components/StudyStats';
 import MyCalendar from './components/MyCalendar';
 import Eventcard from './components/Eventcard';
 import BoxCalendar from './components/BoxCalendar';
@@ -20,11 +21,13 @@ import './App.css';
 function App() {
   return (
     <Router>
+      {/* <SideBar sidebarToggle={sidebarToggle} setSidebarToggle={setSidebarToggle} /> */}
       <div className="App">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/home" element={<Dashboard />} />
           <Route path="/studyrooms" element={<StudyRooms />} />
+          <Route path="/studystats" element={<StudyStats />} />
           <Route path="/mycalendar" element={<MyCalendar />} />
           <Route path="/eventcard" element={<Eventcard />} />
           <Route path="/boxcalendar" element={<BoxCalendar />} />
@@ -34,7 +37,6 @@ function App() {
           <Route path="/statisticscard" element={<StatisticsCard />} />
           <Route path="/reminders" element={<Reminders />} />
           <Route path='/schedulepage' element={<SchedulePage />} />
-
 
 
         </Routes>
