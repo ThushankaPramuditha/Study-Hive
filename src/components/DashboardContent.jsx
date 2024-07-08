@@ -29,7 +29,7 @@ const DashboardContent = () => {
 
   return (
     <div className={`xl:flex
-    mt-2 ml-[263px]`}>
+    mt-2 xl:ml-[263px] m-[60px]`}>
       <div className="xl:w-[75%] w-[100%]">
         <div className="ml-10">
         <p className="text-blue-900  text-2xl">Welcome, Sadun S.</p>

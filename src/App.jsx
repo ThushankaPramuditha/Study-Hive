@@ -13,6 +13,7 @@ import Performance from './components/PerformanceChart';
 import StatisticsCard from './components/StatisticsCard';
 import Reminders from './components/Reminders';
 import SchedulePage from './components/SchedulePage';
+import Forums from './components/Forums';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import './App.css';
 
@@ -37,6 +38,7 @@ function App() {
           <Route path="/statisticscard" element={<StatisticsCard />} />
           <Route path="/reminders" element={<Reminders />} />
           <Route path='/schedulepage' element={<SchedulePage />} />
+          <Route path='/forums' element={<Forums />} />
 
 
         </Routes>

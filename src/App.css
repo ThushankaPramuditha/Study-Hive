@@ -54,6 +54,16 @@ html {
   color: #C7F064;
 }
 
+.catergoryselect{
+  background-color: #A6B15C;
+}
+.catergory{
+  background-color: #CFDCB3;
+}
+.catergoryarrow{
+  color: #A6B15C;
+}
+
 .rank-border{
   border-color: #FDF58B;
 }
