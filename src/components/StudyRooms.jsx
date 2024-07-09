@@ -6,7 +6,7 @@ const StudyRooms = () => {
     <div className="">
       <SideBarnNavbar />
       <div className="xl:flex
-    mt-2 ml-[263px]">
+    mt-2 xl:ml-[263px] ml-[60px]">
       <div className="xl:w-[75%]">
         <div className="ml-10">
           <p className="text-blue-900  text-4xl font-bold">Let's Get Back To Work</p>

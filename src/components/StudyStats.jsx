@@ -7,7 +7,7 @@ const StudyStats = () => {
     <div className="">
       <SideBarnNavbar />
       <div className="xl:flex
-    mt-2 ml-[263px]">
+    mt-2 xl:ml-[263px] ml-[60px]">
       <div className="xl:w-[75%]">
         <div className="ml-10 ">
           <p className="text-blue-900  text-4xl font-bold">Your Study Statistics</p>
@@ -83,6 +83,7 @@ const StudyStats = () => {
               </div>
             </div>
           </div>
+          <div className="flex flex-col items-center ml-2"><div className="border border-1 border-neutral-400 h-[20px] w-[1px]"></div></div>
           <div className="flex flex-col items-center ml-2">
             <div className="flex items-center xl:w-[90%] w-[350px] h-auto bg-gray-100 rounded-[10px] justify-between m-2 p-2">
             <div className="flex items-center">
@@ -100,6 +101,7 @@ const StudyStats = () => {
               </div>
             </div>
           </div>
+          <div className="flex flex-col items-center ml-2"><div className="border border-1 border-neutral-400 h-[20px] w-[1px]"></div></div>
           <div className="flex flex-col items-center ml-2">
             <div className="flex items-center xl:w-[90%] w-[350px] h-auto bg-gray-100 rounded-[10px] justify-between m-2 p-2">
             <div className="flex items-center">
@@ -117,6 +119,7 @@ const StudyStats = () => {
               </div>
             </div>
           </div>
+          <div className="flex flex-col items-center ml-2"><div className="border border-1 border-neutral-400 h-[20px] w-[1px]"></div></div>
           <div className="flex flex-col items-center ml-2">
             <div className="flex items-center xl:w-[90%] w-[350px] h-auto bg-gray-100 rounded-[10px] justify-between m-2 p-2">
             <div className="flex items-center">

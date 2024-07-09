@@ -15,6 +15,16 @@ html {
 .bg-custom-color {
   background-color: var(--custom-color);
 }
+.bg-questions {
+  background-color: var(--custom-yellow);
+}
+.questions {
+  border-color: var(--custom-yellow);
+}
+.logo1 {
+  color: var(--custom-yellow);
+}
+
 .bg-custom-color1 {
   background-color: #CFDCB3;
 }
@@ -52,6 +62,16 @@ html {
 
 .dumble{
   color: #C7F064;
+}
+
+.catergoryselect{
+  background-color: #A6B15C;
+}
+.catergory{
+  background-color: #CFDCB3;
+}
+.catergoryarrow{
+  color: #A6B15C;
 }
 
 .rank-border{
