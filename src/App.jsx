@@ -10,15 +10,12 @@ import Dashboard from './components/Dashboard' ;
 import Calendar from './components/MyCalendar' ;
 import Community from  './components/Community';
 import StudyRooms from  './components/StudyRooms';
-
-
-
-
+import Room from './components/Room';
 
 
 const App = () => {
   const location = useLocation();
-  const hideHeaderPaths = ['/login', '/ProfileSetup1' , '/settings' , '/Personal-info' , '/Dashboard' , '/calendar' , '/StudyRooms' , '/community'];
+  const hideHeaderPaths = ['/login', '/ProfileSetup1' , '/settings' , '/Personal-info' , '/Dashboard' , '/calendar' , '/StudyRooms' , '/community', '/Room'];
 
   return (
     <>
@@ -33,7 +30,7 @@ const App = () => {
         <Route path="/calendar" element={<Calendar />} />
         <Route path="/community" element={<Community />} />
         <Route path="/StudyRooms" element={<StudyRooms />} />
-     
+        <Route path="/Room" element={<Room />} />
 
       </Routes>
     </>
