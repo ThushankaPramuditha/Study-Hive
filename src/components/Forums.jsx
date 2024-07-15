@@ -10,8 +10,8 @@ const StudyRooms = () => {
     mt-2 xl:ml-[263px] ml-[60px]"
       >
         <div className="xl:w-[75%]">
-          <div className="ml-3">
-            <div className="flex justify-between mt-5">
+          <div className="ml-3 mr-3">
+            <div className="flex w-auto justify-between mt-5 overflow-y-auto scrollbar-thin">
               <div>
                 <div className="flex catergoryselect w-[115px] h-[40px] rounded-[20px] justify-center items-center text-sm">
                   <p>General</p>
@@ -47,11 +47,26 @@ const StudyRooms = () => {
                   Medicine
                 </div>
               </div>
-              <div className="flex justify-center items-center mr-2">
+              <div>
+                <div className="flex catergory w-[115px] h-[40px] rounded-[20px] justify-center items-center text-sm">
+                  Computer S.
+                </div>
+              </div>
+              <div>
+                <div className="flex catergory w-[115px] h-[40px] rounded-[20px] justify-center items-center text-sm">
+                  Law
+                </div>
+              </div>
+              <div>
+                <div className="flex catergory w-[115px] h-[40px] rounded-[20px] justify-center items-center text-sm">
+                  Biology
+                </div>
+              </div>
+              {/* <div className="flex justify-center items-center mr-2">
                 <p className="catergoryarrow">
                   <i class="fa-solid fa-angle-right text-3xl"></i>
                 </p>
-              </div>
+              </div> */}
             </div>
             <div className="flex items-center justify-center mt-12 ml-12">
               <div className="relative flex items-center">
@@ -67,19 +82,19 @@ const StudyRooms = () => {
             </div>
           </div>
           <div className="ml-20 mr-20 mt-12">
-            <div className="flex rounded-[20px] w-[100%] h-[350px]">
-              <div className="flex  justify-between items-center bg-questions w-[30%] mt-10 mb-10 ml-5 rounded-l-[30px]">
+            <div className="xl:flex rounded-[20px] w-[100%] h-[350px]">
+              <div className="xl:flex  justify-between items-center bg-questions xl:w-[30%] mt-10 xl:mb-10 xl:ml-5 xl:rounded-l-[30px] rounded-t-[30px]">
                 <div></div>
                 <div className="">
-                  <div className="flex justify-end mb-[-15px]">
+                  <div className="flex xl:justify-end justify-center mb-[-15px]">
                     <p className="text-5xl font-semibold mr-2">Throw</p>
                   </div>
-                  <div className="flex justify-end">
+                  <div className="flex xl:justify-end justify-center">
                     <p className="text-5xl font-semibold mr-2 text-white">
                       Your
                     </p>
                   </div>
-                  <div className="flex justify-end mt-[-15px]">
+                  <div className="flex xl:justify-end justify-center mt-[-15px]">
                     <p className="text-5xl font-semibold mr-2">Questions</p>
                   </div>
                 </div>
@@ -93,13 +108,13 @@ const StudyRooms = () => {
                     <option value="option3">Option 3</option>
                   </select>
                 </div>
-                <div className="flex justify-center items-center h-[50%]">
+                <div className="flex items-center h-[50%] mt-5">
                   <textarea
                     className="border questions rounded-[20px] h-[140px] w-[550px] p-5 "
                     placeholder="Type your question here"
                   ></textarea>
                 </div>
-                <div class="flex justify-between items-center h-[25%]">
+                <div class="flex justify-between items-center h-[25%] p-5">
                   <div className="flex">
                     <div className="flex items-center">
                       <i class="fa-regular fa-file-image text-xl logo1"></i>
@@ -119,7 +134,7 @@ const StudyRooms = () => {
               </div>
             </div>
           </div>
-          <div className="flex justify-between items-center ml-10 mr-10 mt-[8%] mb-7">
+          <div className="flex justify-between items-center ml-10 mr-10 xl:mt-[8%]  mb-7 mt-[170px]">
             <div className="flex items-center ">
               <p className="text-lg font-bold text-xl">All Questions</p>
             </div>

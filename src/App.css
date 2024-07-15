@@ -194,3 +194,11 @@ html {
   color: var(--custom-orange1);
 
 }
+
+/* scroll bar */
+.scrollbar-thin {
+  scrollbar-width: none;
+  scrollbar-color: #A6B15C #fff;
+}
+
+
