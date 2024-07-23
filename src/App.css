@@ -115,15 +115,7 @@
 .text-color {
   color: #A9A9A9;
 }
+.text-customOrange1 {
+  color: var(--custom-orange1);
 
-
-.blur-background {
-  filter: blur(5px);
-  pointer-events: none;
 }
-
-.blur-background > * {
-  pointer-events: all;
-}
-
-
