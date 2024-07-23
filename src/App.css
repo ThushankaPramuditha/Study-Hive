@@ -119,3 +119,23 @@
   color: var(--custom-orange1);
 
 }
+
+.stats-wrapper {
+  position: relative;
+  
+}
+
+.stats-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -30px;
+  right: 0;
+  height: 30px; /* Adjust as needed */
+  background-color: #FFD66B; /* Yellow color */
+  z-index: -1;
+  transform: translateY(-50%);
+  width: 700px;
+  border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;
+ 
+}
