@@ -11,11 +11,13 @@ import Calendar from './components/MyCalendar' ;
 import Community from  './components/Community';
 import StudyRooms from  './components/StudyRooms';
 import Room from './components/Room';
+import AdminSidebar from './components/AdminSidebar'
+import AdminDashboard from './components/AdminDashboard';
 
 
 const App = () => {
   const location = useLocation();
-  const hideHeaderPaths = ['/login', '/ProfileSetup1' , '/settings' , '/Personal-info' , '/Dashboard' , '/calendar' , '/StudyRooms' , '/community', '/Room'];
+  const hideHeaderPaths = ['/login', '/ProfileSetup1' , '/settings' , '/Personal-info' , '/Dashboard' , '/calendar' , '/StudyRooms' , '/community', '/Room' , '/AdminSidebar' , '/AdminDashboard'];
 
   return (
     <>
@@ -31,6 +33,9 @@ const App = () => {
         <Route path="/community" element={<Community />} />
         <Route path="/StudyRooms" element={<StudyRooms />} />
         <Route path="/Room" element={<Room />} />
+        <Route path="/AdminSidebar" element={<AdminSidebar />} />
+        <Route path="/AdminDashboard" element={<AdminDashboard />} />
+
 
       </Routes>
     </>
