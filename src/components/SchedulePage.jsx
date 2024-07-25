@@ -45,6 +45,7 @@ function SchedulePage() {
           </div>
         </div>
         <hr className="my-4 border-gray-400" />
+        <hr className="my-4 border-gray-400" />
 
       </div>
     </div>
