@@ -4,32 +4,9 @@ import group from '../assets/images/Groupstudy.png';
 import Calendar from './BoxCalendar';
 
 const DashboardContent = () => {
-  const [sidebarToggle, setSidebarToggle] = useState(false);
-  const divRef = useRef(null);
-
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth < 1280) {
-        setSidebarToggle(true);
-      } else {
-        setSidebarToggle(false);
-      }
-    };
-
-    window.addEventListener('resize', handleResize);
-
-    // Call handleResize initially to set the sidebar state based on initial window size
-    handleResize();
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
-
-
   return (
     <div className={`xl:flex
-    mt-2 ml-[263px]`}>
+    mt-2 xl:ml-[263px] ml-[60px]`}>
       <div className="xl:w-[75%] w-[100%]">
         <div className="ml-10">
         <p className="text-blue-900  text-2xl">Welcome, Sadun S.</p>
@@ -252,8 +229,8 @@ const DashboardContent = () => {
       </div>
       <div className="h-100 border border-gray-200 hidden xl:block">
       </div>
-      <div className="xl:w-[25%] flex flex-col items-center">
-        <div className="xl:h-[30%] xl:w-[100%] flex justify-center items-center border-black w-[400px] h-[500px] p-2">
+      <div className="xl:w-[25%] flex flex-col items-center ">
+        <div className="xl:h-[30%] xl:w-[90%] flex justify-center items-center w-[400px] h-[500px] p-2">
           <Calendar/>
         </div>
         <div className="">
