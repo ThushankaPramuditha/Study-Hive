@@ -14,9 +14,9 @@ const AdminDashboard = () => {
   useEffect(() => {
     const intervalId = setInterval(() => {
       setCurrentDateTime(new Date());
-    }, 60000); // Update every minute
+    }, 60000); 
 
-    return () => clearInterval(intervalId); // Clean up interval on component unmount
+    return () => clearInterval(intervalId); 
   }, []);
 
   const formattedDateTime = currentDateTime.toLocaleString('en-US', {
@@ -110,11 +110,11 @@ const AdminDashboard = () => {
               </div>
             </div>
             <div className="mt-14 -ml-10">
-              <AdminReports /> {/* Add AdminReports here */}
+              <AdminReports />
             </div>
           </div>
         </div>
-        <div className="flex flex-col ml-4 mt-4"> {/* Adjusted margin */}
+        <div className="flex flex-col ml-4 mt-4">
           <div className="w-[300px] h-[340px] border-2 border-gray-100 rounded-lg bg-white mb-10 mt-8">
             <Notification />
           </div>
