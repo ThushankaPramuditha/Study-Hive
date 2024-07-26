@@ -5,19 +5,32 @@ import Home from './components/Home';
 import Login from './components/Login';
 import ProfileSetup1 from './components/ProfileSetup1';
 import Settings from './components/Settings';  
-import Personalinfo from './components/Personal-info' ;
-import Dashboard from './components/Dashboard' ;
-import Calendar from './components/MyCalendar' ;
-import Community from  './components/Community';
-import StudyRooms from  './components/StudyRooms';
+import Personalinfo from './components/Personal-info';
+import Dashboard from './components/Dashboard';
+import Calendar from './components/MyCalendar';
+import Community from './components/Community';
+import StudyRooms from './components/StudyRooms';
 import Room from './components/Room';
-import AdminSidebar from './components/AdminSidebar'
 import AdminDashboard from './components/AdminDashboard';
-
+import UserList from './components/UserList';
+import Inquiry from './components/Inquiry';
 
 const App = () => {
   const location = useLocation();
-  const hideHeaderPaths = ['/login', '/ProfileSetup1' , '/settings' , '/Personal-info' , '/Dashboard' , '/calendar' , '/StudyRooms' , '/community', '/Room' , '/AdminSidebar' , '/AdminDashboard'];
+  const hideHeaderPaths = [
+    '/login', 
+    '/ProfileSetup1', 
+    '/settings', 
+    '/Personal-info', 
+    '/Dashboard', 
+    '/calendar', 
+    '/StudyRooms', 
+    '/community', 
+    '/Room',  
+    '/AdminDashboard', 
+    '/UserList',
+    '/Inquiry'
+  ];
 
   return (
     <>
@@ -33,10 +46,9 @@ const App = () => {
         <Route path="/community" element={<Community />} />
         <Route path="/StudyRooms" element={<StudyRooms />} />
         <Route path="/Room" element={<Room />} />
-        <Route path="/AdminSidebar" element={<AdminSidebar />} />
         <Route path="/AdminDashboard" element={<AdminDashboard />} />
-
-
+        <Route path="/UserList" element={<UserList />} />
+        <Route path="/Inquiry" element={<Inquiry />} />
       </Routes>
     </>
   );
