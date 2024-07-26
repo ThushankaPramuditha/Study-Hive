@@ -27,8 +27,6 @@ const AdminDashboard = () => {
     minute: 'numeric',
   });
 
-  
-
   return (
     <div className="flex">
       <AdminSidebar />
@@ -95,21 +93,21 @@ const AdminDashboard = () => {
             </div>
           </div>
           <div className="relative flex-1 mt-32 ml-[273px]">
-          <div className="relative stats-wrapper">
-            <div className="relative w-full grid grid-cols-3 gap-10 text-center mr-[48px]  ">
-              <div className="flex flex-col items-center justify-center bg-white rounded-lg  h-[100px] w-[180px]" style={{ boxShadow: '0px 8px 24px rgba(38, 45, 118, 0.15)'}}>
-                <h3 className="text-[14px] font-semibold">Total Users</h3>
-                <p className="text-[20px] font-semibold text-[#DF6F79]">356,890</p>
+            <div className="relative stats-wrapper">
+              <div className="relative w-full grid grid-cols-3 gap-10 text-center mr-[48px]">
+                <div className="flex flex-col items-center justify-center bg-white rounded-lg h-[100px] w-[180px]" style={{ boxShadow: '0px 8px 24px rgba(38, 45, 118, 0.15)' }}>
+                  <h3 className="text-[14px] font-semibold">Total Users</h3>
+                  <p className="text-[20px] font-semibold text-[#DF6F79]">356,890</p>
+                </div>
+                <div className="flex flex-col items-center justify-center bg-white rounded-lg h-[100px] w-[180px]" style={{ boxShadow: '0px 8px 24px rgba(38, 45, 118, 0.15)' }}>
+                  <h3 className="text-[14px] font-semibold">Active Study Groups</h3>
+                  <p className="text-[20px] font-semibold text-[#DF6F79]">10,123</p>
+                </div>
+                <div className="flex flex-col items-center justify-center bg-white rounded-lg h-[100px] w-[180px]" style={{ boxShadow: '0px 8px 24px rgba(38, 45, 118, 0.15)' }}>
+                  <h3 className="text-[14px] font-semibold">Active Communities</h3>
+                  <p className="text-[20px] font-semibold text-[#DF6F79]">567</p>
+                </div>
               </div>
-              <div className="flex flex-col items-center justify-center bg-white rounded-lg  h-[100px] w-[180px]" style={{ boxShadow: '0px 8px 24px rgba(38, 45, 118, 0.15)'}}>
-                <h3 className="text-[14px] font-semibold">Active Study Groups</h3>
-                <p className="text-[20px] font-semibold text-[#DF6F79]">10,123</p>
-              </div>
-              <div className="flex flex-col items-center justify-center bg-white rounded-lg  h-[100px] w-[180px]" style={{ boxShadow: '0px 8px 24px rgba(38, 45, 118, 0.15)'}}>
-                <h3 className="text-[14px] font-semibold">Active Communities</h3>
-                <p className="text-[20px] font-semibold text-[#DF6F79]">567</p>
-              </div>
-            </div>
             </div>
             <div className="mt-14 -ml-10">
               <AdminReports /> {/* Add AdminReports here */}
@@ -120,7 +118,7 @@ const AdminDashboard = () => {
           <div className="w-[300px] h-[340px] border-2 border-gray-100 rounded-lg bg-white mb-10 mt-8">
             <Notification />
           </div>
-          <div className="w-[300px] h-auto border-2 border-gray-100 rounded-lg  bg-white">
+          <div className="w-[300px] h-auto border-2 border-gray-100 rounded-lg bg-white">
             <Calendar />
           </div>
         </div>
