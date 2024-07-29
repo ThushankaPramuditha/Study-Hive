@@ -26,19 +26,19 @@ const AdminSidebar = () => {
         <i className="fa fa-user"></i>
         <a href='/UserList' className="text-[18px] ml-5">Users</a>
       </div>
-      <div className={`p-2.5 mt-3 ml-8 mr-8 flex items-center rounded-md px-4 duration-300 cursor-pointer ${isActive('/studyrooms')}`}>
+      <div className={`p-2.5 mt-3 ml-8 mr-8 flex items-center rounded-md px-4 duration-300 cursor-pointer ${isActive('/StudyRoomList')}`}>
         <i className="fa-solid fa-calendar-days"></i>
-        <a href='/studyrooms' className="text-[18px] ml-5">Study Rooms</a>
+        <a href='/StudyRoomList' className="text-[18px] ml-5">Study Rooms</a>
       </div>
-      <div className={`p-2.5 mt-3 ml-8 mr-8 flex items-center rounded-md px-4 duration-300 cursor-pointer ${isActive('/forums')}`}>
+      <div className={`p-2.5 mt-3 ml-8 mr-8 flex items-center rounded-md px-4 duration-300 cursor-pointer ${isActive('/ForumList')}`}>
         <i className="fa-solid fa-envelope"></i>
-        <a href='/forums' className="text-[18px] ml-4">Forums</a>
+        <a href='/ForumList' className="text-[18px] ml-4">Forums</a>
       </div>
-      <div className={`p-2.5 mt-3 ml-8 mr-8 flex items-center rounded-md px-4 duration-300 cursor-pointer ${isActive('/community')}`}>
+      <div className={`p-2.5 mt-3 ml-8 mr-8 flex items-center rounded-md px-4 duration-300 cursor-pointer ${isActive('/CommunityList')}`}>
         <i className="fa-solid fa-users text-[15px]"></i>
-        <a href='/community' className="text-[18px] ml-3">Community</a>
+        <a href='/CommunityList' className="text-[18px] ml-3">Community</a>
       </div>
-      <div className={`p-2.5 mt-3 ml-8 mr-8 flex items-center rounded-md px-4 duration-300 cursor-pointer ${isActive('/inquiries')}`}>
+      <div className={`p-2.5 mt-3 ml-8 mr-8 flex items-center rounded-md px-4 duration-300 cursor-pointer ${isActive('/Inquiry')}`}>
         <i className="fa-solid fa-message"></i>
         <a href='/Inquiry' className="text-[18px] ml-4">Inquiries</a>
       </div>

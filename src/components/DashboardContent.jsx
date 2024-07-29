@@ -28,6 +28,10 @@ const DashboardContent = () => {
     navigate('/Home2');
   };
 
+  const Find = (event) => {
+    event.preventDefault();
+    navigate('/FindPartner');
+  };
   return (
     <div className="relative">
       <div className={`flex mt-2 ml-[263px] ${showPopup ? 'blur-md' : ''}`}>
@@ -37,7 +41,10 @@ const DashboardContent = () => {
             <p className="text-gray-400">Have a good day!</p>
           </div>
           <div className="mt-10 w-[100%]">
-            <p className="text-blue-900 text-4xl text-center">Let's Find a Study Partner</p>
+          <div className="flex justify-center items-center mb-4">
+              <p className="text-blue-900 text-4xl text-center mr-8">Let's Find a Study Partner</p>
+              <button className="bg-[#F6CA30] text-m text-black rounded-[50px] w-[100px]" onClick={Find}>Let's Go</button>
+            </div>
             <div className="flex justify-between pl-[10%] pr-[10%] pt-[3%]">
               <div className="flex flex-col justify-center border-2 w-[420px] h-[340px] rounded-[50px] items-center" style={{ backgroundImage: `url(${solo})` }}>
                 <p className="text-2xl text-white text-center pb-6 font-bold">Solo Study</p>
