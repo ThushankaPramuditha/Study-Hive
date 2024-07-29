@@ -4,37 +4,44 @@ import logo from '../assets/images/logo.png';
 
 const AdminSidebar = () => {
   const location = useLocation();
+  console.log('Current Path:', location.pathname);
 
-  const isActive = (path) => location.pathname === path ? "bg-yellow-600 text-white" : "text-black opacity-50 hover:bg-yellow-600 hover:text-white";
+  const isActive = (path) => {
+    const isActivePath = location.pathname.startsWith(path);
+    console.log(`Path: ${path}, Is Active: ${isActivePath}`);
+    return isActivePath
+      ? 'bg-yellow-600 text-white'
+      : 'text-black opacity-50 hover:bg-yellow-600 hover:text-white';
+  };
 
   return (
     <div className="fixed top-0 bottom-0 w-[263px] h-full text-center bg-[#FDF9C4]">
       <div className="mt-1 mr-8 flex items-center">
         <img src={logo} alt="StudyHive" className="w-full h-auto ml-5" />
       </div>
-      <div className={`p-2.5 ml-8 mr-8 flex items-center rounded-md px-4 duration-300 cursor-pointer ${isActive('/AdminDashboard')}`}>
-        <i className="fa-solid fa fa-chart-line"></i>
+      <div className={`p-2.5 mt-3 ml-8 mr-8 flex items-center rounded-md px-4 duration-300 cursor-pointer ${isActive('/AdminDashboard')}`}>
+        <i className="fa-solid fa-chart-line"></i>
         <a href='/AdminDashboard' className="text-[18px] ml-4">Dashboard</a>
       </div>
-      <div className={`p-2.5 mt-3 ml-8 mr-8 flex items-center rounded-md px-4 duration-300 cursor-pointer ${isActive('/users')}`}>
+      <div className={`p-2.5 mt-3 ml-8 mr-8 flex items-center rounded-md px-4 duration-300 cursor-pointer ${isActive('/UserList')}`}>
         <i className="fa fa-user"></i>
-        <a href='/users' className="text-[18px] ml-5">Users</a>
+        <a href='/UserList' className="text-[18px] ml-5">Users</a>
       </div>
       <div className={`p-2.5 mt-3 ml-8 mr-8 flex items-center rounded-md px-4 duration-300 cursor-pointer ${isActive('/studyrooms')}`}>
         <i className="fa-solid fa-calendar-days"></i>
-        <a href='/studyrooms' className="text-[18px] ml-5">Study Rooms</a>
+        <a href='/StudyRoomList' className="text-[18px] ml-5">Study Rooms</a>
       </div>
       <div className={`p-2.5 mt-3 ml-8 mr-8 flex items-center rounded-md px-4 duration-300 cursor-pointer ${isActive('/forums')}`}>
         <i className="fa-solid fa-envelope"></i>
-        <a href='/forums' className="text-[18px] ml-4">Forums</a>
+        <a href='/ForumList' className="text-[18px] ml-4">Forums</a>
       </div>
       <div className={`p-2.5 mt-3 ml-8 mr-8 flex items-center rounded-md px-4 duration-300 cursor-pointer ${isActive('/community')}`}>
         <i className="fa-solid fa-users text-[15px]"></i>
-        <a href='/community' className="text-[18px] ml-3">Community</a>
+        <a href='/CommunityList' className="text-[18px] ml-3">Community</a>
       </div>
       <div className={`p-2.5 mt-3 ml-8 mr-8 flex items-center rounded-md px-4 duration-300 cursor-pointer ${isActive('/inquiries')}`}>
         <i className="fa-solid fa-message"></i>
-        <a href='/inquiries' className="text-[18px] ml-4">Inquiries</a>
+        <a href='/Inquiry' className="text-[18px] ml-4">Inquiries</a>
       </div>
       <div className={`p-2.5 mt-3 ml-8 mr-8 flex items-center rounded-md px-4 duration-300 cursor-pointer ${isActive('/calendar')}`}>
         <i className="fa-solid fa-calendar-days"></i>

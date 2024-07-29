@@ -14,6 +14,9 @@ import Room from './components/Room';
 import AdminDashboard from './components/AdminDashboard';
 import UserList from './components/UserList';
 import Inquiry from './components/Inquiry';
+import StudyRoomList from './components/StudyRoomList';
+import ForumList from './components/ForumList';
+import CommunityList from './components/CommunityList';
 
 const App = () => {
   const location = useLocation();
@@ -29,7 +32,10 @@ const App = () => {
     '/Room',  
     '/AdminDashboard', 
     '/UserList',
-    '/Inquiry'
+    '/Inquiry',
+    '/StudyRoomList',
+    '/ForumList',
+    '/CommunityList'
   ];
 
   return (
@@ -49,6 +55,9 @@ const App = () => {
         <Route path="/AdminDashboard" element={<AdminDashboard />} />
         <Route path="/UserList" element={<UserList />} />
         <Route path="/Inquiry" element={<Inquiry />} />
+        <Route path="/StudyRoomList" element={<StudyRoomList />} />
+         <Route path="/ForumList" element={<ForumList />} />
+        <Route path="/CommunityList" element={<CommunityList />} /> 
       </Routes>
     </>
   );
