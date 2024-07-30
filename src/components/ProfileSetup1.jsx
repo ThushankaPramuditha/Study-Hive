@@ -389,23 +389,9 @@ const ProfileSetup1 = () => {
     setCurrentStep(currentStep - 1);
   };
 
-  // const handleFinish = () => {
-  //   console.log(profileData); // You can send this data to the backend here
-  //   navigate('/Home');
-  // };
-  const handleFinish = async () => {
-    try {
-      const response = await createProfile(profileData);
-
-      if (response.status === 200) {
-        console.log('Profile data submitted successfully');
-        navigate('/Home');
-      } else {
-        console.error('Failed to submit profile data');
-      }
-    } catch (error) {
-      console.error('Error submitting profile data:', error);
-    }
+  const handleFinish = () => {
+    console.log(profileData); // You can send this data to the backend here
+    navigate('/Home');
   };
 
   const handleFileInputChange = (e) => {
