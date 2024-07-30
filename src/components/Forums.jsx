@@ -2,8 +2,20 @@ import React from "react";
 import SideBarnNavbar from "./SideBarnNavbar";
 
 const StudyRooms = () => {
-  const subjects = ['Data Structures', 'Algorithms', 'Web Development', 'Machine Learning'];
   
+  const categories = [
+    "General",
+    "Computer S.",
+    "Law",
+    "Biology",
+    "Chemistry",
+    "Engineering",
+    "Medicine",
+    "Computer S.",
+    "Law",
+    "Biology",
+  ];
+
   return (
     <div className="">
       <SideBarnNavbar />
@@ -13,66 +25,7 @@ const StudyRooms = () => {
       >
         <div className="xl:w-[75%]">
           <div className="ml-3 mr-3">
-            <div className="flex w-auto justify-between mt-5 overflow-y-auto scrollbar-thin">
-              <div>
-                <div className="flex catergoryselect w-[115px] h-[40px] rounded-[20px] justify-center items-center text-sm">
-                  <p>General</p>
-                </div>
-              </div>
-              <div>
-                <div className="flex catergory w-[115px] h-[40px] rounded-[20px] justify-center items-center text-sm">
-                  Computer S.
-                </div>
-              </div>
-              <div>
-                <div className="flex catergory w-[115px] h-[40px] rounded-[20px] justify-center items-center text-sm">
-                  Law
-                </div>
-              </div>
-              <div>
-                <div className="flex catergory w-[115px] h-[40px] rounded-[20px] justify-center items-center text-sm">
-                  Biology
-                </div>
-              </div>
-              <div>
-                <div className="flex catergory w-[115px] h-[40px] rounded-[20px] justify-center items-center text-sm">
-                  Chemistry
-                </div>
-              </div>
-              <div>
-                <div className="flex catergory w-[115px] h-[40px] rounded-[20px] justify-center items-center text-sm">
-                  Engineering
-                </div>
-              </div>
-              <div>
-                <div className="flex catergory w-[115px] h-[40px] rounded-[20px] justify-center items-center text-sm">
-                  Medicine
-                </div>
-              </div>
-              <div>
-                <div className="flex catergory w-[115px] h-[40px] rounded-[20px] justify-center items-center text-sm">
-                  Computer S.
-                </div>
-              </div>
-              <div>
-                <div className="flex catergory w-[115px] h-[40px] rounded-[20px] justify-center items-center text-sm">
-                  Law
-                </div>
-              </div>
-              <div>
-                <div className="flex catergory w-[115px] h-[40px] rounded-[20px] justify-center items-center text-sm">
-                  Biology
-                </div>
-              </div>
-
-              {/* <div className="flex justify-center items-center mr-2">
-                <p className="catergoryarrow">
-                  <i class="fa-solid fa-angle-right text-3xl"></i>
-                </p>
-              </div> */}
-
-            </div>
-            <div className="flex items-center justify-center mt-12 ml-12">
+            <div className="flex items-center justify-center ml-12">
               <div className="relative flex items-center">
                 <i class="fa-solid fa-magnifying-glass absolute ml-5 pointer-events-none text-xl"></i>
                 <input
@@ -85,7 +38,7 @@ const StudyRooms = () => {
               </div>
             </div>
           </div>
-          <div className="ml-20 mr-20 mt-12">
+          <div className="ml-20 mr-20 mt-5">
             <div className="xl:flex rounded-[20px] w-[100%] h-[350px]">
               <div className="xl:flex  justify-between items-center bg-questions xl:w-[30%] mt-10 xl:mb-10 xl:ml-5 xl:rounded-l-[30px] rounded-t-[30px]">
                 <div></div>
@@ -131,7 +84,7 @@ const StudyRooms = () => {
                     </div>
                   </div>
                   <div>
-                    <button className="bg-questions pt-2 pb-2 pr-10 pl-10 rounded-3xl font-semibold">
+                    <button className="bg-questions pt-2 pb-2 pr-10 pl-10 rounded-3xl font-semibold hover:shadow-lg hover:shadow-gray-400 active:shadow-none">
                       Post
                     </button>
                   </div>
@@ -139,15 +92,30 @@ const StudyRooms = () => {
               </div>
             </div>
           </div>
-          <div className="flex justify-between items-center ml-10 mr-10 xl:mt-[8%]  mb-7 mt-[170px]">
+          <div className="flex w-auto justify-between mt-12 overflow-y-auto scrollbar-thin pl-5 pr-5 h-[100px]">
+            {categories.map((category, index) => (
+              <div key={index}>
+                
+                  <button
+                    className={`flex catergory ${
+                      category === "General" ? "catergoryselect" : ""
+                    } w-[115px] h-[40px] rounded-[20px] justify-center items-center text-sm hover:shadow-lg hover:shadow-gray-400  active:shadow-none`}
+                  >
+                    <p>{category}</p>
+                  </button>
+                
+              </div>
+            ))}
+          </div>
+          <div className="flex justify-between items-center ml-10 mr-10 mb-7">
             <div className="flex items-center ">
               <p className="text-lg font-bold text-xl">All Questions</p>
             </div>
             <div>
-              <button className="catergory pr-4 pl-4 rounded-3xl font-semibold mr-5">
+              <button className="catergory pr-4 pl-4 rounded-3xl font-semibold mr-5 hover:shadow-lg hover:shadow-gray-400 active:shadow-none">
                 Newest
               </button>
-              <button className="catergory pr-4 pl-4 rounded-3xl font-semibold">
+              <button className="catergory pr-4 pl-4 rounded-3xl font-semibold hover:shadow-lg hover:shadow-gray-400 active:shadow-none">
                 Popular
               </button>
             </div>
@@ -168,12 +136,20 @@ const StudyRooms = () => {
                   </div>
                 </div>
                 <div className="flex ml-20 mr-5">
-                    <i class="text-gray-400 fa-solid fa-angle-down text-2xl"></i>
+                  <i class="text-gray-400 fa-solid fa-angle-down text-2xl"></i>
                 </div>
               </div>
               <div className="">
                 <div className="border-l border-gray-500 h-auto ml-14 mt-4 p-2 mr-10  mb-3">
-                  <div className="pl-2"><p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Delectus quia consectetur debitis id natus, repellat dicta fuga perferendis, porro aperiam tenetur dolores accusantium enim consequuntur repudiandae quod assumenda commodi nisi.</p></div>
+                  <div className="pl-2">
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                      Delectus quia consectetur debitis id natus, repellat dicta
+                      fuga perferendis, porro aperiam tenetur dolores
+                      accusantium enim consequuntur repudiandae quod assumenda
+                      commodi nisi.
+                    </p>
+                  </div>
                   <div className="flex pl-2 mt-5">
                     <div className="flex items-center">
                       <i class="fa-regular fa-message text-gray-400"></i>
@@ -202,12 +178,20 @@ const StudyRooms = () => {
                   </div>
                 </div>
                 <div className="flex ml-20 mr-5">
-                    <i class="text-gray-400 fa-solid fa-angle-down text-2xl"></i>
+                  <i class="text-gray-400 fa-solid fa-angle-down text-2xl"></i>
                 </div>
               </div>
               <div className="">
                 <div className="border-l border-gray-500 h-auto ml-14 mt-4 p-2 mr-10 mb-3">
-                  <div className="pl-2"><p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Delectus quia consectetur debitis id natus, repellat dicta fuga perferendis, porro aperiam tenetur dolores accusantium enim consequuntur repudiandae quod assumenda commodi nisi.</p></div>
+                  <div className="pl-2">
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                      Delectus quia consectetur debitis id natus, repellat dicta
+                      fuga perferendis, porro aperiam tenetur dolores
+                      accusantium enim consequuntur repudiandae quod assumenda
+                      commodi nisi.
+                    </p>
+                  </div>
                   <div className="flex pl-2 mt-5">
                     <div className="flex items-center">
                       <i class="fa-regular fa-message text-gray-400"></i>

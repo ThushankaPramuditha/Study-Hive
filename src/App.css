@@ -23,6 +23,12 @@ html {
 }
 .logo1 {
   color: var(--custom-yellow);
+  
+}
+
+.member_count{
+  background-color: #f6cb3084;
+  border: #f6cb3084;
 }
 
 .bg-custom-color1 {
@@ -199,6 +205,30 @@ html {
 .scrollbar-thin {
   scrollbar-width: none;
   scrollbar-color: #A6B15C #fff;
+}
+
+
+input[type="checkbox"].square-radio {
+  width: 1rem;
+  height: 1rem;
+  background-color: transparent;
+  border: 2px solid #F6CA30; /* Example gray color */
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border-radius: 0.125rem; /* Make it square with small rounded corners */
+  outline: none;
+  cursor: pointer;
+}
+
+input[type="checkbox"].square-radio:checked {
+  background-color: #F6CA30; /* Example blue color */
+  border-color: #F6CA30;
+}
+
+input[type="checkbox"].square-radio:focus {
+  border-color: #F6CA30;
+  box-shadow: 0 0 0 3px rgba(252, 219, 33, 0.5); /* Example blue color with 50% opacity */
 }
 
 
