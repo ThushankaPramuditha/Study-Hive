@@ -209,7 +209,6 @@ const DashboardContent = () => {
                     <div className="w-[40px] h-[40px] rounded-[100%] border-2 ml-[-15px] border-white bg-black"></div>
                   </div>
                 </div>
-              ))}
             </div>
             <div className="flex flex-col items-center xl:m-4 m-3 xl:w-[90%] w-[100%]">
               <div className="h-[10px] xl:w-[100%] w-[300px]   bg-yellow-600 rounded-t-[50px]"></div>
@@ -476,6 +475,7 @@ const DashboardContent = () => {
         </div>
       </div>
     </div>
+  </div> 
   );
 };
 
