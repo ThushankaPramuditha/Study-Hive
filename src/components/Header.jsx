@@ -17,7 +17,7 @@ const Header = () => {
           <Link to="/content" className="text-customGray hover:text-gray-300">About Us</Link>
           <Link to="/service" className="text-customGray hover:text-gray-300">Services</Link>
           <Link to="/testimonial" className="text-customGray hover:text-gray-300">Testimonial</Link>
-          <Link to="/login"
+          <Link to="/login1"
             className="bg-white hover:bg-orange-400 text-customGray py-2 px-4 rounded-lg"
           >Login</Link>
           <Link to="/signup"
