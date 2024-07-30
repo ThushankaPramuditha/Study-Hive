@@ -1,8 +1,7 @@
 import React from "react";
 import SideBarnNavbar from "./SideBarnNavbar";
 
-const Forums = () => {
-  
+const StudyRooms = () => {
   const categories = [
     "General",
     "Computer S.",
@@ -15,6 +14,7 @@ const Forums = () => {
     "Law",
     "Biology",
   ];
+//add
   return (
     <div className="">
       <SideBarnNavbar />
@@ -272,4 +272,4 @@ const Forums = () => {
   );
 };
 
-export default Forums;
+export default StudyRooms;
