@@ -14,6 +14,8 @@ import StatisticsCard from './components/StatisticsCard';
 import Reminders from './components/Reminders';
 import Login from './components/Login';
 import Login1 from './components/Login1';
+import Forums from './components/Forums';
+import Logout from './components/Logout';
 import ProfileSetup1 from './components/ProfileSetup1';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import './App.css';
@@ -44,6 +46,8 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/profilesetup1" element={<ProfileSetup1 />} />
           <Route path="/login1" element={<Login1 />} />
+          <Route path="/forums" element={<Forums />} />
+          <Route path="/logout" element={<Logout />} />
           <Route path="/findpartner" element={<FindPartner />} />
           <Route path="/settings" element={<Settings />} />
 
