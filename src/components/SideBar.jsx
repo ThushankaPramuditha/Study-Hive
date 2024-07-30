@@ -47,6 +47,30 @@ const SideBar = () => {
           <a href="/" className="text-[18px] ml-4 opacity-50">Logout</a>
         </div>
       </div>
+      <div  className={`${sidebarToggle ? "" : "hidden"} flex text-xl ml-1 mb-24 mt-2`}>
+        <button onClick={() => setSidebarToggle(!sidebarToggle)}>
+          <i className="flex fa-solid fa-angle-right border-black w-8 h-8 items-center justify-center opacity-50"></i>
+        </button>
+      </div>
+      {[
+        { icon: "fa-house", label: "Home", path: "/home" },
+        { icon: "fa-calendar-days", label: "Study Rooms", path: "/studyrooms" },
+        { icon: "fa-chart-simple", label: "Study Status", path: "/studystats" },
+        { icon: "fa-envelope", label: "Forums", path: "/forums" },
+        { icon: "fa-users", label: "Community", path: "/community" },
+        { icon: "fa-calendar-days", label: "Calendar" },
+        { icon: "fa-inbox", label: "Inbox" },
+        { icon: "fa-gear", label: "Settings" },
+        { icon: "fa-right-from-bracket", label: "Logout", marginTop: "mt-[40%]" },
+      ].map((item, index) => (
+        <Link to={item.path || "#"} key={index}>
+          <div className={`${sidebarToggle ? `hover:bg-yellow-600 hover:text-white rounded-md p-2.5 ${item.marginTop || ""}` : `p-2.5 ml-8 mr-8 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-yellow-600 text-black hover:text-white ${item.marginTop || ""}`}`}>
+            <i className={`fa-solid ${item.icon} opacity-50`}></i>
+            <span className={`${sidebarToggle ? "hidden" : "text-[18px] ml-4 opacity-50"}`}>{item.label}</span>
+          </div>
+        </Link>
+      ))}
+    </div>
   );
 };
 

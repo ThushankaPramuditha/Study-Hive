@@ -56,15 +56,7 @@ const Forums = () => {
                 </div>
               </div>
               <div className="shadow-lg p-5 rounded-3xl">
-                <div class="flex items-center h-[25%] ">
-                  <select class="border questions rounded-2xl p-2 ">
-                    <option value="">Select a catergory</option>
-                    {subjects.map(subject => (
-                     <option key={subject} value={subject}>{subject}</option>
-                    ))}
-                  </select>
-                </div>
-                
+            
                 <div className="flex items-center h-[50%] mt-5">
                   <textarea
                     className="border questions rounded-[20px] h-[140px] w-[550px] p-5 "
@@ -88,6 +80,7 @@ const Forums = () => {
                     </button>
                   </div>
                 </div>
+                
               </div>
             </div>
           </div>
@@ -280,4 +273,3 @@ const Forums = () => {
 };
 
 export default Forums;
-
