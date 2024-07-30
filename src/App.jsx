@@ -18,6 +18,7 @@ import StudyRoomList from './components/StudyRoomList';
 import ForumList from './components/ForumList';
 import CommunityList from './components/CommunityList';
 import FindPartner from './components/FindPartner';
+import ViewPartners from './components/ViewPartners';
 
 const App = () => {
   const location = useLocation();
@@ -37,7 +38,8 @@ const App = () => {
     '/StudyRoomList',
     '/ForumList',
     '/CommunityList',
-    '/FindPartner'
+    '/FindPartner',
+    '/ViewPartners'
   ];
 
   return (
@@ -61,6 +63,7 @@ const App = () => {
          <Route path="/ForumList" element={<ForumList />} />
         <Route path="/CommunityList" element={<CommunityList />} /> 
         <Route path="/FindPartner" element={<FindPartner />} /> 
+        <Route path="/ViewPartners" element={<ViewPartners />} /> 
       </Routes>
     </>
   );

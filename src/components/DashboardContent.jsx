@@ -43,7 +43,7 @@ const DashboardContent = () => {
           <div className="mt-10 w-[100%]">
           <div className="flex justify-center items-center mb-4">
               <p className="text-blue-900 text-4xl text-center mr-8">Let's Find a Study Partner</p>
-              <button className="bg-[#F6CA30] text-m text-black rounded-[50px] w-[100px]" onClick={Find}>Let's Go</button>
+              <button className="bg-[#F6CA30] text-m text-black rounded-[50px] w-[100px] h-[40px]" onClick={Find}>Let's Go</button>
             </div>
             <div className="flex justify-between pl-[10%] pr-[10%] pt-[3%]">
               <div className="flex flex-col justify-center border-2 w-[420px] h-[340px] rounded-[50px] items-center" style={{ backgroundImage: `url(${solo})` }}>

@@ -1,14 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import personalinfo from '../assets/images/personalinfo.png';
-import loginSettings from '../assets/images/loginSettings.png';
 import SideBarnNavbar from './SideBarnNavbar';
-import audio from '../assets/images/audio.png';
-import studymaterials from '../assets/images/studymaterials.png';
-import preference from '../assets/images/preference.png';
-import notifications from '../assets/images/notifications.png';
-import privacy from '../assets/images/privacy.png';
-import tools from '../assets/images/tools.png';
+
 
 
 const FindPartner = () => {
