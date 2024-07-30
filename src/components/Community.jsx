@@ -6,9 +6,9 @@ import SideBar from './SideBarnNavbar';
 import Notification from './Notification';
 import Reminder from './Reminders';
 import Calendar from './BoxCalendar';
-import '@fortawesome/fontawesome-free/css/all.css'; // Ensure path is correct
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+
 
 
 

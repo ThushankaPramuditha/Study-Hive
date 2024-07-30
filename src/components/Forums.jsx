@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import SideBarnNavbar from "./SideBarnNavbar";
+import SideBar from "./SideBarnNavbar"; // Assuming SideBar is the correct component name
 
 const Forums = () => {
   const [questions, setQuestions] = useState([]);
@@ -29,7 +29,7 @@ const Forums = () => {
       const token = localStorage.getItem("token");
       const response = await axios.get("http://localhost:8080/api/questions", {
         headers: {
-          Authorization: Bearer ${token},
+          Authorization: `Bearer ${token}`, // Use backticks and proper syntax
         },
       });
       setQuestions(response.data);
@@ -44,7 +44,7 @@ const Forums = () => {
       const token = localStorage.getItem("token");
       await axios.post("http://localhost:8080/api/questions", questionData, {
         headers: {
-          Authorization: Bearer ${token},
+          Authorization: `Bearer ${token}`, // Use backticks and proper syntax
           "Content-Type": "application/json",
         },
       });
@@ -66,7 +66,7 @@ const Forums = () => {
 
   return (
     <div>
-      <SideBarnNavbar />
+      <SideBar />
       <div className="xl:flex mt-2 xl:ml-[263px] ml-[60px]">
         <div className="xl:w-[75%]">
           <div className="ml-3 mr-3">
