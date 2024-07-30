@@ -9,7 +9,7 @@ const Navbar = ({sidebarToggle}) => {
       <div className="flex">
     
       <div className="relative inline-block">
-        <button className="group hover:shadow-lg hover:shadow-gray-400 active:shadow-none">
+        <button className="group">
         <div className="flex items-center justify-center text-black bg-yellow-200 w-10 h-10 rounded ">
           <i className="fa-regular fa-bell opacity-50"></i>
         </div>
