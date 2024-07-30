@@ -4,10 +4,21 @@ import group from "../assets/images/Groupstudy.png";
 import Calendar from "./BoxCalendar";
 
 const DashboardContent = () => {
+
+  const Find = (event) => {
+    event.preventDefault();
+    navigate('/FindPartner');
+  };
+
   const [isPop, setIsPop] = useState(false);
+  const [isPopjoin, setIsPopjoin] = useState(false);
 
   const createRoom = () => {
     setIsPop(!isPop);
+  };
+
+  const joinRoom = () => {
+    setIsPopjoin(!isPopjoin);
   };
 
   const handleInputChange = (event) => {
@@ -31,9 +42,10 @@ const DashboardContent = () => {
     setIsChecked(checked);
   };
 
-  const Find = (event) => {
-    event.preventDefault();
-    navigate('/FindPartner');
+  const [isAllow, setIsAllow] = useState(false);
+
+  const handleAllow = (e) => {
+    setIsAllow(e.target.checked);
   };
   return (
     <div
@@ -46,9 +58,10 @@ const DashboardContent = () => {
           <p className="text-gray-400">Have a good day!</p>
         </div>
         <div className="mt-10 w-[100%]">
-          <p className="text-blue-900  text-4xl text-center">
-            Let's Find a Study Partner
-          </p>
+          <div className="flex justify-center items-center mb-4">
+              <p className="text-blue-900 text-4xl text-center mr-8">Let's Find a Study Partner</p>
+              <button className="bg-[#F6CA30] text-m text-black rounded-[50px] w-[100px] h-[40px]" onClick={Find}>Let's Go</button>
+            </div>
           <div className="xl:flex xl:felx-col xl:justify-between pl-[10%] pr-[10%] pt-[3%] ">
             <div
               className="flex flex-col justify-center border-2 w-[420px] h-[340px] rounded-[50px] items-center"
@@ -69,7 +82,10 @@ const DashboardContent = () => {
               <p className="text-2xl text-white text-center pb-6 font-bold">
                 Group Study
               </p>
-              <button className="bg-custom-color p-3 m-3 text-xl text-white w-15 rounded-[50px] w-[300px]">
+              <button
+                onClick={joinRoom}
+                className="bg-custom-color p-3 m-3 text-xl text-white w-15 rounded-[50px] w-[300px]"
+              >
                 Join a Group Study Room
               </button>
               <button
@@ -328,14 +344,80 @@ const DashboardContent = () => {
               </div>
             </div>
             <div className="flex justify-between mt-10">
+              <div className="bg-gray-100 flex items-center justify-center space-x-4 mr-2">
+                <label className="flex items-center space-x-2">
+                  <input
+                    type="checkbox"
+                    className="square-radio"
+                    checked={isAllow}
+                    onChange={handleAllow}
+                  />
+                  <span className="text-xs ">Accept the terms and conditions</span>
+                </label>
+              </div>
+            </div>
+            <div className="flex justify-between mt-10">
               <button
                 onClick={createRoom}
-                className="px-4 py-2 border border-[2px] questions text-white rounded">
+                className="px-4 py-2 border border-[2px] questions text-white rounded"
+              >
                 <p className="logo1">Cancel</p>
               </button>
-              <button className="px-4 py-2 w-[100px] bg-questions text-black text-xs font-semibold rounded">
+              {isAllow && (<button className="px-4 py-2 w-[100px] bg-questions text-black text-xs font-semibold rounded">
                 <p>Let’s Go</p>
+              </button>)}
+            </div>
+          </div>
+        </div>
+      )}
+      {isPopjoin && (
+        <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center">
+          <div className="bg-white p-8 rounded-2xl shadow-lg h-auto w-[400px]">
+            <div className="flex flex-col justify-center items-center">
+              <h2 className="text-xl font-semibold mb-1">Let’s Join a Room</h2>
+              <div className="h-[2px] w-[100px] bg-questions"></div>
+            </div>
+            <div className="mt-10">
+              <p className="text-sm font-semibold">Room Name</p>
+              <input
+                type="text"
+                className="border questions rounded p-3 pl-6 w-[100%] mt-3 text-xs rounded-3xl"
+                placeholder="Enter your Study Room name"
+              ></input>
+            </div>
+            <div className="mt-5">
+              <p className="text-sm font-semibold">Room Key</p>
+              <input
+                type="password"
+                className="border questions rounded p-3 pl-6 w-[100%] mt-3 text-xs rounded-3xl"
+                placeholder="Enter your Study Room key"
+              ></input>
+            </div>
+            <div className="flex justify-between mt-10">
+              <div className="bg-gray-100 flex items-center justify-center space-x-4 mr-2">
+                <label className="flex items-center space-x-2">
+                  <input
+                    type="checkbox"
+                    className="square-radio"
+                    checked={isAllow}
+                    onChange={handleAllow}
+                  />
+                  <span className="text-xs ">Accept the terms and conditions</span>
+                </label>
+              </div>
+            </div>
+            <div className="flex justify-between mt-10">
+              <button
+                onClick={joinRoom}
+                className="px-4 py-2 border border-[2px] questions text-white rounded hover:shadow-lg hover:shadow-gray-400 active:shadow-none"
+              >
+                <p className="logo1">Cancel</p>
               </button>
+              {isAllow && (<button
+                className="px-4 py-2 w-[100px] bg-questions text-black text-sm font-bold rounded hover:shadow-lg hover:shadow-gray-400 active:shadow-none"
+              >
+                <p>Join</p>
+              </button>)}
             </div>
           </div>
         </div>
