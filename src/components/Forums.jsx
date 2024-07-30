@@ -2,6 +2,7 @@ import React from "react";
 import SideBarnNavbar from "./SideBarnNavbar";
 
 const Forums = () => {
+  
   const categories = [
     "General",
     "Computer S.",
@@ -58,11 +59,12 @@ const Forums = () => {
                 <div class="flex items-center h-[25%] ">
                   <select class="border questions rounded-2xl p-2 ">
                     <option value="">Select a catergory</option>
-                    <option value="option1">Option 1</option>
-                    <option value="option2">Option 2</option>
-                    <option value="option3">Option 3</option>
+                    {subjects.map(subject => (
+                     <option key={subject} value={subject}>{subject}</option>
+                    ))}
                   </select>
                 </div>
+                
                 <div className="flex items-center h-[50%] mt-5">
                   <textarea
                     className="border questions rounded-[20px] h-[140px] w-[550px] p-5 "
@@ -278,3 +280,4 @@ const Forums = () => {
 };
 
 export default Forums;
+
