@@ -31,6 +31,10 @@ const DashboardContent = () => {
     setIsChecked(checked);
   };
 
+  const Find = (event) => {
+    event.preventDefault();
+    navigate('/FindPartner');
+  };
   return (
     <div
       className={`xl:flex
@@ -188,12 +192,8 @@ const DashboardContent = () => {
                     <div className="w-[40px] h-[40px] rounded-[100%] border-2 ml-[-15px] border-white bg-black"></div>
                     <div className="w-[40px] h-[40px] rounded-[100%] border-2 ml-[-15px] border-white bg-black"></div>
                   </div>
-                  <div className="flex items-center justify-between items-center">
-                    <p className="opacity-40">20</p>
-                    <i class="fa-regular fa-comments ml-4 opacity-30"></i>
-                  </div>
                 </div>
-              </div>
+              ))}
             </div>
             <div className="flex flex-col items-center xl:m-4 m-3 xl:w-[90%] w-[100%]">
               <div className="h-[10px] xl:w-[100%] w-[300px]   bg-yellow-600 rounded-t-[50px]"></div>
@@ -248,9 +248,8 @@ const DashboardContent = () => {
                     <i class="fa-solid fa-note-sticky opacity-30 mr-4"></i>
                     <p className="text-sm opacity-40">B classes</p>
                   </div>
-                  <div className="flex items-center mr-20">
-                    <i class="fa-solid fa-clock opacity-30"></i>
-                    <p className="text-sm opacity-40 ml-4">3 Hours</p>
+                  <div className="mr-10 opacity-40">
+                    <i className="fa-solid fa-angle-right"></i>
                   </div>
                 </div>
                 <div className="flex justify-between m-4 mt-10">
