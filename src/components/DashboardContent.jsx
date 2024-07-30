@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import solo from "../assets/images/Solostudy.png";
 import group from "../assets/images/Groupstudy.png";
 import User1 from "../assets/images/user1.jpg";
@@ -9,9 +10,11 @@ import Calendar from "./BoxCalendar";
 
 const DashboardContent = () => {
 
+  const navigate = useNavigate();
+
   const Find = (event) => {
     event.preventDefault();
-    navigate('/FindPartner');
+    navigate('/findpartner');
   };
 
   const [isPop, setIsPop] = useState(false);
