@@ -1,4 +1,3 @@
-// SideBar.jsx
 import React, { useState, useEffect, useRef } from 'react';
 import logo from '../assets/images/logo.png'; 
 import 'tailwindcss/tailwind.css';
@@ -53,8 +52,8 @@ const SideBar = ({ sidebarToggle, setSidebarToggle }) => {
   ];
 
   return (
-    <div className={`${sidebarToggle ? "w-[60px]" : "w-[263px]"} fixed top-0 bottom-0 xl:left-0 p-2 h-auto text-center bg-sidebar transition-width duration-300`}>
-      <div className={`${sidebarToggle ? "hidden" : "block"} flex`}>
+    <div className={${sidebarToggle ? "w-[60px]" : "w-[263px]"} fixed top-0 bottom-0 xl:left-0 p-2 h-auto text-center bg-sidebar transition-width duration-300}>
+      <div className={${sidebarToggle ? "hidden" : "block"} flex}>
         <div className="mt-1 mr-8 flex items-center">
           <img src={logo} alt="StudyHive" className="w-full h-auto ml-7" />
         </div>
@@ -64,7 +63,7 @@ const SideBar = ({ sidebarToggle, setSidebarToggle }) => {
           </button>
         </div>
       </div>
-      <div className={`${sidebarToggle ? "" : "hidden"} flex text-xl ml-1 mb-24 mt-2`}>
+      <div className={${sidebarToggle ? "" : "hidden"} flex text-xl ml-1 mb-24 mt-2}>
         <button onClick={() => setSidebarToggle(!sidebarToggle)}>
           <i className="flex fa-solid fa-angle-right border-black w-8 h-8 items-center justify-center opacity-50"></i>
         </button>
@@ -72,12 +71,12 @@ const SideBar = ({ sidebarToggle, setSidebarToggle }) => {
       {menuItems.map((item, index) => (
         <div 
           key={index}
-          className={`${sidebarToggle ? `hover:bg-yellow-600 hover:text-white rounded-md p-2.5 ${item.marginTop || ""}` : `p-2.5 ml-8 mr-8 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-yellow-600 text-black hover:text-white ${item.marginTop || ""}`}`}
+          className={${sidebarToggle ? `hover:bg-yellow-600 hover:text-white rounded-md p-2.5 ${item.marginTop || ""} : p-2.5 ml-8 mr-8 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-yellow-600 text-black hover:text-white ${item.marginTop || ""}}`}
           onClick={item.isLogout ? handleLogout : undefined}
         >
-          <i className={`fa-solid ${item.icon} opacity-50`}></i>
+          <i className={fa-solid ${item.icon} opacity-50}></i>
           <Link to={item.path || "#"}>
-            <span className={`${sidebarToggle ? "hidden" : "text-[18px] ml-4 opacity-50"}`}>{item.label}</span>
+            <span className={${sidebarToggle ? "hidden" : "text-[18px] ml-4 opacity-50"}}>{item.label}</span>
           </Link>
         </div>
       ))}

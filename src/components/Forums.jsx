@@ -29,7 +29,7 @@ const Forums = () => {
       const token = localStorage.getItem("token");
       const response = await axios.get("http://localhost:8080/api/questions", {
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: Bearer ${token},
         },
       });
       setQuestions(response.data);
@@ -44,7 +44,7 @@ const Forums = () => {
       const token = localStorage.getItem("token");
       await axios.post("http://localhost:8080/api/questions", questionData, {
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: Bearer ${token},
           "Content-Type": "application/json",
         },
       });
