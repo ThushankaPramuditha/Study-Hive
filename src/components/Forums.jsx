@@ -15,6 +15,7 @@ const Forums = () => {
     "Law",
     "Biology",
   ];
+
   return (
     <div className="">
       <SideBarnNavbar />
