@@ -15,7 +15,7 @@ const StudyRooms = () => {
     "Law",
     "Biology",
   ];
-
+//add
   return (
     <div className="">
       <SideBarnNavbar />
