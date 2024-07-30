@@ -1,7 +1,7 @@
 import React from "react";
 import SideBarnNavbar from "./SideBarnNavbar";
 
-const StudyRooms = () => {
+const Forums = () => {
   
   const categories = [
     "General",
@@ -15,7 +15,8 @@ const StudyRooms = () => {
     "Law",
     "Biology",
   ];
-//add
+  
+
   return (
     <div className="">
       <SideBarnNavbar />
@@ -57,15 +58,7 @@ const StudyRooms = () => {
                 </div>
               </div>
               <div className="shadow-lg p-5 rounded-3xl">
-                <div class="flex items-center h-[25%] ">
-                  <select class="border questions rounded-2xl p-2 ">
-                    <option value="">Select a catergory</option>
-                    {subjects.map(subject => (
-                     <option key={subject} value={subject}>{subject}</option>
-                    ))}
-                  </select>
-                </div>
-                
+            
                 <div className="flex items-center h-[50%] mt-5">
                   <textarea
                     className="border questions rounded-[20px] h-[140px] w-[550px] p-5 "
@@ -89,6 +82,7 @@ const StudyRooms = () => {
                     </button>
                   </div>
                 </div>
+                
               </div>
             </div>
           </div>
@@ -280,5 +274,4 @@ const StudyRooms = () => {
   );
 };
 
-export default StudyRooms;
-
+export default Forums;

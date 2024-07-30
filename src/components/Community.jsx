@@ -2,7 +2,7 @@ import React from 'react';
 import ucsc from '../assets/images/ucsc.png';
 import ieee from '../assets/images/ieee.png';
 import rotaract from '../assets/images/rotaract.png';
-import SideBar from './SideBar';
+import SideBarnNavbar from './SideBarnNavbar';
 import Notification from './Notification';
 import Reminder from './Reminders';
 import Calendar from './BoxCalendar';
@@ -53,11 +53,9 @@ const communities = [
   
   const CommunityPage = () => {
     return (
-        // <SideBar />
-      <div className="min-h-screen bg-gray-100 p-6 flex flex-row"> 
-      <div>
-      {/* <SideBar /> */}
-      </div>
+        <div>
+        <SideBarnNavbar />
+      <div className="min-h-screen p-6 flex flex-row">
         <div className="max-w-4xl mx-auto mt-5 ml-[273px]">
           <div className="bg-white p-6 rounded-xl shadow-md mb-6">
             <div className="flex justify-between items-center mb-4">
@@ -84,7 +82,7 @@ const communities = [
           <h3 className="text-xl font-semibold mb-4">Your Communities</h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {communities.map((community, index) => (
-              <div key={index} className="bg-white p-4 rounded-lg shadow-md flex flex-col items-center text-center">
+              <div key={index} className="bg-white p-4 rounded-lg shadow-xl flex flex-col items-center text-center">
                 <img src={community.image} alt={community.name} className="h-24 mb-4" />
                 <h4 className="text-lg font-semibold mb-2">{community.name}</h4>
                 <p className="text-gray-600 mb-4">{community.description}</p>
@@ -97,7 +95,7 @@ const communities = [
           <h3 className="text-xl font-semibold mb-4 mt-10">Popular Communities</h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {popularCommunities.map((community, index) => (
-                <div key={index} className="bg-white p-4 rounded-lg shadow-md flex flex-col items-center text-center">
+                <div key={index} className="bg-white p-4 rounded-lg shadow-xl flex flex-col items-center text-center">
                     <h4 className="text-lg font-semibold mb-2">{community.name}</h4>
                     <p className="text-gray-600 mb-4">{community.description}</p>
                     <div className="text-gray-400"> <i className="fas fa-users mr-2"></i>{community.members}</div>
@@ -123,6 +121,7 @@ const communities = [
         </div>
        </div>
         
+      </div>
       </div>
     );
   };
