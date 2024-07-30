@@ -11,11 +11,12 @@ export default {
   },
   theme: {
     extend: {
-      backgroundImage: {
-        'solo': "url('/path/to/your/Solostudy.jpg')",
-      }
+      fontFamily: {
+        inter: ['Inter', 'sans-serif'], // Ensure Inter font is included
+      },
     },
   },
+  
   plugins: [],
   variants: {
     extend: {
