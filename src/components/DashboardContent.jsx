@@ -476,7 +476,6 @@ const DashboardContent = () => {
         </div>
       </div>
     </div>
-  </div> 
   );
 };
 
