@@ -146,6 +146,7 @@ html {
   position: relative;
   border-radius: 30%;
 }
+//
 
 .checkbox-custom:checked::before {
   content: "";
