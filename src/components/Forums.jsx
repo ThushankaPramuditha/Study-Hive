@@ -2,6 +2,8 @@ import React from "react";
 import SideBarnNavbar from "./SideBarnNavbar";
 
 const StudyRooms = () => {
+  const subjects = ['Data Structures', 'Algorithms', 'Web Development', 'Machine Learning'];
+  
   return (
     <div className="">
       <SideBarnNavbar />
@@ -62,11 +64,13 @@ const StudyRooms = () => {
                   Biology
                 </div>
               </div>
+
               {/* <div className="flex justify-center items-center mr-2">
                 <p className="catergoryarrow">
                   <i class="fa-solid fa-angle-right text-3xl"></i>
                 </p>
               </div> */}
+
             </div>
             <div className="flex items-center justify-center mt-12 ml-12">
               <div className="relative flex items-center">
@@ -103,11 +107,12 @@ const StudyRooms = () => {
                 <div class="flex items-center h-[25%] ">
                   <select class="border questions rounded-2xl p-2 ">
                     <option value="">Select a catergory</option>
-                    <option value="option1">Option 1</option>
-                    <option value="option2">Option 2</option>
-                    <option value="option3">Option 3</option>
+                    {subjects.map(subject => (
+                     <option key={subject} value={subject}>{subject}</option>
+                    ))}
                   </select>
                 </div>
+                
                 <div className="flex items-center h-[50%] mt-5">
                   <textarea
                     className="border questions rounded-[20px] h-[140px] w-[550px] p-5 "
@@ -292,3 +297,4 @@ const StudyRooms = () => {
 };
 
 export default StudyRooms;
+
