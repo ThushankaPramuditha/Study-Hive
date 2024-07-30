@@ -19,8 +19,6 @@ import Logout from './components/Logout';
 import ProfileSetup1 from './components/ProfileSetup1';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import './App.css';
-import FindPartner from './components/FindPartner';
-import Settings from './components/Settings';
 
 
 
@@ -48,9 +46,7 @@ function App() {
           <Route path="/login1" element={<Login1 />} />
           <Route path="/forums" element={<Forums />} />
           <Route path="/logout" element={<Logout />} />
-          <Route path="/findpartner" element={<FindPartner />} />
-          <Route path="/settings" element={<Settings />} />
-
+        
           
 
         </Routes>
