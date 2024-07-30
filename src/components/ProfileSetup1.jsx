@@ -31,7 +31,7 @@ const ProfileSetup1 = () => {
 
   // Function to finish and navigate to the next page
   const handleFinish = () => {
-    navigate('/Dashboard');
+    navigate('/home');
   };
 
   const handleFileInputChange = (e) => {
@@ -343,4 +343,4 @@ const ProfileSetup1 = () => {
   );
 };
 
-export default ProfileSetup1;
+export default ProfileSetup1;

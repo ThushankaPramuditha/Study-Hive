@@ -62,7 +62,7 @@ const communities = [
         // <SideBar />
       <div className="min-h-screen p-6 flex flex-row"> 
       <div>
-      <SideBar />
+      {/* <SideBar /> */}
       </div>
         <div className="max-w-4xl mx-auto mt-5 ml-[273px]">
           <div className="bg-white p-6 rounded-xl shadow-lg mb-6  w-[90%] ml-[30px]">
