@@ -1,18 +1,16 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 import logo from '../assets/images/logo.png';
 
 const AdminSidebar = () => {
   const location = useLocation();
-  console.log('Current Path:', location.pathname);
 
   const isActive = (path) => {
-    const isActivePath = location.pathname.startsWith(path);
-    console.log(`Path: ${path}, Is Active: ${isActivePath}`);
-    return isActivePath
+    return location.pathname.startsWith(path)
       ? 'bg-yellow-600 text-white'
       : 'text-black opacity-50 hover:bg-yellow-600 hover:text-white';
   };
+
   return (
     <div className="fixed top-0 bottom-0 w-[263px] h-full text-center bg-[#FDF9C4]">
       <div className="mt-1 mr-8 flex items-center">
@@ -20,39 +18,39 @@ const AdminSidebar = () => {
       </div>
       <div className={`p-2.5 mt-3 ml-8 mr-8 flex items-center rounded-md px-4 duration-300 cursor-pointer ${isActive('/AdminDashboard')}`}>
         <i className="fa-solid fa-chart-line"></i>
-        <a href='/AdminDashboard' className="text-[18px] ml-4">Dashboard</a>
+        <Link to='/AdminDashboard' className="text-[18px] ml-4">Dashboard</Link>
       </div>
       <div className={`p-2.5 mt-3 ml-8 mr-8 flex items-center rounded-md px-4 duration-300 cursor-pointer ${isActive('/UserList')}`}>
         <i className="fa fa-user"></i>
-        <a href='/UserList' className="text-[18px] ml-5">Users</a>
+        <Link to='/UserList' className="text-[18px] ml-5">Users</Link>
       </div>
       <div className={`p-2.5 mt-3 ml-8 mr-8 flex items-center rounded-md px-4 duration-300 cursor-pointer ${isActive('/StudyRoomList')}`}>
         <i className="fa-solid fa-calendar-days"></i>
-        <a href='/StudyRoomList' className="text-[18px] ml-5">Study Rooms</a>
+        <Link to='/StudyRoomList' className="text-[18px] ml-5">Study Rooms</Link>
       </div>
       <div className={`p-2.5 mt-3 ml-8 mr-8 flex items-center rounded-md px-4 duration-300 cursor-pointer ${isActive('/ForumList')}`}>
         <i className="fa-solid fa-envelope"></i>
-        <a href='/ForumList' className="text-[18px] ml-4">Forums</a>
+        <Link to='/ForumList' className="text-[18px] ml-4">Forums</Link>
       </div>
       <div className={`p-2.5 mt-3 ml-8 mr-8 flex items-center rounded-md px-4 duration-300 cursor-pointer ${isActive('/CommunityList')}`}>
         <i className="fa-solid fa-users text-[15px]"></i>
-        <a href='/CommunityList' className="text-[18px] ml-3">Community</a>
+        <Link to='/CommunityList' className="text-[18px] ml-3">Community</Link>
       </div>
       <div className={`p-2.5 mt-3 ml-8 mr-8 flex items-center rounded-md px-4 duration-300 cursor-pointer ${isActive('/Inquiry')}`}>
         <i className="fa-solid fa-message"></i>
-        <a href='/Inquiry' className="text-[18px] ml-4">Inquiries</a>
+        <Link to='/Inquiry' className="text-[18px] ml-4">Inquiries</Link>
       </div>
       <div className={`p-2.5 mt-3 ml-8 mr-8 flex items-center rounded-md px-4 duration-300 cursor-pointer ${isActive('/calendar')}`}>
         <i className="fa-solid fa-calendar-days"></i>
-        <a href='/calendar' className="text-[18px] ml-5">Calendar</a>
+        <Link to='/AdminCalendar' className="text-[18px] ml-5">Calendar</Link>
       </div>
       <div className={`p-2.5 mt-3 ml-8 mr-8 flex items-center rounded-md px-4 duration-300 cursor-pointer ${isActive('/settings')}`}>
         <i className="fa-solid fa-gear"></i>
-        <a href='/settings' className="text-[18px] ml-4">Settings</a>
+        <Link to='/AdminSetting' className="text-[18px] ml-4">Settings</Link>
       </div>
       <div className={`p-2.5 mt-[220px] ml-8 mr-8 flex items-center rounded-md px-4 duration-300 cursor-pointer ${isActive('/logout')}`}>
         <i className="fa-solid fa-right-from-bracket"></i>
-        <a href='/logout' className="text-[18px] ml-4">Logout</a>
+        <Link to='/logout' className="text-[18px] ml-4">Logout</Link>
       </div>
     </div>
   );

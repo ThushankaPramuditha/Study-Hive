@@ -2,7 +2,7 @@ import React from 'react';
 import ucsc from '../assets/images/ucsc.png';
 import ieee from '../assets/images/ieee.png';
 import rotaract from '../assets/images/rotaract.png';
-import SideBar from './SideBar';
+import SideBarnNavbar from "./SideBarnNavbar";
 import Notification from './Notification';
 import Reminder from './Reminders';
 import Calendar from './BoxCalendar';
@@ -60,10 +60,9 @@ const communities = [
   const CommunityPage = () => {
     return (
         // <SideBar />
-      <div className="min-h-screen p-6 flex flex-row"> 
-      <div>
-      {/* <SideBar /> */}
-      </div>
+        <div className="">
+        <SideBarnNavbar />
+        <div   className="xl:flexmt-2 xl:ml-[263px] ml-[60px]"  >
         <div className="max-w-4xl mx-auto mt-5 ml-[273px]">
           <div className="bg-white p-6 rounded-xl shadow-lg mb-6  w-[90%] ml-[30px]">
             <div className="flex justify-between items-center mb-4">
@@ -130,6 +129,8 @@ const communities = [
        </div>
         
       </div>
+      </div>
+      
     );
   };
   

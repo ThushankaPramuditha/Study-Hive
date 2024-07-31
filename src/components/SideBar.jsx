@@ -17,11 +17,11 @@ const SideBar = () => {
         </div>
         <div className="p-2.5 mt-3 ml-8 mr-8 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-yellow-600 text-black  hover:text-white">
           <i className="fa-solid fa-chart-simple opacity-50"></i>
-          <a href="/study-status" className="text-[18px] ml-4 opacity-50">Study Status</a>
+          <a href="/StudyStats" className="text-[18px] ml-4 opacity-50">Study Status</a>
         </div>
         <div className="p-2.5 mt-3 ml-8 mr-8 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-yellow-600 text-black  hover:text-white">
           <i className="fa-solid fa-envelope opacity-50"></i>
-          <a href="/forums" className="text-[18px] ml-4 opacity-50">Forums</a>
+          <a href="/Forums" className="text-[18px] ml-4 opacity-50">Forums</a>
         </div>
         <div className="p-2.5 mt-3 ml-8 mr-8 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-yellow-600 text-black  hover:text-white">
           <i className="fa-solid fa-users opacity-50 text-[15px]"></i>
