@@ -23,7 +23,7 @@ const Navbar = ({sidebarToggle}) => {
         </button>
       </div>
       <div className="flex items-center justify-center w-10 h-10 rounded mr-10 ml-5">
-        <img src={profile} alt="Profile" className="w-full h-auto ml-5" />
+        <img src="https://cdn.aglty.io/boys-town/quotes/ryan_20230915120925.jpg" alt="avatar" className="w-full h-full rounded-full" />
       </div>
       </div>  
     </div>

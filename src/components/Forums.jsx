@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import SideBar from "./SideBarnNavbar"; // Assuming SideBar is the correct component name
+import user from "../assets/images/user1.jpg";
 
 const Forums = () => {
   const [questions, setQuestions] = useState([]);
@@ -11,7 +12,7 @@ const Forums = () => {
   const [error, setError] = useState(null);
 
   const categories = [
-    "General",
+    "All",
     "Computer S.",
     "Law",
     "Biology",
@@ -146,8 +147,8 @@ const Forums = () => {
             {categories.map((category, index) => (
               <div key={index}>
                 <button
-                  className={`flex category ${
-                    category === "General" ? "categoryselect" : ""
+                  className={`flex catergory ${
+                    category === "catergory" ? "categoryselect" : ""
                   } w-[115px] h-[40px] rounded-[20px] justify-center items-center text-sm hover:shadow-lg hover:shadow-gray-400 active:shadow-none`}
                 >
                   <p>{category}</p>
@@ -157,7 +158,7 @@ const Forums = () => {
           </div>
           <div className="flex justify-between items-center ml-10 mr-10 mb-7">
             <div className="flex items-center">
-              <p className="text-lg font-bold text-xl">All Questions</p>
+              <p className="text-lg font-bold text-xl">Your Questions</p>
             </div>
             <div>
               <button className="category pr-4 pl-4 rounded-3xl font-semibold mr-5 hover:shadow-lg hover:shadow-gray-400 active:shadow-none">
@@ -177,10 +178,14 @@ const Forums = () => {
                       <div className="ml-4 w-2 h-2 bg-green-700 rounded"></div>
                     </div>
                     <div>
-                      <div className="ml-3 w-[52px] h-[52px] border-2 border-yellow-400 rounded-full bg-black"></div>
+                      <div className="ml-3 w-[52px] h-[52px] border-2 border-yellow-400 rounded-full bg-black">
+                        <img src="https://cdn.aglty.io/boys-town/quotes/ryan_20230915120925.jpg" alt="avatar" className="w-full h-full rounded-full" />
+                      </div>
                     </div>
                     <div className="flex flex-col ml-2">
-                      <p className="text-lg font-semibold">{question.author}</p>
+                      
+                      {/* <p className="text-lg font-semibold">{author}</p> */}
+                      <p className="text-lg font-semibold">Kasun Udara</p>
                       <p className="text-gray-400">{question.category}</p>
                     </div>
                   </div>
@@ -222,7 +227,9 @@ const Forums = () => {
                       <div className="ml-4 w-2 h-2 bg-gray-400 rounded"></div>
                     </div>
                     <div>
-                      <div className="ml-3 w-[52px] h-[52px] border-2 border-yellow-400 rounded-full bg-black"></div>
+                      <div className="ml-3 w-[52px] h-[52px] border-2 border-yellow-400 rounded-full bg-black">
+                        <img src={user} alt="avatar" className="w-full h-full rounded-full" />
+                      </div>
                     </div>
                     <div className="flex flex-col ml-2">
                       <p className="text-lg font-semibold">{name}</p>

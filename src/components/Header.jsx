@@ -11,15 +11,13 @@ return (
 <div className="logo w-20 h-20">
 <img src={logo} alt="StudyHive" className="w-full h-auto ml-5" />
 </div>
-<nav className="space-x-9 mr-10">
+<nav className="space-x-20 mr-10">
 <Link to="/" className="text-customGray hover:text-gray-300">Home</Link>
-<Link to="/careers" className="text-customGray hover:text-gray-300">Careers</Link>
-<Link to="/blog" className="text-customGray hover:text-gray-300">Blog</Link>
-<Link to="/aboutus" className="text-customGray hover:text-gray-300">About Us</Link>
-<Link to="/login"
+<Link to="/home" className="text-customGray hover:text-gray-300">Dashboard</Link>
+<Link to="/login1"
 className="bg-white hover:bg-orange-400 text-customGray py-2 px-4 rounded-lg"
 >Login</Link>
-<Link to="/signup"
+<Link to="/"
 className="bg-amber-400 hover:bg-orange-400 text-customGray py-2 px-4 rounded-lg"
 >Sign Up</Link>
 </nav>
