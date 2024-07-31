@@ -15,7 +15,7 @@ const Login = () => {
 
   const handleLogin = (event) => {
     event.preventDefault();
-    navigate('/ProfileSetup1');
+    navigate('/home');
   };
 
   return (

@@ -13,7 +13,7 @@ const SideBar = ({ sidebarToggle, setSidebarToggle }) => {
     try {
       await axios.post('http://localhost:8080/api/v1/auth/logout');
       localStorage.removeItem('token');
-      navigate('/login');
+      navigate('/login1');
     } catch (error) {
       console.error('Logout failed:', error);
     }
@@ -58,17 +58,21 @@ const SideBar = ({ sidebarToggle, setSidebarToggle }) => {
         <div className="mt-1 mr-8 flex items-center">
           <img src={logo} alt="StudyHive" className="w-full h-auto ml-7" />
         </div>
-        <div ref={divRef1} className="flex text-xl">
-          <button onClick={() => setSidebarToggle(!sidebarToggle)}>
-            <i className="flex fa-solid fa-angle-left border-black w-8 h-8 items-center justify-center opacity-50"></i>
-          </button>
-        </div>
-      </div>
-      <div className={`${sidebarToggle ? "" : "hidden"} flex text-xl ml-1 mb-24 mt-2`}>
         <button onClick={() => setSidebarToggle(!sidebarToggle)}>
-          <i className="flex fa-solid fa-angle-right border-black w-8 h-8 items-center justify-center opacity-50"></i>
+        <div ref={divRef1} className="flex text-xl">
+          
+            <i className="flex fa-solid fa-angle-left border-black w-8 h-8 items-center justify-center opacity-50"></i>
+          
+        </div>
         </button>
       </div>
+      <button onClick={() => setSidebarToggle(!sidebarToggle)}>
+      <div className={`${sidebarToggle ? "" : "hidden"} flex text-xl ml-1 mb-24 mt-2`}>
+        
+          <i className="flex fa-solid fa-angle-right border-black w-8 h-8 items-center justify-center opacity-50"></i>
+        
+      </div>
+      </button>
       {menuItems.map((item, index) => (
         <div 
           key={index}

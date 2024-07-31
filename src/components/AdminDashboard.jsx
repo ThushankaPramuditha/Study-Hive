@@ -30,7 +30,7 @@ const AdminDashboard = () => {
   return (
     <div className="flex">
       <AdminSidebar />
-      <div className="flex-1 flex relative">
+      <div className="flex-1 flex">
         <div className="mt-14 w-[220px] h-[720px] bg-[#CFDCB3] rounded-r-3xl absolute left-[263px] p-4">
           <p className="text-[20px] font-bold text-center mt-4 font-inter">Today Statistics</p>
           <p className="text-[12px] font-medium text-[#717171] text-center">{formattedDateTime}</p>
