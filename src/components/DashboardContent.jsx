@@ -1,10 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import solo from "../assets/images/Solostudy.png";
 import group from "../assets/images/Groupstudy.png";
+import User1 from "../assets/images/user1.jpg";
+import User2 from "../assets/images/user2.jpeg";
+import User3 from "../assets/images/women.png";
+import User4 from "../assets/images/profile.png";
 import Calendar from "./BoxCalendar";
-import { useNavigate } from 'react-router-dom';
-
-
 
 const DashboardContent = () => {
 
@@ -13,15 +15,13 @@ const DashboardContent = () => {
     navigate('/FindPartner');
   };
 
-
-const navigate = useNavigate();
-
   const [isPop, setIsPop] = useState(false);
-  const [isPopjoin, setIsPopjoin] = useState(false);
 
   const createRoom = () => {
     setIsPop(!isPop);
   };
+
+  const [isPopjoin, setIsPopjoin] = useState(false);
 
   const joinRoom = () => {
     setIsPopjoin(!isPopjoin);
@@ -51,12 +51,8 @@ const navigate = useNavigate();
   const [isAllow, setIsAllow] = useState(false);
 
   const handleAllow = (e) => {
-    const { allowed } = e.target;
-    setIsAllow(allowed);
+    setIsAllow(e.target.checked);
   };
-
-
-
 
   return (
     <div
@@ -70,9 +66,16 @@ const navigate = useNavigate();
         </div>
         <div className="mt-10 w-[100%]">
           <div className="flex justify-center items-center mb-4">
-              <p className="text-blue-900 text-4xl text-center mr-8">Let's Find a Study Partner</p>
-              <button className="bg-[#F6CA30] text-m text-black rounded-[50px] w-[100px] h-[40px]" onClick={Find}>Let's Go</button>
-            </div>
+            <p className="text-blue-900 text-4xl text-center mr-8">
+              Let's Find a Study Partner
+            </p>
+            <button
+              className="bg-[#F6CA30] text-m text-black rounded-[50px] w-[100px] h-[40px] hover:shadow-lg hover:shadow-gray-400 active:shadow-none"
+              onClick={Find}
+            >
+              Let's Go
+            </button>
+          </div>
           <div className="xl:flex xl:felx-col xl:justify-between pl-[10%] pr-[10%] pt-[3%] ">
             <div
               className="flex flex-col justify-center border-2 w-[420px] h-[340px] rounded-[50px] items-center"
@@ -81,7 +84,7 @@ const navigate = useNavigate();
               <p className="text-2xl text-white text-center pb-6 font-bold">
                 Solo Study
               </p>
-              <button className="bg-custom-color p-3 m-3 text-xl text-white w-15 rounded-[50px] w-[200px] justify-center">
+              <button className="bg-custom-color p-3 m-3 text-xl text-white w-15 rounded-[50px] w-[200px] justify-center hover:shadow-lg hover:shadow-gray-400 active:shadow-none">
                 Start Solo Study
               </button>
             </div>
@@ -95,13 +98,13 @@ const navigate = useNavigate();
               </p>
               <button
                 onClick={joinRoom}
-                className="bg-custom-color p-3 m-3 text-xl text-white w-15 rounded-[50px] w-[300px]"
+                className="bg-custom-color p-3 m-3 text-xl text-white w-15 rounded-[50px] w-[300px] hover:shadow-lg hover:shadow-gray-400 active:shadow-none"
               >
                 Join a Group Study Room
               </button>
               <button
                 onClick={createRoom}
-                className="bg-custom-color1 p-3 m-3 text-xl w-15 rounded-[50px] w-[300px]"
+                className="bg-custom-color1 p-3 m-3 text-xl w-15 rounded-[50px] w-[300px] hover:shadow-lg hover:shadow-gray-400 active:shadow-none"
               >
                 Create Group Study Room
               </button>
@@ -112,7 +115,7 @@ const navigate = useNavigate();
           <p className="pl-[10%] mt-10 mb-1 text-gray-500  text-lg">
             My Study Rooms
           </p>
-          <p className="pl-[10%] mt-10 mb-1 text-yellow-500  text-s mr-20">
+          <p className="mt-10 mb-1 text-yellow-500  text-md mr-20 hover:text-yellow-700 active:text-yellow-500 cursor-pointer">
             See all
           </p>
         </div>
@@ -142,10 +145,18 @@ const navigate = useNavigate();
                 </div>
                 <div className="flex justify-between m-4 mt-10">
                   <div className="flex">
-                    <div className="w-[40px] h-[40px] rounded-[100%] border-2 border-white bg-black"></div>
-                    <div className="w-[40px] h-[40px] rounded-[100%] border-2 ml-[-15px] border-white bg-black"></div>
-                    <div className="w-[40px] h-[40px] rounded-[100%] border-2 ml-[-15px] border-white bg-black"></div>
-                    <div className="w-[40px] h-[40px] rounded-[100%] border-2 ml-[-15px] border-white bg-black"></div>
+                    <div className="">
+                      <img src={User1} alt="User" className="w-[40px] h-[40px] rounded-[100%] border-2 border-white bg-black" />
+                    </div>
+                    <div className="ml-[-15px]">
+                      <img src={User3} alt="User" className="w-[40px] h-[40px] rounded-[100%] border-2 border-white bg-black" />
+                    </div>
+                    <div className="ml-[-15px]">
+                      <img src={User2} alt="User" className="w-[40px] h-[40px] rounded-[100%] border-2 border-white bg-black" />
+                    </div>
+                    <div className="ml-[-15px]">
+                      <img src={User4} alt="User" className="w-[40px] h-[40px] rounded-[100%] border-2 border-white bg-black" />
+                    </div>
                   </div>
                   <div className="flex items-center justify-between items-center">
                     <p className="opacity-40">20</p>
@@ -177,11 +188,19 @@ const navigate = useNavigate();
                   </div>
                 </div>
                 <div className="flex justify-between m-4 mt-10">
-                  <div className="flex">
-                    <div className="w-[40px] h-[40px] rounded-[100%] border-2 border-white bg-black"></div>
-                    <div className="w-[40px] h-[40px] rounded-[100%] border-2 ml-[-15px] border-white bg-black"></div>
-                    <div className="w-[40px] h-[40px] rounded-[100%] border-2 ml-[-15px] border-white bg-black"></div>
-                    <div className="w-[40px] h-[40px] rounded-[100%] border-2 ml-[-15px] border-white bg-black"></div>
+                <div className="flex">
+                    <div className="">
+                      <img src={User1} alt="User" className="w-[40px] h-[40px] rounded-[100%] border-2 border-white bg-black" />
+                    </div>
+                    <div className="ml-[-15px]">
+                      <img src={User3} alt="User" className="w-[40px] h-[40px] rounded-[100%] border-2 border-white bg-black" />
+                    </div>
+                    <div className="ml-[-15px]">
+                      <img src={User4} alt="User" className="w-[40px] h-[40px] rounded-[100%] border-2 border-white bg-black" />
+                    </div>
+                    <div className="ml-[-15px]">
+                      <img src={User2} alt="User" className="w-[40px] h-[40px] rounded-[100%] border-2 border-white bg-black" />
+                    </div>
                   </div>
                   <div className="flex items-center justify-between items-center">
                     <p className="opacity-40">20</p>
@@ -213,11 +232,19 @@ const navigate = useNavigate();
                   </div>
                 </div>
                 <div className="flex justify-between m-4 mt-10">
-                  <div className="flex">
-                    <div className="w-[40px] h-[40px] rounded-[100%] border-2 border-white bg-black"></div>
-                    <div className="w-[40px] h-[40px] rounded-[100%] border-2 ml-[-15px] border-white bg-black"></div>
-                    <div className="w-[40px] h-[40px] rounded-[100%] border-2 ml-[-15px] border-white bg-black"></div>
-                    <div className="w-[40px] h-[40px] rounded-[100%] border-2 ml-[-15px] border-white bg-black"></div>
+                <div className="flex">
+                    <div className="">
+                      <img src={User3} alt="User" className="w-[40px] h-[40px] rounded-[100%] border-2 border-white bg-black" />
+                    </div>
+                    <div className="ml-[-15px]">
+                      <img src={User1} alt="User" className="w-[40px] h-[40px] rounded-[100%] border-2 border-white bg-black" />
+                    </div>
+                    <div className="ml-[-15px]">
+                      <img src={User2} alt="User" className="w-[40px] h-[40px] rounded-[100%] border-2 border-white bg-black" />
+                    </div>
+                    <div className="ml-[-15px]">
+                      <img src={User4} alt="User" className="w-[40px] h-[40px] rounded-[100%] border-2 border-white bg-black" />
+                    </div>
                   </div>
                   <div className="flex items-center justify-between items-center">
                     <p className="opacity-40">20</p>
@@ -249,11 +276,19 @@ const navigate = useNavigate();
                   </div>
                 </div>
                 <div className="flex justify-between m-4 mt-10">
-                  <div className="flex">
-                    <div className="w-[40px] h-[40px] rounded-[100%] border-2 border-white bg-black"></div>
-                    <div className="w-[40px] h-[40px] rounded-[100%] border-2 ml-[-15px] border-white bg-black"></div>
-                    <div className="w-[40px] h-[40px] rounded-[100%] border-2 ml-[-15px] border-white bg-black"></div>
-                    <div className="w-[40px] h-[40px] rounded-[100%] border-2 ml-[-15px] border-white bg-black"></div>
+                <div className="flex">
+                    <div className="">
+                      <img src={User1} alt="User" className="w-[40px] h-[40px] rounded-[100%] border-2 border-white bg-black" />
+                    </div>
+                    <div className="ml-[-15px]">
+                      <img src={User2} alt="User" className="w-[40px] h-[40px] rounded-[100%] border-2 border-white bg-black" />
+                    </div>
+                    <div className="ml-[-15px]">
+                      <img src={User3} alt="User" className="w-[40px] h-[40px] rounded-[100%] border-2 border-white bg-black" />
+                    </div>
+                    <div className="ml-[-15px]">
+                      <img src={User4} alt="User" className="w-[40px] h-[40px] rounded-[100%] border-2 border-white bg-black" />
+                    </div>
                   </div>
                   <div className="flex items-center justify-between items-center">
                     <p className="opacity-40">20</p>
@@ -285,11 +320,19 @@ const navigate = useNavigate();
                   </div>
                 </div>
                 <div className="flex justify-between m-4 mt-10">
-                  <div className="flex">
-                    <div className="w-[40px] h-[40px] rounded-[100%] border-2 border-white bg-black"></div>
-                    <div className="w-[40px] h-[40px] rounded-[100%] border-2 ml-[-15px] border-white bg-black"></div>
-                    <div className="w-[40px] h-[40px] rounded-[100%] border-2 ml-[-15px] border-white bg-black"></div>
-                    <div className="w-[40px] h-[40px] rounded-[100%] border-2 ml-[-15px] border-white bg-black"></div>
+                <div className="flex">
+                    <div className="">
+                      <img src={User4} alt="User" className="w-[40px] h-[40px] rounded-[100%] border-2 border-white bg-black" />
+                    </div>
+                    <div className="ml-[-15px]">
+                      <img src={User3} alt="User" className="w-[40px] h-[40px] rounded-[100%] border-2 border-white bg-black" />
+                    </div>
+                    <div className="ml-[-15px]">
+                      <img src={User2} alt="User" className="w-[40px] h-[40px] rounded-[100%] border-2 border-white bg-black" />
+                    </div>
+                    <div className="ml-[-15px]">
+                      <img src={User1} alt="User" className="w-[40px] h-[40px] rounded-[100%] border-2 border-white bg-black" />
+                    </div>
                   </div>
                   <div className="flex items-center justify-between items-center">
                     <p className="opacity-40">20</p>
@@ -339,7 +382,7 @@ const navigate = useNavigate();
                     value={count}
                     className="border member_count rounded text-center text-sm w-10 h-7"
                   />
-                  <button onClick={increment} className="text-black ml-3">
+                  <button onClick={increment} className="text-black ml-3 hover:shadow-lg hover:shadow-gray-400 active:shadow-none">
                     <i class="fa-solid fa-plus text-sm"></i>
                   </button>
                 </div>
@@ -368,20 +411,22 @@ const navigate = useNavigate();
                     checked={isAllow}
                     onChange={handleAllow}
                   />
-                  <span className="text-xs ">Accept the terms and conditions</span>
+                  <span className="text-xs ">Accept terms and connditions</span>
                 </label>
               </div>
             </div>
             <div className="flex justify-between mt-10">
               <button
                 onClick={createRoom}
-                className="px-4 py-2 border border-[2px] questions text-white rounded"
+                className="px-4 py-2 border border-[2px] questions text-white rounded hover:shadow-lg hover:shadow-gray-400 active:shadow-none"
               >
                 <p className="logo1">Cancel</p>
               </button>
-              <button className="px-4 py-2 w-[100px] bg-questions text-black text-xs font-semibold rounded">
-                <p>Let’s Go</p>
-              </button>
+              {isAllow && (
+                <button className="px-4 py-2 w-[100px] bg-questions text-black text-xs font-semibold rounded hover:shadow-lg hover:shadow-gray-400 active:shadow-none">
+                  <p>Let’s Go</p>
+                </button>
+              )}
             </div>
           </div>
         </div>
@@ -390,11 +435,11 @@ const navigate = useNavigate();
         <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center">
           <div className="bg-white p-8 rounded-2xl shadow-lg h-auto w-[400px]">
             <div className="flex flex-col justify-center items-center">
-              <h2 className="text-xl font-semibold mb-1">Let’s Join a Room</h2>
+              <h2 className="text-xl font-semibold mb-1">Join Your Room</h2>
               <div className="h-[2px] w-[100px] bg-questions"></div>
             </div>
             <div className="mt-10">
-              <p className="text-sm font-semibold">Room Name</p>
+              <p className="text-sm font-semibold">Study Room Name</p>
               <input
                 type="text"
                 className="border questions rounded p-3 pl-6 w-[100%] mt-3 text-xs rounded-3xl"
@@ -402,14 +447,26 @@ const navigate = useNavigate();
               ></input>
             </div>
             <div className="mt-5">
-              <p className="text-sm font-semibold">Room Key</p>
+              <p className="text-sm font-semibold">Study Room Key</p>
               <input
-                type="password"
+                type="text"
                 className="border questions rounded p-3 pl-6 w-[100%] mt-3 text-xs rounded-3xl"
                 placeholder="Enter your Study Room key"
               ></input>
             </div>
-
+            <div className="flex justify-between mt-10">
+              <div className="bg-gray-100 flex items-center justify-center space-x-4 mr-2">
+                <label className="flex items-center space-x-2">
+                  <input
+                    type="checkbox"
+                    className="square-radio"
+                    checked={isAllow}
+                    onChange={handleAllow}
+                  />
+                  <span className="text-xs ">Accept terms and connditions</span>
+                </label>
+              </div>
+            </div>
             <div className="flex justify-between mt-10">
               <button
                 onClick={joinRoom}
@@ -417,11 +474,11 @@ const navigate = useNavigate();
               >
                 <p className="logo1">Cancel</p>
               </button>
-              <button
-                className="px-4 py-2 w-[100px] bg-questions text-black text-sm font-bold rounded hover:shadow-lg hover:shadow-gray-400 active:shadow-none"
-              >
-                <p>Join</p>
-              </button>
+              {isAllow && (
+                <button className="px-4 py-2 w-[100px] bg-questions text-black text-xs font-semibold rounded hover:shadow-lg hover:shadow-gray-400 active:shadow-none">
+                  <p>Let’s Go</p>
+                </button>
+              )}
             </div>
           </div>
         </div>
