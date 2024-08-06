@@ -21,8 +21,6 @@ import Settings from './components/Settings';
 import FindPartner from './components/FindPartner';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import './App.css';
-import FindPartner from './components/FindPartner';
-import Settings from './components/Settings';
 import Viewpartner from './components/ViewPartners';
 import AdminDashboard from './components/AdminDashboard';
 import CommunityList from './components/CommunityList';
@@ -68,7 +66,7 @@ function App() {
           <Route path="/Inquiry" element={<Inquiry />} />
           <Route path="/AdminSetting" element={<AdminSetting />} />
           <Route path="/AdminCalendar" element={<AdminCalendar />} />
-          
+
 
         </Routes>
       </div>
