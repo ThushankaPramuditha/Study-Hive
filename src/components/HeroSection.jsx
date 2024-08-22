@@ -1,27 +1,22 @@
 import React from 'react';
-import heroImage from '../assets/images/hero-image1.png';
+import heroImage from '../assets/images/hero-image.png';
+
 
 const HeroSection = () => {
-  return (
-    <section className="hero bg-yellow-200 py-12 text-left text-black w-full h-auto md:h-[600px] mb-10 rounded-b-[75%] overflow-hidden flex flex-col md:flex-row items-center md:items-start">
-      <div className="hero-text ml-8 md:ml-16 pr-4 md:pr-20 flex-1 text-center md:text-left">
-        <h1 className="text-4xl md:text-5xl mb-2 text-orange-500 mt-10 md:mt-20 font-bold">
-          Collaborate, Learn & Achieve
-        </h1>
-        <p className="text-lg text-customGray mt-4">
-          StudyHive is an interesting platform that will help you to study collaboratively & in a more interactive way.
-        </p>
-        <div className="flex justify-center md:justify-start mt-5">
-          <button className="bg-custom-color hover:bg-custom-color-800 text-white text-3xl font-bold py-4 px-6 rounded-3xl">
-            Join For Free
-          </button>
-        </div>
-      </div>
-      <div className="hero-image flex-1 mt-10 md:mt-0 flex justify-center">
-        <img src={heroImage} alt="StudyHive" className="w-4/5 md:w-3/4 h-auto object-cover" />
-      </div>
-    </section>
-  );
+return (
+<section className="hero bg-yellow-200 py-12 text-left text-black w-full h-[75vh] mb-10 rounded-b-[70%] overflow-hidden flex items-row">
+<div className="hero-text ml-8 pr-20">
+<h1 className="text-5xl mb-2 text-orange-500 ml-10 mt-20 font-bold">Collaborate, Learn & Achieve</h1>
+<p className="text-lg text-customGray ml-10 ">StudyHive is an interesting platform that will help you to study collaboratively & more an interactive way.</p>
+<button className="bg-custom-color hover:bg-custom-color-800 text-white py-2 px-4 rounded-lg mt-5 ml-10">Join for free</button>
+</div>
+<div className="hero-image">
+<img src={heroImage} alt="StudyHive" className="mt-20 w-full h-[95%] " />
+</div>
+</section>
+);
 };
+
+
 
 export default HeroSection;
