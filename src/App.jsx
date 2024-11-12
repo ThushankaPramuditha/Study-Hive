@@ -21,8 +21,6 @@ import Settings from './components/Settings';
 import FindPartner from './components/FindPartner';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import './App.css';
-import FindPartner from './components/FindPartner';
-import Settings from './components/Settings';
 import Viewpartner from './components/ViewPartners';
 import AdminDashboard from './components/AdminDashboard';
 import CommunityList from './components/CommunityList';
@@ -32,6 +30,7 @@ import StudyRoomList from './components/StudyRoomList';
 import Inquiry from './components/Inquiry';
 import AdminSetting from './components/AdminSetting';
 import AdminCalendar from './components/AdminCalendar';
+import Personalinfo from './components/Personal-info';
 
 
 function App() {
@@ -59,6 +58,7 @@ function App() {
           <Route path="/logout" element={<Logout />} />
           <Route path="/findpartner" element={<FindPartner />} />
           <Route path="/settings" element={<Settings />} />
+          <Route path="/Personalinfo" element={<Personalinfo />} />
           <Route path="/ViewPartners" element={<Viewpartner />} />
           <Route path="/AdminDashboard" element={<AdminDashboard />} />
           <Route path="/CommunityList" element={<CommunityList />} />
