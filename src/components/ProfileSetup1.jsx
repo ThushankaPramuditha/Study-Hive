@@ -14,14 +14,16 @@
             about_me: '',
             gender: '',
             adaptability: '',
-            preferredLanguages: '',
+            preferredLanguages: [],
             preferred_study_time: '',
-            study_goal: [],
-            studying_for: '',
+            studyGoal: [],
+            studyingFor: '',
             university: '',
             username: '',
-            profile_photo_url: ''
+            profilePhotoUrl: ''
             });
+
+            const [imagePreview, setImagePreview] = useState(null);
 
             const navigate = useNavigate(); // Initialize navigate
 
@@ -71,11 +73,13 @@
                 console.log('Submitting profile data:', profileData); // Add this line to log the data
                 
                 try {
-                  const serializedStudyGoal = profileData.study_goal.join(',');
+                  const serializedStudyGoal = profileData.studyGoal.join(',');
+                  const serializedpreferredLanguages = profileData.preferredLanguages.join(',');
                   const dataToSend = {
                     ...profileData,
-                    study_goal: serializedStudyGoal,
-                    preferred_languages: profileData.preferredLanguages, // Ensure it's the correct field
+                    studyGoal: serializedStudyGoal,
+                    preferredLanguages: serializedpreferredLanguages,
+                     // Ensure it's the correct field
                   };
               
                   const response = await profileService.createProfile(dataToSend);
@@ -88,6 +92,21 @@
               };
               
 
+              const handleFileInputChange = (e) => {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onloadend = () => {
+                        setProfileData({
+                            ...profileData,
+                            profilePhotoUrl: reader.result // Set the uploaded image's base64 URL
+                        });
+                        setImagePreview(reader.result); // Set the image preview
+                    };
+                    reader.readAsDataURL(file); // Convert the image file to a base64 URL
+                }
+            };
+            
             const handleChange = (e) => {
             const { name, value } = e.target;
             setProfileData({
@@ -98,16 +117,31 @@
 
             const handleCheckboxChange = (event) => {
                 const { value, checked } = event.target;
-            
+                
                 // If checked, add the value to the study_goal array, else remove it
                 setProfileData((prevState) => {
                     const updatedStudyGoals = checked
-                        ? [...prevState.study_goal, value] // Add value if checked
-                        : prevState.study_goal.filter(goal => goal !== value); // Remove value if unchecked
+                        ? [...prevState.studyGoal, value] // Add value if checked
+                        : prevState.studyGoal.filter(goal => goal !== value); // Remove value if unchecked
             
                     return {
                         ...prevState,
-                        study_goal: updatedStudyGoals
+                        studyGoal: updatedStudyGoals
+                    };
+                });
+            };
+            
+            const handlePreferredLanguageCheckbox = (event) => {
+                const { value, checked } = event.target;
+            
+                setProfileData((prevState) => {
+                    const updatedPreferredLanguages = checked
+                        ? [...prevState.preferredLanguages, value] // Add value if checked
+                        : prevState.preferredLanguages.filter(language => language !== value); // Remove value if unchecked
+            
+                    return {
+                        ...prevState,
+                        preferredLanguages: updatedPreferredLanguages
                     };
                 });
             };
@@ -196,12 +230,12 @@
         onChange={handleChange}
         className="input-field text-color"
         >
-        <option value="select" disabled hidden>Select</option>
-        <option value="Bachelor">Bachelor's degree</option>
-        <option value="Master">Master's degree</option>
-        <option value="PhD">PhD</option>
-        <option value="IELTS">IELTS</option>
-        <option value="Other">Other</option>
+         <option value="" disabled selected>Select</option>
+    <option value="Bachelor">Bachelor's degree</option>
+    <option value="Master">Master's degree</option>
+    <option value="PhD">PhD</option>
+    <option value="IELTS">IELTS</option>
+    <option value="Other">Other</option>
         </select>
 
                     </div>
@@ -256,19 +290,60 @@
 
                 {currentStep === 2 && (
                     <form onSubmit={handleSubmit}>
-                    <div className="mb-6">
-                        <label className="block mb-2 text-m font-inter text-black" htmlFor="preferredLanguage">Preferred Language</label>
+                    {/* <div className="mb-6">
+                        <label className="block mb-2 text-m font-inter text-black" htmlFor="preferredLanguages">Preferred Language</label>
                         <input
                         type="text"
-                        id="preferredLanguage"
-                        name="preferredLanguage"
+                        id="preferredLanguages"
+                        name="preferredLanguages"
                         placeholder="Type Your Preferred Language of Communication"
                         value={profileData.preferredLanguages}
                         onChange={handleChange}
                         className="input-field"
                         />
-                    </div>
+                    </div> */}
 
+<div className="mb-6">
+    <label className="block mb-2 text-m font-inter text-black">Preferred Languages</label>
+    <div className="flex flex-col">
+        <div className="flex items-center mb-2 ml-8">
+            <input
+                type="checkbox"
+                id="sinhala"
+                name="preferredLanguages"
+                value="Sinhala"
+                checked={profileData.preferredLanguages.includes('Sinhala')}
+                onChange={handlePreferredLanguageCheckbox }
+                className="checkbox-custom mr-2"
+            />
+            <label className="text-sm font-inter text-black font-light" htmlFor="sinhala">Sinhala</label>
+        </div>
+        <div className="flex items-center mb-2 ml-8">
+            <input
+                type="checkbox"
+                id="english"
+                name="preferredLanguages"
+                value="English"
+                checked={profileData.preferredLanguages.includes('English')}
+                onChange={handlePreferredLanguageCheckbox }
+                className="checkbox-custom mr-2"
+            />
+            <label className="text-sm font-inter text-black font-light" htmlFor="english">English</label>
+        </div>
+        <div className="flex items-center mb-2 ml-8">
+            <input
+                type="checkbox"
+                id="tamil"
+                name="preferredLanguages"
+                value="Tamil"
+                checked={profileData.preferredLanguages.includes('Tamil')}
+                onChange={handlePreferredLanguageCheckbox }
+                className="checkbox-custom mr-2"
+            />
+            <label className="text-sm font-inter text-black font-light" htmlFor="tamil">Tamil</label>
+        </div>
+    </div>
+</div>
                     <div className="mb-6">
                         <label className="block mb-2 text-m font-inter text-black">Preferred Study Time</label>
                         <div className="flex flex-col">
@@ -332,7 +407,7 @@
                         id="fun"
                         name="studyGoal"
                         value="Just for fun"
-                        checked={profileData.study_goal.includes('Just for fun')}
+                        checked={profileData.studyGoal.includes('Just for fun')}
                         onChange={handleCheckboxChange}
                         className="checkbox-custom mr-2"
                     />
@@ -344,7 +419,7 @@
                         id="personalDevelopment"
                         name="studyGoal"
                         value="Personal Development"
-                        checked={profileData.study_goal.includes('Personal Development')}
+                        checked={profileData.studyGoal.includes('Personal Development')}
                         onChange={handleCheckboxChange}
                         className="checkbox-custom mr-2"
                     />
@@ -356,7 +431,7 @@
                         id="academicDevelopment"
                         name="studyGoal"
                         value="Academic Development"
-                        checked={profileData.study_goal.includes('Academic Development')}
+                        checked={profileData.studyGoal.includes('Academic Development')}
                         onChange={handleCheckboxChange}
                         className="checkbox-custom mr-2"
                     />
@@ -368,7 +443,7 @@
                         id="professionalDevelopment"
                         name="studyGoal"
                         value="Professional Development"
-                        checked={profileData.study_goal.includes('Professional Development')}
+                        checked={profileData.studyGoal.includes('Professional Development')}
                         onChange={handleCheckboxChange}
                         className="checkbox-custom mr-2"
                     />
@@ -403,16 +478,17 @@
 
                 {currentStep === 3 && (
                     <form onSubmit={handleSubmit}>
-                    <div className="flex flex-col items-center justify-center mb-80 mt-40 h-full">
-                        <label className="block mb-2 text-m font-inter text-black text-center" htmlFor="profilePhoto">Let’s Add a Profile Photo</label>
+                    {/* <div className="flex flex-col items-center justify-center mb-80 mt-40 h-full">
+                        <label className="block mb-2 text-m font-inter text-black text-center" htmlFor="profilePhotoUrl">Let’s Add a Profile Photo</label>
                         <input
                             type="url"
-                            name="profile_photo_url"
-                            value={profileData.profile_photo_url}
+                            id="profilePhotoUrl"
+                            name="profilePhotoUrl"
+                            value={profileData.profilePhotoUrl}
                             onChange={handleChange}
                             placeholder="Enter the URL of your profile photo"
                         />
-                        {/* <input
+                        { <input
                         type="file"
                         accept="image/*"
                         id="profilePhoto"
@@ -422,9 +498,23 @@
 
                         {formData.profilePhotoUrl && (
                         <img src={formData.profilePhotoUrl} alt="Preview" className="mt-4 rounded-lg shadow-md" style={{ maxWidth: '100%', height: 'auto' }} />
-                        )} */
+                        )} 
                         }
-                    </div>
+                    </div> */}
+
+<div className="flex flex-col items-center justify-center mb-80 mt-40 h-full">
+                                <label className="block mb-2 text-m font-inter text-black text-center" htmlFor="profilePhotoUrl">Let’s Add a Profile Photo</label>
+                                {/* File input for image upload */}
+                                <input
+                                    type="file"
+                                    accept="image/*"
+                                    onChange={handleFileInputChange}
+                                    className="input-field"
+                                />
+                                {imagePreview && (
+                                    <img src={imagePreview} alt="Profile Preview" className="mt-4 rounded-lg shadow-md" style={{ maxWidth: '100%', height: 'auto' }} />
+                                )}
+                                </div>
 
                     <div className="mt-6 flex justify-center">
                         <button className="px-4 py-2 text-white font-inter bg-[#A6B15C] rounded-full hover:bg-[#A6B15C] focus:outline-none focus:bg-[#A6B15C] font-light w-40 h-12" type="submit" >

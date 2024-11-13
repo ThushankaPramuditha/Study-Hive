@@ -2,6 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import solo from "../assets/images/Solostudy.png";
 import group from "../assets/images/Groupstudy.png";
+import User1 from "../assets/images/user1.jpg";
+import User2 from "../assets/images/user2.jpeg";
 
 import User3 from "../assets/images/women.png";
 import User4 from "../assets/images/profile.png";
@@ -54,7 +56,6 @@ const DashboardContent = () => {
   const handleAllow = (e) => {
     setIsAllow(e.target.checked);
   };
-
   return (
     <div
       className={`xl:flex
