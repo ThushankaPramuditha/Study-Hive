@@ -56,6 +56,7 @@ const DashboardContent = () => {
   const handleAllow = (e) => {
     setIsAllow(e.target.checked);
   };
+ 
   return (
     <div
       className={`xl:flex
