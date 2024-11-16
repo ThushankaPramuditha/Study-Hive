@@ -481,29 +481,7 @@
 
                 {currentStep === 3 && (
                     <form onSubmit={handleSubmit}>
-                    {/* <div className="flex flex-col items-center justify-center mb-80 mt-40 h-full">
-                        <label className="block mb-2 text-m font-inter text-black text-center" htmlFor="profilePhotoUrl">Let’s Add a Profile Photo</label>
-                        <input
-                            type="url"
-                            id="profilePhotoUrl"
-                            name="profilePhotoUrl"
-                            value={profileData.profilePhotoUrl}
-                            onChange={handleChange}
-                            placeholder="Enter the URL of your profile photo"
-                        />
-                        { <input
-                        type="file"
-                        accept="image/*"
-                        id="profilePhoto"
-                        onChange={handleFileInputChange}
-                        className="input-field"
-                        />
-
-                        {formData.profilePhotoUrl && (
-                        <img src={formData.profilePhotoUrl} alt="Preview" className="mt-4 rounded-lg shadow-md" style={{ maxWidth: '100%', height: 'auto' }} />
-                        )} 
-                        }
-                    </div> */}
+                  
 
 <div className="flex flex-col items-center justify-center mb-80 mt-40 h-full">
                                 <label className="block mb-2 text-m font-inter text-black text-center" htmlFor="profilePhotoUrl">Let’s Add a Profile Photo</label>

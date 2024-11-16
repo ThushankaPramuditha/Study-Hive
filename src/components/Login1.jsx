@@ -291,7 +291,8 @@ const Login = () => {
         try {
             const response = await register({ email, password, firstname, lastname });
             localStorage.setItem('token', response.token);
-            navigate('/login1');
+          //  navigate('/login1');
+            setIsLogin(true);
         } catch (error) {
             setFormError('Registration failed. Please try again.');
         }
