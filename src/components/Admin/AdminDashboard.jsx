@@ -6,7 +6,7 @@ import Notification from './Notification';
 import Reminder from './Reminders';
 import Calendar from './BoxCalendar';
 import AdminReports from './AdminReports';
-import '../../App.css';
+import '../App.css';
 
 const AdminDashboard = () => {
   const [currentDateTime, setCurrentDateTime] = useState(new Date());
