@@ -17,8 +17,6 @@ import Login1 from './components/Login1';
 import Forums from './components/Forums';
 import Logout from './components/Logout';
 import ProfileSetup1 from './components/ProfileSetup1';
-import Settings from './components/Settings';
-import FindPartner from './components/FindPartner';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import './App.css';
 import FindPartner from './components/FindPartner';
@@ -32,6 +30,8 @@ import StudyRoomList from './components/StudyRoomList';
 import Inquiry from './components/Inquiry';
 import AdminSetting from './components/AdminSetting';
 import AdminCalendar from './components/AdminCalendar';
+import VideoCall from './components/VideoCall';
+import Studyroomcreate from './components/Studyroomcreate';
 
 
 function App() {
@@ -68,6 +68,8 @@ function App() {
           <Route path="/Inquiry" element={<Inquiry />} />
           <Route path="/AdminSetting" element={<AdminSetting />} />
           <Route path="/AdminCalendar" element={<AdminCalendar />} />
+          <Route path="/VideoCall" element={<VideoCall />} />	
+          <Route path="/studyroomcreate" element={<Studyroomcreate />} />
           
 
         </Routes>
