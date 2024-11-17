@@ -72,14 +72,14 @@ const Personalinfo = () => {
                 <p>University</p>
                 <Link to="/Edit" className="underline font-semibold text-[14px]">Edit</Link>
               </div>
-              <p className='text-[#717171] text-[14px]'>{profile.gender}</p>
+              <p className='text-[#717171] text-[14px]'>{profile.university}</p>
               <hr className="my-4 mb-5" />
 
               <div className="flex justify-between ">
                 <p>Studying for</p>
                 <Link to="/Edit" className="underline font-semibold text-[14px]">Edit</Link>
               </div>
-              <p className='text-[#717171] text-[14px]'>{profile.university}</p>
+              <p className='text-[#717171] text-[14px]'>{profile.studyingFor}</p>
               <hr className="my-4 mb-5" />
 
               <div className="flex justify-between ">

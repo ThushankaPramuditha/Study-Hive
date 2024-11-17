@@ -232,6 +232,7 @@ import { register, login } from '../api/authService';
 import loginImage from '../assets/images/login.png';
 import backImage from '../assets/images/back.png';
 import '../App.css';
+import { profileService } from '../api/profileService';
 
 const Login = () => {
     const [isLogin, setIsLogin] = useState(true);
@@ -265,6 +266,22 @@ const Login = () => {
         return errors;
     };
 
+    // const handleLogin = async (event) => {
+    //     event.preventDefault();
+    //     const errors = validateLogin();
+    //     if (Object.keys(errors).length > 0) {
+    //         setErrors(errors);
+    //         return;
+    //     }
+    //     try {
+    //         const response = await login({ email, password });
+    //         localStorage.setItem('token', response.token);
+    //         navigate('/ProfileSetup1');
+    //     } catch (error) {
+    //         setFormError('Login failed. Please check your credentials and try again.');
+    //     }
+    // };
+
     const handleLogin = async (event) => {
         event.preventDefault();
         const errors = validateLogin();
@@ -272,14 +289,29 @@ const Login = () => {
             setErrors(errors);
             return;
         }
+    
         try {
             const response = await login({ email, password });
+    
+            // Save the token to localStorage
             localStorage.setItem('token', response.token);
-            navigate('/ProfileSetup1');
+    
+            // Extract userId and profileExists from the response
+            const { userId, profileExists } = response;
+    
+            // Redirect based on the `profileExists` field
+            if (profileExists) {
+                navigate('/home'); // Redirect to the home page
+            } else {
+                navigate(`/ProfileSetup1?userId=${userId}`); // Redirect to profile setup with userId as query param
+            }
         } catch (error) {
             setFormError('Login failed. Please check your credentials and try again.');
         }
     };
+    
+    
+    
 
     const handleRegister = async (event) => {
         event.preventDefault();

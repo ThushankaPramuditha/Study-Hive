@@ -21,4 +21,8 @@ export const profileService = {
       throw new Error('Failed to set up profile');
     }
   },
+
+
+  
 };
+
