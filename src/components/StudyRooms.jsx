@@ -11,7 +11,9 @@ const StudyRooms = () => {
         <div className="ml-10">
           <p className="text-blue-900  text-4xl font-bold">Let's Get Back To Work</p>
           <div className="flex items-center justify-between mt-6">
-            <button className="flex items-center bg-custom-color p-2 text-sm text-white rounded-[40px] w-[170px] justify-center">Create a New Room<i class="fa-solid fa-plus text-yellow-400 ml-2"></i></button>
+            {/* <button className="flex items-center bg-custom-color p-2 text-sm text-white rounded-[40px] w-[170px] justify-center">Create a New Room<i class="fa-solid fa-plus text-yellow-400 ml-2"></i></button> */}
+            <a href="/videocall" className="flex items-center bg-custom-color p-2 text-sm text-white rounded-[40px] w-[170px] justify-center">Create a New Room<i class="fa-solid fa-plus text-yellow-400 ml-2"></i></a>
+
             <div className="relative flex items-center">
             <i class="fa-solid fa-magnifying-glass absolute ml-5 pointer-events-none"></i>
             <input className="bg-search  border-none pr-3 pl-12  xl:w-[390px] h-[35px] rounded-[40px] mr-20 placeholder-black" name="search" placeholder="Search Study Rooms" autocomplete="off" aria-label="Search Study Rooms"></input>

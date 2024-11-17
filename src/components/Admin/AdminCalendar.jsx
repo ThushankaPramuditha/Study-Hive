@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { Calendar, momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
-import SideBarnNavbar from './SideBarnNavbar';
+// import SideBarnNavbar from './SideBarnNavbar';
 import AdminEvent from './AdminEvent';
-import './MyCalendar.css';
+import '../MyCalendar.css';
 import AdminSidebar from './AdminSidebar';
 
 const localizer = momentLocalizer(moment);

@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 import AdminSidebar from './AdminSidebar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowDown, faArrowUp } from '@fortawesome/free-solid-svg-icons';
-import Notification from './Notification';
-import Reminder from './Reminders';
-import Calendar from './BoxCalendar';
+import Notification from '../Notification';
+import Reminder from '../Reminders';
+import Calendar from '../BoxCalendar';
 import AdminReports from './AdminReports';
-import '../App.css';
+import '../../App.css';
 
 const AdminDashboard = () => {
   const [currentDateTime, setCurrentDateTime] = useState(new Date());

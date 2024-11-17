@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import solo from "../assets/images/Solostudy.png";
 import group from "../assets/images/Groupstudy.png";
@@ -9,7 +9,6 @@ import User4 from "../assets/images/profile.png";
 import Calendar from "./BoxCalendar";
 
 const DashboardContent = () => {
-
   const navigate = useNavigate();
 
   const Find = (event) => {
@@ -17,51 +16,104 @@ const DashboardContent = () => {
     navigate('/findpartner');
   };
 
+  // State for create room popup
   const [isPop, setIsPop] = useState(false);
+  const [roomName, setRoomName] = useState('');
+  const [roomDescription, setRoomDescription] = useState('');
+  const [count, setCount] = useState(0);
+  const [isChecked, setIsChecked] = useState(false);
+  const [isAllow, setIsAllow] = useState(false);
 
-  const createRoom = () => {
-    setIsPop(!isPop);
+  const createRoom = async () => {
+    if (!roomName || !roomDescription || !isAllow) {
+      console.error('Please fill all required fields and accept terms');
+      return;
+    }
+
+    const roomData = {
+      name: roomName,
+      description: roomDescription,
+      participantCount: count,
+      isPublic: isChecked,
+      acceptedTerms: isAllow,
+    };
+
+    try {
+      const response = await fetch('/api/study-rooms', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(roomData),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setIsPop(false);
+        navigate(`/videocall?roomID=${data.roomID}`);
+      } else {
+        console.error('Failed to create the study room');
+      }
+    } catch (error) {
+      console.error('Error creating room:', error);
+    }
   };
 
+  // State for join room popup
   const [isPopjoin, setIsPopjoin] = useState(false);
+  const [roomKey, setRoomKey] = useState('');
 
-  const joinRoom = () => {
-    setIsPopjoin(!isPopjoin);
+  const joinRoom = async () => {
+    if (!roomKey || !isAllow) {
+      console.error('Please provide room key and accept terms');
+      return;
+    }
+
+    try {
+      const response = await fetch('/api/join-room', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ roomKey, acceptedTerms: isAllow }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setIsPopjoin(false);
+        navigate(`/videocall?roomID=${data.roomID}`);
+      } else {
+        console.error('Failed to join the study room');
+      }
+    } catch (error) {
+      console.error('Error joining room:', error);
+    }
   };
 
   const handleInputChange = (event) => {
     const value = event.target.value;
-    // Check if the input value is a number
     if (!isNaN(value)) {
       setCount(Number(value));
     }
   };
 
-  const [count, setCount] = useState(0);
   const increment = () => {
     setCount(count + 1);
   };
 
-  const [isChecked, setIsChecked] = useState(false);
-
   const handleChange = (e) => {
-    const { checked } = e.target;
-    setIsChecked(checked);
+    setIsChecked(e.target.checked);
   };
-
-  const [isAllow, setIsAllow] = useState(false);
 
   const handleAllow = (e) => {
     setIsAllow(e.target.checked);
   };
 
+
   return (
-    <div
-      className={`xl:flex
-    mt-2 xl:ml-[263px] ml-[60px]`}
-    >
+    <div className="xl:flex mt-2 xl:ml-[263px] ml-[60px]">
       <div className="xl:w-[75%] w-[100%]">
-        <div className="ml-10">
+      <div className="ml-10">
           <p className="text-blue-900  text-2xl">Welcome, Sadun S.</p>
           <p className="text-gray-400">Have a good day!</p>
         </div>
@@ -344,37 +396,37 @@ const DashboardContent = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div>  
       {isPop && (
         <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center">
           <div className="bg-white p-8 rounded-2xl shadow-lg h-auto w-[400px]">
             <div className="flex flex-col justify-center items-center">
-              <h2 className="text-xl font-semibold mb-1">
-                Let’s Create Your Room
-              </h2>
+              <h2 className="text-xl font-semibold mb-1">Let's Create Your Room</h2>
               <div className="h-[2px] w-[100px] bg-questions"></div>
             </div>
             <div className="mt-10">
               <p className="text-sm font-semibold">Study Room Name</p>
               <input
                 type="text"
+                value={roomName}
+                onChange={(e) => setRoomName(e.target.value)}
                 className="border questions rounded p-3 pl-6 w-[100%] mt-3 text-xs rounded-3xl"
                 placeholder="Enter your Study Room name"
-              ></input>
+              />
             </div>
             <div className="mt-5">
               <p className="text-sm font-semibold">About the Study Room</p>
               <textarea
+                value={roomDescription}
+                onChange={(e) => setRoomDescription(e.target.value)}
                 className="border questions rounded rounded-3xl mt-3 w-[100%] h-[100px] text-xs p-3 pl-6 resize-none textarea-hide-scrollbar"
                 placeholder="Let Others Know About Your Study Room"
-              ></textarea>
+              />
             </div>
             <div>
               <div className="flex justify-between h-[40px] w-auto member_count items-center rounded rounded-xl mt-5">
                 <div className="">
-                  <p className="text-xs align-center ml-3">
-                    Number of Participants
-                  </p>
+                  <p className="text-xs align-center ml-3">Number of Participants</p>
                 </div>
                 <div className="mr-3">
                   <input
@@ -384,7 +436,7 @@ const DashboardContent = () => {
                     className="border member_count rounded text-center text-sm w-10 h-7"
                   />
                   <button onClick={increment} className="text-black ml-3 hover:shadow-lg hover:shadow-gray-400 active:shadow-none">
-                    <i class="fa-solid fa-plus text-sm"></i>
+                    <i className="fa-solid fa-plus text-sm"></i>
                   </button>
                 </div>
               </div>
@@ -397,7 +449,7 @@ const DashboardContent = () => {
                     type="checkbox"
                     className="square-radio"
                     checked={isChecked}
-                    onChange={handleChange}
+                    onChange={(e) => setIsChecked(e.target.checked)}
                   />
                   <span className="text-xs ">Anyone can join</span>
                 </label>
@@ -410,28 +462,31 @@ const DashboardContent = () => {
                     type="checkbox"
                     className="square-radio"
                     checked={isAllow}
-                    onChange={handleAllow}
+                    onChange={(e) => setIsAllow(e.target.checked)}
                   />
-                  <span className="text-xs ">Accept terms and connditions</span>
+                  <span className="text-xs ">Accept terms and conditions</span>
                 </label>
               </div>
             </div>
             <div className="flex justify-between mt-10">
               <button
-                onClick={createRoom}
+                onClick={() => setIsPop(false)}
                 className="px-4 py-2 border border-[2px] questions text-white rounded hover:shadow-lg hover:shadow-gray-400 active:shadow-none"
               >
                 <p className="logo1">Cancel</p>
               </button>
-              {isAllow && (
-                <button className="px-4 py-2 w-[100px] bg-questions text-black text-xs font-semibold rounded hover:shadow-lg hover:shadow-gray-400 active:shadow-none">
-                  <p>Let’s Go</p>
-                </button>
-              )}
+              <button
+                onClick={createRoom}
+                className="px-4 py-2 w-[100px] bg-questions text-black text-xs font-semibold rounded hover:shadow-lg hover:shadow-gray-400 active:shadow-none"
+                disabled={!isAllow || !roomName || !roomDescription}
+              >
+                <p>Let's Go</p>
+              </button>
             </div>
           </div>
         </div>
       )}
+
       {isPopjoin && (
         <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center">
           <div className="bg-white p-8 rounded-2xl shadow-lg h-auto w-[400px]">
@@ -440,20 +495,14 @@ const DashboardContent = () => {
               <div className="h-[2px] w-[100px] bg-questions"></div>
             </div>
             <div className="mt-10">
-              <p className="text-sm font-semibold">Study Room Name</p>
-              <input
-                type="text"
-                className="border questions rounded p-3 pl-6 w-[100%] mt-3 text-xs rounded-3xl"
-                placeholder="Enter your Study Room name"
-              ></input>
-            </div>
-            <div className="mt-5">
               <p className="text-sm font-semibold">Study Room Key</p>
               <input
                 type="text"
+                value={roomKey}
+                onChange={(e) => setRoomKey(e.target.value)}
                 className="border questions rounded p-3 pl-6 w-[100%] mt-3 text-xs rounded-3xl"
                 placeholder="Enter your Study Room key"
-              ></input>
+              />
             </div>
             <div className="flex justify-between mt-10">
               <div className="bg-gray-100 flex items-center justify-center space-x-4 mr-2">
@@ -462,82 +511,55 @@ const DashboardContent = () => {
                     type="checkbox"
                     className="square-radio"
                     checked={isAllow}
-                    onChange={handleAllow}
+                    onChange={(e) => setIsAllow(e.target.checked)}
                   />
-                  <span className="text-xs ">Accept terms and connditions</span>
+                  <span className="text-xs ">Accept terms and conditions</span>
                 </label>
               </div>
             </div>
             <div className="flex justify-between mt-10">
               <button
-                onClick={joinRoom}
+                onClick={() => setIsPopjoin(false)}
                 className="px-4 py-2 border border-[2px] questions text-white rounded hover:shadow-lg hover:shadow-gray-400 active:shadow-none"
               >
                 <p className="logo1">Cancel</p>
               </button>
-              {isAllow && (
-                <button className="px-4 py-2 w-[100px] bg-questions text-black text-xs font-semibold rounded hover:shadow-lg hover:shadow-gray-400 active:shadow-none">
-                  <p>Let’s Go</p>
-                </button>
-              )}
+              <button
+                onClick={joinRoom}
+                className="px-4 py-2 w-[100px] bg-questions text-black text-xs font-semibold rounded hover:shadow-lg hover:shadow-gray-400 active:shadow-none"
+                disabled={!isAllow || !roomKey}
+              >
+                <p>Let's Go</p>
+              </button>
             </div>
           </div>
         </div>
       )}
-      <div className="h-100 border border-gray-200 hidden xl:block"></div>
-      <div className="xl:w-[25%] flex flex-col items-center ">
-        <div className="xl:h-[30%] xl:w-[90%] flex justify-center items-center w-[400px] h-[500px] p-2">
-          <Calendar />
-        </div>
-        <div className="">
-          <div>
-            <p className="m-10 ml-4 mb-4 font-bold text-2xl">Schedule</p>
+
+        <div className="h-100 border border-gray-200 hidden xl:block"></div>
+        <div className="xl:w-[25%] flex flex-col items-center ">
+          <div className="xl:h-[30%] xl:w-[90%] flex justify-center items-center w-[400px] h-[500px] p-2">
+            <Calendar />
           </div>
-          <div className="flex flex-col items-center ">
-            <div className="flex justify-between items-center xl:w-[100%] w-[300px]  h-auto bg-gray-100 rounded-[10px]  m-2 p-1">
-              <div className="xl:ml-3 ml-7 w-2 h-2 bg-yellow-600 rounded"></div>
-              <div className="flex flex-col">
-                <p className="text-xl font-bold mb-3">English Classes</p>
-                <p className="opacity-40">Tika sarak s.pd</p>
-              </div>
-              <div className="mr-10 opacity-40">
-                <i class="fa-solid fa-angle-right"></i>
-              </div>
+          <div className="">
+            <div>
+              <p className="m-10 ml-4 mb-4 font-bold text-2xl">Schedule</p>
             </div>
-            <div className="flex justify-between items-center xl:w-[100%] w-[300px]  h-auto bg-gray-100 rounded-[10px]  m-2 p-1">
-              <div className="xl:ml-3 ml-7 w-2 h-2 bg-yellow-600 rounded"></div>
-              <div className="flex flex-col">
-                <p className="text-xl font-bold mb-3">English Classes</p>
-                <p className="opacity-40">Tika sarak s.pd</p>
-              </div>
-              <div className="mr-10 opacity-40">
-                <i class="fa-solid fa-angle-right"></i>
-              </div>
-            </div>
-            <div className="flex justify-between items-center xl:w-[100%] w-[300px]  h-auto bg-gray-100 rounded-[10px]  m-2 p-1">
-              <div className="xl:ml-3 ml-7 w-2 h-2 bg-yellow-600 rounded"></div>
-              <div className="flex flex-col">
-                <p className="text-xl font-bold mb-3">English Classes</p>
-                <p className="opacity-40">Tika sarak s.pd</p>
-              </div>
-              <div className="mr-10 opacity-40">
-                <i class="fa-solid fa-angle-right"></i>
-              </div>
-            </div>
-            <div className="flex justify-between items-center xl:w-[100%] w-[300px]  h-auto bg-gray-100 rounded-[10px]  m-2 p-1">
-              <div className="xl:ml-3 ml-7 w-2 h-2 bg-yellow-600 rounded"></div>
-              <div className="flex flex-col">
-                <p className="text-xl font-bold mb-3">English Classes</p>
-                <p className="opacity-40">Tika sarak s.pd</p>
-              </div>
-              <div className="mr-10 opacity-40">
-                <i class="fa-solid fa-angle-right"></i>
+            <div className="flex flex-col items-center ">
+              <div className="flex justify-between items-center xl:w-[100%] w-[300px] h-auto bg-gray-100 rounded-[10px] m-2 p-1">
+                <div className="xl:ml-3 ml-7 w-2 h-2 bg-yellow-600 rounded"></div>
+                <div className="flex flex-col">
+                  <p className="text-xl font-bold mb-3">English Classes</p>
+                  <p className="opacity-40">Tika sarak s.pd</p>
+                </div>
+                <div className="mr-10 opacity-40">
+                  <i className="fa-solid fa-angle-right"></i>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
   );
 };
 

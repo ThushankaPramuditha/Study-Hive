@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLocation, Link } from 'react-router-dom';
-import logo from '../assets/images/logo.png';
+import logo from '../../assets/images/logo.png';
 
 const AdminSidebar = () => {
   const location = useLocation();

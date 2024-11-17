@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
-import '../Reports.css';
+import '../../Reports.css';
 
 const data = [
   { name: 'Mon', users: 50, studyGroups: 10, communities: 5 },
