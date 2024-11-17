@@ -485,7 +485,7 @@ const fetchComments = async (questionId) => {
                     </div>
                     <div className="flex flex-col ml-2">
                       <p className="text-lg font-semibold">{name}</p>
-                      <p className="opacity-40">added a comment to your post.</p>
+                      <p className="opacity-40">added a comment to your post..</p>
                     </div>
                   </div>
                 </div>
