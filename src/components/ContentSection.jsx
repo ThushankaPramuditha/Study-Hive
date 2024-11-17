@@ -17,7 +17,7 @@ const ContentsSection = () => {
               <i className="fa-solid fa-users text-customOlive text-3xl"></i>
             </div>
           </div>
-          <h3 className="text-lg sm:text-xl text-customBlue font-bold mb-1">Collaborative Learning Environments</h3>
+          <h3 className="text-lg sm:text-xl text-customBlue font-bold mb-1">Collaborative Learning Environments</h3><br/>
           <p className="text-sm sm:text-base text-customGray">Learning is more effective with the right partner. Join StudyHive to connect with like-minded students and enhance your study sessions.
           </p>
         </div>
