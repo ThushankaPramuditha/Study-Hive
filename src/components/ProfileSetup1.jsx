@@ -31,7 +31,7 @@ const ProfileSetup1 = () => {
 
   // Function to finish and navigate to the next page
   const handleFinish = () => {
-    navigate('/home');
+    navigate('/Dashboard');
   };
 
   const handleFileInputChange = (e) => {

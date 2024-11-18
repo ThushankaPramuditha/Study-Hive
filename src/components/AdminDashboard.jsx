@@ -3,7 +3,6 @@ import AdminSidebar from './AdminSidebar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowDown, faArrowUp } from '@fortawesome/free-solid-svg-icons';
 import Notification from './Notification';
-import Reminder from './Reminders';
 import Calendar from './BoxCalendar';
 import AdminReports from './AdminReports';
 import '../App.css';
@@ -14,9 +13,9 @@ const AdminDashboard = () => {
   useEffect(() => {
     const intervalId = setInterval(() => {
       setCurrentDateTime(new Date());
-    }, 60000); 
+    }, 60000);
 
-    return () => clearInterval(intervalId); 
+    return () => clearInterval(intervalId);
   }, []);
 
   const formattedDateTime = currentDateTime.toLocaleString('en-US', {
@@ -30,7 +29,7 @@ const AdminDashboard = () => {
   return (
     <div className="flex">
       <AdminSidebar />
-      <div className="flex-1 flex relative">
+      <div className="flex-1 flex">
         <div className="mt-14 w-[220px] h-[720px] bg-[#CFDCB3] rounded-r-3xl absolute left-[263px] p-4">
           <p className="text-[20px] font-bold text-center mt-4 font-inter">Today Statistics</p>
           <p className="text-[12px] font-medium text-[#717171] text-center">{formattedDateTime}</p>
@@ -72,7 +71,7 @@ const AdminDashboard = () => {
               <p className="text-[10px] text-[#929292] ml-4 mt-2">Compared to yesterday</p>
             </div>
             <div className="bg-white h-[120px] w-[180px] rounded-lg shadow-md p-2">
-              <p className="text-[14px] font-semibold">New Forum Question</p>
+              <p className="text-[14px] font-semibold">New Forum Questions</p>
               <div className="flex items-center">
                 <p className="text-[36px] font-semibold text-[#D4944C] ml-6">321</p>
                 <div className="flex items-center text-[#D4944C] ml-2">
@@ -85,7 +84,7 @@ const AdminDashboard = () => {
             </div>
           </div>
         </div>
-        <div className="flex-1 ml-[273px] p-4">
+        <div className="flex-1 ml-[263px] p-4">
           <div className="relative">
             <div className="absolute top-10 right-4 flex flex-col items-end">
               <p className="font-semibold text-[20px] font-inter">Hi, Ameesha!</p>
