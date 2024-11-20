@@ -167,182 +167,8 @@ const DashboardContent = () => {
                 </div>
               </div>
             </div>
-            <div className="flex flex-col items-center xl:m-4 m-3 xl:w-[90%] w-[100%]">
-              <div className="h-[10px] xl:w-[100%] w-[300px]   bg-yellow-600 rounded-t-[50px]"></div>
-              <div className="h-auto xl:w-[100%] w-[300px]   bg-yellow-100 rounded-b-[30px]">
-                <p className="font-bold text-xl m-4">Pure Math</p>
-                <p className="ml-4 opacity-60">
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                  Officiis illum ex iure incidunt laudan
-                </p>
-                <div className="flex items-center m-4 mt-10">
-                  <i class="fa-solid fa-user opacity-30 mr-4"></i>
-                  <p className="text-sm opacity-40">Pramukha Thenuwara</p>
-                </div>
-                <div className="flex justify-between m-4">
-                  <div className="flex items-center">
-                    <i class="fa-solid fa-note-sticky opacity-30 mr-4"></i>
-                    <p className="text-sm opacity-40">B classes</p>
-                  </div>
-                  <div className="flex items-center mr-20">
-                    <i class="fa-solid fa-clock opacity-30"></i>
-                    <p className="text-sm opacity-40 ml-4">3 Hours</p>
-                  </div>
-                </div>
-                <div className="flex justify-between m-4 mt-10">
-                <div className="flex">
-                    <div className="">
-                      <img src={User1} alt="User" className="w-[40px] h-[40px] rounded-[100%] border-2 border-white bg-black" />
-                    </div>
-                    <div className="ml-[-15px]">
-                      <img src={User3} alt="User" className="w-[40px] h-[40px] rounded-[100%] border-2 border-white bg-black" />
-                    </div>
-                    <div className="ml-[-15px]">
-                      <img src={User4} alt="User" className="w-[40px] h-[40px] rounded-[100%] border-2 border-white bg-black" />
-                    </div>
-                    <div className="ml-[-15px]">
-                      <img src={User2} alt="User" className="w-[40px] h-[40px] rounded-[100%] border-2 border-white bg-black" />
-                    </div>
-                  </div>
-                  <div className="flex items-center justify-between items-center">
-                    <p className="opacity-40">20</p>
-                    <i class="fa-regular fa-comments ml-4 opacity-30"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="flex flex-col items-center xl:m-4 m-3 xl:w-[90%] w-[100%]">
-              <div className="h-[10px] xl:w-[100%] w-[300px]   bg-yellow-600 rounded-t-[50px]"></div>
-              <div className="h-auto xl:w-[100%] w-[300px]   bg-yellow-100 rounded-b-[30px]">
-                <p className="font-bold text-xl m-4">Pure Math</p>
-                <p className="ml-4 opacity-60">
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                  Officiis illum ex iure incidunt laudan
-                </p>
-                <div className="flex items-center m-4 mt-10">
-                  <i class="fa-solid fa-user opacity-30 mr-4"></i>
-                  <p className="text-sm opacity-40">Pramukha Thenuwara</p>
-                </div>
-                <div className="flex justify-between m-4">
-                  <div className="flex items-center">
-                    <i class="fa-solid fa-note-sticky opacity-30 mr-4"></i>
-                    <p className="text-sm opacity-40">B classes</p>
-                  </div>
-                  <div className="flex items-center mr-20">
-                    <i class="fa-solid fa-clock opacity-30"></i>
-                    <p className="text-sm opacity-40 ml-4">3 Hours</p>
-                  </div>
-                </div>
-                <div className="flex justify-between m-4 mt-10">
-                <div className="flex">
-                    <div className="">
-                      <img src={User3} alt="User" className="w-[40px] h-[40px] rounded-[100%] border-2 border-white bg-black" />
-                    </div>
-                    <div className="ml-[-15px]">
-                      <img src={User1} alt="User" className="w-[40px] h-[40px] rounded-[100%] border-2 border-white bg-black" />
-                    </div>
-                    <div className="ml-[-15px]">
-                      <img src={User2} alt="User" className="w-[40px] h-[40px] rounded-[100%] border-2 border-white bg-black" />
-                    </div>
-                    <div className="ml-[-15px]">
-                      <img src={User4} alt="User" className="w-[40px] h-[40px] rounded-[100%] border-2 border-white bg-black" />
-                    </div>
-                  </div>
-                  <div className="flex items-center justify-between items-center">
-                    <p className="opacity-40">20</p>
-                    <i class="fa-regular fa-comments ml-4 opacity-30"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="flex flex-col items-center xl:m-4 m-3 xl:w-[90%] w-[100%]">
-              <div className="h-[10px] xl:w-[100%] w-[300px]   bg-yellow-600 rounded-t-[50px]"></div>
-              <div className="h-auto xl:w-[100%] w-[300px]   bg-yellow-100 rounded-b-[30px]">
-                <p className="font-bold text-xl m-4">Pure Math</p>
-                <p className="ml-4 opacity-60">
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                  Officiis illum ex iure incidunt laudan
-                </p>
-                <div className="flex items-center m-4 mt-10">
-                  <i class="fa-solid fa-user opacity-30 mr-4"></i>
-                  <p className="text-sm opacity-40">Pramukha Thenuwara</p>
-                </div>
-                <div className="flex justify-between m-4">
-                  <div className="flex items-center">
-                    <i class="fa-solid fa-note-sticky opacity-30 mr-4"></i>
-                    <p className="text-sm opacity-40">B classes</p>
-                  </div>
-                  <div className="flex items-center mr-20">
-                    <i class="fa-solid fa-clock opacity-30"></i>
-                    <p className="text-sm opacity-40 ml-4">3 Hours</p>
-                  </div>
-                </div>
-                <div className="flex justify-between m-4 mt-10">
-                <div className="flex">
-                    <div className="">
-                      <img src={User1} alt="User" className="w-[40px] h-[40px] rounded-[100%] border-2 border-white bg-black" />
-                    </div>
-                    <div className="ml-[-15px]">
-                      <img src={User2} alt="User" className="w-[40px] h-[40px] rounded-[100%] border-2 border-white bg-black" />
-                    </div>
-                    <div className="ml-[-15px]">
-                      <img src={User3} alt="User" className="w-[40px] h-[40px] rounded-[100%] border-2 border-white bg-black" />
-                    </div>
-                    <div className="ml-[-15px]">
-                      <img src={User4} alt="User" className="w-[40px] h-[40px] rounded-[100%] border-2 border-white bg-black" />
-                    </div>
-                  </div>
-                  <div className="flex items-center justify-between items-center">
-                    <p className="opacity-40">20</p>
-                    <i class="fa-regular fa-comments ml-4 opacity-30"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="flex flex-col items-center xl:m-4 m-3 xl:w-[90%] w-[100%]">
-              <div className="h-[10px] xl:w-[100%] w-[300px]   bg-yellow-600 rounded-t-[50px]"></div>
-              <div className="h-auto xl:w-[100%] w-[300px]   bg-yellow-100 rounded-b-[30px]">
-                <p className="font-bold text-xl m-4">Pure Math</p>
-                <p className="ml-4 opacity-60">
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                  Officiis illum ex iure incidunt laudan
-                </p>
-                <div className="flex items-center m-4 mt-10">
-                  <i class="fa-solid fa-user opacity-30 mr-4"></i>
-                  <p className="text-sm opacity-40">Pramukha Thenuwara</p>
-                </div>
-                <div className="flex justify-between m-4">
-                  <div className="flex items-center">
-                    <i class="fa-solid fa-note-sticky opacity-30 mr-4"></i>
-                    <p className="text-sm opacity-40">B classes</p>
-                  </div>
-                  <div className="flex items-center mr-20">
-                    <i class="fa-solid fa-clock opacity-30"></i>
-                    <p className="text-sm opacity-40 ml-4">3 Hours</p>
-                  </div>
-                </div>
-                <div className="flex justify-between m-4 mt-10">
-                <div className="flex">
-                    <div className="">
-                      <img src={User4} alt="User" className="w-[40px] h-[40px] rounded-[100%] border-2 border-white bg-black" />
-                    </div>
-                    <div className="ml-[-15px]">
-                      <img src={User3} alt="User" className="w-[40px] h-[40px] rounded-[100%] border-2 border-white bg-black" />
-                    </div>
-                    <div className="ml-[-15px]">
-                      <img src={User2} alt="User" className="w-[40px] h-[40px] rounded-[100%] border-2 border-white bg-black" />
-                    </div>
-                    <div className="ml-[-15px]">
-                      <img src={User1} alt="User" className="w-[40px] h-[40px] rounded-[100%] border-2 border-white bg-black" />
-                    </div>
-                  </div>
-                  <div className="flex items-center justify-between items-center">
-                    <p className="opacity-40">20</p>
-                    <i class="fa-regular fa-comments ml-4 opacity-30"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
+         
+           
           </div>
         </div>
       </div>
@@ -371,7 +197,7 @@ const DashboardContent = () => {
               ></textarea>
             </div>
             <div>
-              <div className="flex justify-between h-[40px] w-auto member_count items-center rounded rounded-xl mt-5">
+              {/* <div className="flex justify-between h-[40px] w-auto member_count items-center rounded rounded-xl mt-5">
                 <div className="">
                   <p className="text-xs align-center ml-3">
                     Number of Participants
@@ -388,7 +214,7 @@ const DashboardContent = () => {
                     <i class="fa-solid fa-plus text-sm"></i>
                   </button>
                 </div>
-              </div>
+              </div> */}
             </div>
             <div className="flex justify-between mt-10">
               <div></div>
