@@ -8,7 +8,7 @@ import User3 from "../assets/images/women.png";
 import User4 from "../assets/images/profile.png";
 import Calendar from "./BoxCalendar";
 
-const DashboardContent = () => {
+const DashboardContent = ({userFname, userLname}) => {
 
   const navigate = useNavigate();
 
@@ -63,7 +63,7 @@ const DashboardContent = () => {
     >
       <div className="xl:w-[75%] w-[100%]">
         <div className="ml-10">
-          <p className="text-blue-900  text-2xl">Welcome, Sadun S.</p>
+          <p className="text-blue-900  text-2xl">Welcome, {userFname} {userLname}</p>
           <p className="text-gray-400">Have a good day!</p>
         </div>
         <div className="mt-10 w-[100%]">

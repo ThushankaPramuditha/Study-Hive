@@ -9,8 +9,8 @@ const RequireAuth = ({ allowedRoles }) => {
   useEffect(() => {
     const fetchRole = async () => {
       try {
-        const role = await fetchUserRole();
-        setUserRole(role);
+        const user = await fetchUserRole();
+        setUserRole(user.role);
       } catch (error) {
         console.error("Error fetching user role:", error.message);
       } finally {

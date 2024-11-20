@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import logo from '../assets/images/logo.png'; 
 import 'tailwindcss/tailwind.css';
 import { Link, useNavigate } from 'react-router-dom'; 
+import { logout } from '../api/authService';
 import axios from 'axios';
 
 const SideBar = ({ sidebarToggle, setSidebarToggle }) => {
@@ -10,9 +11,10 @@ const SideBar = ({ sidebarToggle, setSidebarToggle }) => {
 
   const handleLogout = async () => {
     try {
-      await axios.post('http://localhost:8080/api/v1/auth/logout');
+      const message = await logout();
+      console.log(message);
       localStorage.removeItem('token');
-      navigate('/login1');
+      navigate('/login');
     } catch (error) {
       console.error('Logout failed:', error);
     }

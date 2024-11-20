@@ -14,12 +14,12 @@ return (
 <nav className="space-x-20 mr-10">
 <Link to="/" className="text-customGray hover:text-gray-300">Home</Link>
 <Link to="/home" className="text-customGray hover:text-gray-300">Dashboard</Link>
-<Link to="/login1"
+<Link to="/login"
 className="bg-white hover:bg-orange-400 text-customGray py-2 px-4 rounded-lg"
 >Login</Link>
-<Link to="/"
+{/* <Link to="/"
 className="bg-amber-400 hover:bg-orange-400 text-customGray py-2 px-4 rounded-lg"
->Sign Up</Link>
+>Sign Up</Link> */}
 </nav>
 </div>
 </header>

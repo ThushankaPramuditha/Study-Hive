@@ -63,6 +63,7 @@ const Login = () => {
         try {
             const response = await register({ email, password, firstname, lastname });
             localStorage.setItem('token', response.token);
+            window.location.reload();
             navigate('/login');
         } catch (error) {
             setFormError('Registration failed. Please try again.');
