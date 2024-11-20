@@ -47,7 +47,7 @@ const Login = () => {
         try {
             const response = await login({ email, password });
             localStorage.setItem('token', response.token);
-            navigate('/Home');
+            navigate('/home');
         } catch (error) {
             setFormError('Login failed. Please check your credentials and try again.');
         }
