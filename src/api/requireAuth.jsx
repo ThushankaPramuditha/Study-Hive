@@ -23,7 +23,9 @@ const RequireAuth = ({ allowedRoles }) => {
 
   // Show a loading spinner or placeholder while the role is being fetched
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <div className="flex items-center justify-center h-screen bg-gray-100">
+    <h1 className="text-3xl font-bold text-gray-800">Loading...</h1>
+  </div>;
   }
 
   // Redirect to unauthorized if the role is not allowed
