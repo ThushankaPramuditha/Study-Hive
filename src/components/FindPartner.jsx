@@ -8,12 +8,12 @@ const FindPartner = () => {
   return (
     <div className="">
       <SideBarnNavbar />
-      <div className="ml-[300px] mt-[20px] flex-1">
+      <div className="xl:ml-[300px] ml-[100px] mt-[20px] flex-1">
       <p className="text-blue-900  text-[26px] font-semibold">Please describe the type of study partner you are seeking.</p>
       <p className=" text-[#646464] text-[16px] mr-28 mt-2">Make sure to include specific qualities or skills that are important to you. This will help us match you with someone who complements your learning style and academic goals.</p>
 
       <div className="mt-10">
-          <div className="flex mb-5 text-[14px] gap-8">
+          <div className="xl:flex mb-5 text-[14px] gap-8" >
             <div className="flex flex-col mr-5 ">
               <label className="text-gray-500">Choose the subject area</label>
               <select className="border rounded-lg p-2 mt-2 w-64">
@@ -58,7 +58,7 @@ const FindPartner = () => {
 
           <div className="flex flex-col mb-5 text-[14px]">
             <label className="text-gray-500">Add additional information</label>
-            <textarea className="border rounded-lg p-2 mt-2 h-32  w-[875px]" placeholder="Add additional info here"></textarea>
+            <textarea className="border rounded-lg p-2 mt-2 mr-14 h-32  w-auto" placeholder="Add additional info here"></textarea>
           </div>
 
           <button className="bg-[#F6CA30]  text-black rounded-lg w-24 h-10">Search</button>
@@ -67,8 +67,8 @@ const FindPartner = () => {
 
         <p className="text-black  text-[16px] font-semibold mt-8">Suggested Study Partner Requests  <Link to="/ViewPartners" className="underline font-light ml-3 text-[14px] text-[#929292]">view more </Link></p>
 
-        <div className="bg-[#F1F1F1] h-[310px] mr-20 rounded-lg p-2 mt-6">
-        <div className="container mx-auto grid grid-cols-3 gap-6 mt-6 justify-center w-[90%] ">
+        <div className="bg-[#F1F1F1] mr-20 rounded-lg p-2 mt-6">
+        <div className="container mx-auto xl:grid grid-cols-3 gap-6 mt-6 justify-center w-[90%] ">
           <div  className="content-card bg-white p-5 my-5 rounded-lg shadow-xl transition-transform duration-300 transform hover:scale-105 w-full h-50 relative ">
             <h3 className=" text-[#222] font-bold text-[14px] ">Looking for a Study Partner</h3>
             <p className=" text-[#A6B15C] font-light mb-3 text-[12px]">CS/Machine Learning</p>

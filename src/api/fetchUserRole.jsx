@@ -18,7 +18,7 @@ export const fetchUserRole = async () => {
       },
     });
 
-    return response.data.role;
+    return response.data;
   } catch (error) {
     console.error("Error fetching user role:", error.message);
     return null;

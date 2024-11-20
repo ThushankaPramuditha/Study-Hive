@@ -16,7 +16,7 @@ const Settings = () => {
     <div className="">
       <SideBarnNavbar />
 
-      <div className="ml-[300px] mt-[20px] flex-1">
+      <div className="xl:ml-[300px] ml-[100px] mt-[20px] flex-1">
         <p className="text-2xl font-semibold mb-1">Settings</p>
         <p className="font-bold">
           <span className="font-light">
@@ -25,7 +25,7 @@ const Settings = () => {
         </p>
 
         <div className="container mx-auto grid grid-cols-3 gap-4 mt-6 justify-center w-[90%]">
-          <Link to="/Personal-info" className="content-card bg-white p-5 my-5 rounded-lg shadow-xl transition-transform duration-300 transform hover:scale-105 w-full h-40 relative hover:shadow-yellow">
+          <Link to="/Personal-info" className="content-card bg-white p-5 my-5 rounded-lg shadow-xl transition-transform duration-300 transform hover:scale-105 w-full h-auto relative hover:shadow-yellow">
             <div className="absolute top-5 left-5">
               <img src={personalinfo} alt="Personal info" className='w-6 h-6'/>
             </div>
@@ -33,7 +33,7 @@ const Settings = () => {
             <p className="text-[#717171] text-[12px]">Provide personal details and how we can reach you</p>
           </Link>
 
-          <Link to="/settings/login-security" className="content-card bg-white p-5 my-5 rounded-lg shadow-xl transition-transform duration-300 transform hover:scale-105 w-full h-40 relative">
+          <Link to="/settings/login-security" className="content-card bg-white p-5 my-5 rounded-lg shadow-xl transition-transform duration-300 transform hover:scale-105 w-full h-auto relative">
             <div className="absolute top-5 left-5">
               <img src={loginSettings} alt="Login & security" className='w-6 h-6' />
             </div>
@@ -41,7 +41,7 @@ const Settings = () => {
             <p className="text-[#717171] text-[12px]">Update your password and secure your account</p>
           </Link>
 
-          <Link to="/settings/audio-video" className="content-card bg-white p-5 my-5 rounded-lg shadow-xl transition-transform duration-300 transform hover:scale-105 w-full h-40 relative">
+          <Link to="/settings/audio-video" className="content-card bg-white p-5 my-5 rounded-lg shadow-xl transition-transform duration-300 transform hover:scale-105 w-full h-auto relative">
             <div className="absolute top-5 left-5">
               <img src={audio} alt="Audio & Video" className='w-6 h-6'/>
             </div>
@@ -49,7 +49,7 @@ const Settings = () => {
             <p className="text-[#717171] text-[12px]">Review payments, payouts, coupons, and gift cards</p>
           </Link>
 
-          <Link to="/settings/study-materials" className="content-card bg-white p-5 my-5 rounded-lg shadow-xl transition-transform duration-300 transform hover:scale-105 w-full h-40 relative">
+          <Link to="/settings/study-materials" className="content-card bg-white p-5 my-5 rounded-lg shadow-xl transition-transform duration-300 transform hover:scale-105 w-full h-auto relative">
             <div className="absolute top-5 left-5">
               <img src={studymaterials} alt="Study Materials" className='w-6 h-6' />
             </div>
@@ -57,7 +57,7 @@ const Settings = () => {
             <p className="text-[#717171] text-[12px]">Manage your Study Materials</p>
           </Link>
 
-          <Link to="/settings/notifications" className="content-card bg-white p-5 my-5 rounded-lg shadow-xl transition-transform duration-300 transform hover:scale-105 w-full h-40 relative">
+          <Link to="/settings/notifications" className="content-card bg-white p-5 my-5 rounded-lg shadow-xl transition-transform duration-300 transform hover:scale-105 w-full h-auto relative">
             <div className="absolute top-5 left-5">
               <img src={notifications} alt="Notifications" className='w-6 h-6'/>
             </div>
@@ -65,7 +65,7 @@ const Settings = () => {
             <p className="text-[#717171] text-[12px]">Choose notification preferences and how you want to be contacted</p>
           </Link>
 
-          <Link to="/settings/privacy-sharing" className="content-card bg-white p-5 my-5 rounded-lg shadow-xl transition-transform duration-300 transform hover:scale-105 w-full h-40 relative">
+          <Link to="/settings/privacy-sharing" className="content-card bg-white p-5 my-5 rounded-lg shadow-xl transition-transform duration-300 transform hover:scale-105 w-full h-auto relative">
             <div className="absolute top-5 left-5">
               <img src={privacy} alt="Privacy & sharing" className='w-6 h-6' />
             </div>
@@ -73,7 +73,7 @@ const Settings = () => {
             <p className="text-[#717171] text-[12px]">Manage your personal data, connected services, data sharing </p>
           </Link>
 
-          <Link to="/settings/global-preferences" className="content-card bg-white p-5 my-5 rounded-lg shadow-xl transition-transform duration-300 transform hover:scale-105 w-full h-40 relative">
+          <Link to="/settings/global-preferences" className="content-card bg-white p-5 my-5 rounded-lg shadow-xl transition-transform duration-300 transform hover:scale-105 w-full h-auto relative">
             <div className="absolute top-5 left-5">
               <img src={preference} alt="Global preferences" className='w-6 h-6' />
             </div> 
@@ -81,7 +81,7 @@ const Settings = () => {
             <p className="text-[#717171] text-[12px]">Set your default language, currency, and timezone</p>
           </Link>
 
-          <Link to="/settings/professional-hosting-tools" className="content-card bg-white p-5 my-5 rounded-lg shadow-xl transition-transform duration-300 transform hover:scale-105 w-full h-40 relative">
+          <Link to="/settings/professional-hosting-tools" className="content-card bg-white p-5 my-5 rounded-lg shadow-xl transition-transform duration-300 transform hover:scale-105 w-full h-auto relative">
             <div className="absolute top-5 left-5">
               <img src={tools} alt="Professional hosting tools"  className='w-6 h-6'/>
             </div>

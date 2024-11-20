@@ -22,6 +22,17 @@ export const login = async (loginData) => {
   }
 };
 
+export const logout = async () => {
+  try {
+    const response = await axiosInstance.post("/logout");
+    return response.data;
+  } catch (error) {
+    console.error("Logout error:", error);
+    throw error; // Ensure to handle this in your component
+  }
+};
+
+
 export const getUserRoles = async () => {
   const response = await axiosInstance.get("/roles", {
     headers: {

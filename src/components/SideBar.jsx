@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import logo from '../assets/images/logo.png'; 
 import 'tailwindcss/tailwind.css';
 import { Link, useNavigate } from 'react-router-dom'; 
+import { logout } from '../api/authService';
 import axios from 'axios';
 
 const SideBar = ({ sidebarToggle, setSidebarToggle }) => {
@@ -10,9 +11,10 @@ const SideBar = ({ sidebarToggle, setSidebarToggle }) => {
 
   const handleLogout = async () => {
     try {
-      await axios.post('http://localhost:8080/api/v1/auth/logout');
+      const message = await logout();
+      console.log(message);
       localStorage.removeItem('token');
-      navigate('/login1');
+      navigate('/login');
     } catch (error) {
       console.error('Logout failed:', error);
     }
@@ -48,7 +50,7 @@ const SideBar = ({ sidebarToggle, setSidebarToggle }) => {
     { icon: "fa-calendar-days", label: "Calendar" , path: "/mycalendar"},
     { icon: "fa-inbox", label: "Inbox" },
     { icon: "fa-gear", label: "Settings", path: "/settings" },
-    { icon: "fa-right-from-bracket", label: "Logout", marginTop: "mt-[40%]", isLogout: true },
+    { icon: "fa-right-from-bracket", label: "Logout", marginTop: "", isLogout: true },
   ];
 
   return (
@@ -71,7 +73,7 @@ const SideBar = ({ sidebarToggle, setSidebarToggle }) => {
       {menuItems.map((item, index) => (
         <Link to={item.path || "#"} key={index}>
           <div 
-            className={`${sidebarToggle ? `hover:bg-yellow-600 hover:text-white rounded-md p-2.5 ${item.marginTop || ""}` : `p-2.5 ml-8 mr-8 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-yellow-600 text-black hover:text-white ${item.marginTop || ""}`}`}
+            className={`${sidebarToggle ? `hover:bg-yellow-600 hover:text-white rounded-md p-2.5 ${item.marginTop || ""}` : `p-2.5 ml-8 mr-8 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-yellow-600 text-black hover:text-white ${item.marginTop || ""}`}${location.pathname === item.path ? "bg-yellow-600 text-white" : "hover:bg-yellow-600 hover:text-white"}`}
             onClick={item.isLogout ? handleLogout : undefined}
           >
             <i className={`fa-solid ${item.icon} opacity-50`}></i>
