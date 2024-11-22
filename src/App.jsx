@@ -33,6 +33,8 @@ import AdminCalendar from "./components/AdminCalendar";
 import VideoCall from "./components/VideoCall";
 import Studyroomcreate from "./components/Studyroomcreate";
 import RequireAuth from "./api/requireAuth";
+import Personalinfo from './components/Personal-info';
+
 
 function App() {
   return (
@@ -57,7 +59,6 @@ function App() {
             <Route path="/AdminSetting" element={<AdminSetting />} />
             <Route path="/AdminCalendar" element={<AdminCalendar />} />
           </Route>
-
           <Route element={<RequireAuth allowedRoles={["USER"]} />}>
           <Route path="/VideoCall" element={<VideoCall />} />
           <Route path="/studyroomcreate" element={<Studyroomcreate />} />
@@ -65,6 +66,7 @@ function App() {
           <Route path="/logout" element={<Logout />} />
           <Route path="/findpartner" element={<FindPartner />} />
           <Route path="/settings" element={<Settings />} />
+          <Route path="/Personalinfo" element={<Personalinfo />} />
           <Route path="/ViewPartners" element={<Viewpartner />} />
           <Route path="/profilesetup1" element={<ProfileSetup1 />} />
           <Route path="/community" element={<Community />} />
