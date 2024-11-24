@@ -4,6 +4,7 @@ import { decodeJWT } from "./decodeJWT";
 export const fetchUserRole = async () => {
   try {
     const token = localStorage.getItem("token");
+    console.log("token", token);
     const decodedPayload = decodeJWT(token);
     const email = decodedPayload?.sub;
 
@@ -17,6 +18,7 @@ export const fetchUserRole = async () => {
         Authorization: `Bearer ${token}`,
       },
     });
+     console.log("response", response);
 
     return response.data;
   } catch (error) {
