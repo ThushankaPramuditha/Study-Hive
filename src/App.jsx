@@ -33,7 +33,11 @@ import AdminCalendar from "./components/AdminCalendar";
 import VideoCall from "./components/VideoCall";
 import Studyroomcreate from "./components/Studyroomcreate";
 import RequireAuth from "./api/requireAuth";
+
 import Chat from "./components/Chat";
+
+import VirtualRoom from "./components/VirtualRoom";
+
 
 function App() {
   return (
