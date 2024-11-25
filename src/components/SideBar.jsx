@@ -49,6 +49,7 @@ const SideBar = ({ sidebarToggle, setSidebarToggle }) => {
     { icon: "fa-users", label: "Community", path: "/community" },
     { icon: "fa-calendar-days", label: "Calendar" , path: "/mycalendar"},
     { icon: "fa-inbox", label: "Inbox" },
+    { icon: "fa-solid fa-message", label : "Inquiries" , path:"/userinquiries"},
     { icon: "fa-gear", label: "Settings", path: "/settings" },
     { icon: "fa-right-from-bracket", label: "Logout", marginTop: "", isLogout: true },
   ];

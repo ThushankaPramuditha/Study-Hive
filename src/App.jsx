@@ -33,6 +33,7 @@ import AdminCalendar from "./components/AdminCalendar";
 import VideoCall from "./components/VideoCall";
 import Studyroomcreate from "./components/Studyroomcreate";
 import RequireAuth from "./api/requireAuth";
+import Userinquiries from "./components/userinquiries";
 
 function App() {
   return (
@@ -77,6 +78,7 @@ function App() {
           <Route path="/studystats" element={<StudyStats />} />
           <Route path="/mycalendar" element={<MyCalendar />} />
           <Route path="/eventcard" element={<Eventcard />} />
+          <Route path="/userinquiries" element={<Userinquiries />} />
           </Route>
 
           
