@@ -27,7 +27,7 @@ const Personalinfo = () => {
         return;
       }
   
-      const response = await axios.get('http://localhost:8080/api/profiles/me', {
+      const response = await axios.get('http://localhost:8090/api/profiles/me', {
         headers: {
           Authorization: `Bearer ${token}`,
         },
