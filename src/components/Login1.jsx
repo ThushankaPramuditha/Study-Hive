@@ -232,7 +232,6 @@ import loginImage from "../assets/images/login.png";
 import backImage from "../assets/images/back.png";
 import "../App.css";
 import { profileService } from "../api/profileService";
-import { userFname, userId } from "./const";
 
 const Login = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -299,9 +298,8 @@ const Login = () => {
       // navigate('/home');
 
       // Extract userId and profileExists from the response
-      const { profileExists } = response;
-      console.log("User First Name:", userFname);
-      console.log("User ID:", userId);
+      const { userId, profileExists } = response;
+   
 
       // Redirect based on the `profileExists` field
       if (profileExists) {
