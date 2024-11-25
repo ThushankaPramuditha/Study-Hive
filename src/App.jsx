@@ -33,7 +33,11 @@ import AdminCalendar from "./components/AdminCalendar";
 import VideoCall from "./components/VideoCall";
 import Studyroomcreate from "./components/Studyroomcreate";
 import RequireAuth from "./api/requireAuth";
+
+import Chat from "./components/Chat";
+
 import VirtualRoom from "./components/VirtualRoom";
+
 
 function App() {
   return (
@@ -45,7 +49,6 @@ function App() {
           <Route path="/boxcalendar" element={<BoxCalendar />} />
           <Route path="/adminlogin" element={<AdminLogin />} />
           <Route path="/login" element={<Login1 />} />
-          
 
           <Route element={<RequireAuth allowedRoles={["ADMIN"]} />}>
             <Route path="/AdminDashboard" element={<AdminDashboard />} />
@@ -60,28 +63,26 @@ function App() {
           </Route>
 
           <Route element={<RequireAuth allowedRoles={["USER"]} />}>
-          <Route path="/VideoCall" element={<VideoCall />} />
-          <Route path="/studyroomcreate" element={<Studyroomcreate />} />
-          <Route path="/forums" element={<Forums />} />
-          <Route path="/logout" element={<Logout />} />
-          <Route path="/findpartner" element={<FindPartner />} />
-          <Route path="/settings" element={<Settings />} />
-          <Route path="/ViewPartners" element={<Viewpartner />} />
-          <Route path="/profilesetup1" element={<ProfileSetup1 />} />
-          <Route path="/community" element={<Community />} />
-          <Route path="/notification" element={<Notification />} />
-          <Route path="/performance" element={<Performance />} />
-          <Route path="/statisticscard" element={<StatisticsCard />} />
-          <Route path="/reminders" element={<Reminders />} />
-          <Route path="/home" element={<Dashboard />} />
-          <Route path="/studyrooms" element={<StudyRooms />} />
-          <Route path="/studystats" element={<StudyStats />} />
-          <Route path="/mycalendar" element={<MyCalendar />} />
-          <Route path="/eventcard" element={<Eventcard />} />
-          <Route path="/virtualroom" element={<VirtualRoom />} />
+            <Route path="/VideoCall" element={<VideoCall />} />
+            <Route path="/studyroomcreate" element={<Studyroomcreate />} />
+            <Route path="/forums" element={<Forums />} />
+            <Route path="/logout" element={<Logout />} />
+            <Route path="/findpartner" element={<FindPartner />} />
+            <Route path="/settings" element={<Settings />} />
+            <Route path="/ViewPartners" element={<Viewpartner />} />
+            <Route path="/profilesetup1" element={<ProfileSetup1 />} />
+            <Route path="/community" element={<Community />} />
+            <Route path="/notification" element={<Notification />} />
+            <Route path="/performance" element={<Performance />} />
+            <Route path="/statisticscard" element={<StatisticsCard />} />
+            <Route path="/reminders" element={<Reminders />} />
+            <Route path="/home" element={<Dashboard />} />
+            <Route path="/studyrooms" element={<StudyRooms />} />
+            <Route path="/studystats" element={<StudyStats />} />
+            <Route path="/mycalendar" element={<MyCalendar />} />
+            <Route path="/eventcard" element={<Eventcard />} />
+            <Route path="/chat" element={<Chat />} />
           </Route>
-
-          
         </Routes>
       </div>
     </Router>
