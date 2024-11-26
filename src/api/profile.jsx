@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:8080/api/profiles';
+const API_URL = 'http://localhost:8090/api/profiles';
 
 export const createProfile = (profileData) => {
   return axios.post(`${API_URL}`, profileData);
