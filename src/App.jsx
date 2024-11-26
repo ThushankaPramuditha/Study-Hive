@@ -30,7 +30,9 @@ import StudyRoomList from './components/StudyRoomList';
 import Inquiry from './components/Inquiry';
 import AdminSetting from './components/AdminSetting';
 import AdminCalendar from './components/AdminCalendar';
-
+import CommunityLand from './components/community/CommunityLand';
+import CommunityReg from './components/community/CommunityReg.jsx';
+import ComEvent from './components/community/ComEvent.jsx';
 
 function App() {
   return (
@@ -66,6 +68,9 @@ function App() {
           <Route path="/Inquiry" element={<Inquiry />} />
           <Route path="/AdminSetting" element={<AdminSetting />} />
           <Route path="/AdminCalendar" element={<AdminCalendar />} />
+          <Route path="/ComLand" element={<CommunityLand />} />
+          <Route path="/ComReg" element={<CommunityReg />} />
+          <Route path="/ComEve" element={<ComEvent />} />
 
 
         </Routes>
