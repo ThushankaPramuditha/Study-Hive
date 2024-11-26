@@ -26,7 +26,7 @@ const notifications = [
 const Notification = () => {
   return (
     <div className=" bg-white mt-6 ml-2">
-      <h1 className="text-xl font-bold mb-4">Notifications</h1>
+      <h1 className="text-xl font-bold mb-4 text-center">Notifications</h1>
 
       <div className="flex flex-col bg-white">
         {notifications.map((notification, index) => (

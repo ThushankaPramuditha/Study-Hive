@@ -22,7 +22,7 @@ const reminders = [
 const Reminders = () => {
   return (
     <div className="bg-white mt-6 ml-2">
-      <h1 className="text-xl font-bold mb-4">Reminders</h1>
+      <h1 className="text-xl font-bold mb-4 text-center">Reminders</h1>
 
       <div className="flex flex-col bg-white">
         {reminders.map((reminder, index) => (

@@ -88,7 +88,6 @@ const FindPartner = ({ loggedInUsername }) => {
               <button type="submit" className="bg-[#F6CA30] text-black rounded-lg w-24 h-10">Search</button>
             </form>
           </div>
-
           <p className="text-black text-[16px] font-semibold mt-8">Suggested Study Partner Requests <Link to="/ViewPartners" className="underline font-light ml-3 text-[14px] text-[#929292]">view more</Link></p>
 
           <div className="bg-[#F1F1F1] h-[310px] mr-20 rounded-lg p-2 mt-6">
