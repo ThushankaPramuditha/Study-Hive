@@ -224,15 +224,6 @@ const DashboardContent = ({ userFname, userLname }) => {
     setIsAllow(e.target.checked);
   };
 
-  const toggleShowAll = () => {
-    setShowAll(!showAll);
-  };
-
-
-
-
-
-
   return (
     <div
       className={`xl:flex
@@ -295,7 +286,7 @@ const DashboardContent = ({ userFname, userLname }) => {
         <div className="flex justify-between">
         <p className="pl-[10%] mt-10 mb-2 text-gray-500 text-lg">My Study Rooms</p>
         <button
-          onClick={toggleShowAll}
+          // onClick={toggleShowAll}
           className="pl-[10%] mt-10 mb-2 text-yellow-500 text-s mr-20"
         >
           {showAll ? "Show Less" : "See All"}
@@ -393,7 +384,7 @@ const DashboardContent = ({ userFname, userLname }) => {
                     className="border member_count rounded text-center text-sm w-10 h-7"
                   />
                   <button onClick={increment} className="text-black ml-3 hover:shadow-lg hover:shadow-gray-400 active:shadow-none">
-                    <i class="fa-solid fa-plus text-sm"></i>
+                    <i className="fa-solid fa-plus text-sm"></i>
                   </button>
                 </div>
               </div>

@@ -33,6 +33,8 @@ import AdminCalendar from "./components/AdminCalendar";
 import VideoCall from "./components/VideoCall";
 import Studyroomcreate from "./components/Studyroomcreate";
 import RequireAuth from "./api/requireAuth";
+import Personalinfo from './components/Personal-info';
+
 
 import Chat from "./components/Chat";
 
@@ -61,7 +63,6 @@ function App() {
             <Route path="/AdminSetting" element={<AdminSetting />} />
             <Route path="/AdminCalendar" element={<AdminCalendar />} />
           </Route>
-
           <Route element={<RequireAuth allowedRoles={["USER"]} />}>
             <Route path="/VideoCall" element={<VideoCall />} />
             <Route path="/studyroomcreate" element={<Studyroomcreate />} />
