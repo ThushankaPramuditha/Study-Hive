@@ -34,9 +34,12 @@ import VideoCall from "./components/VideoCall";
 import Studyroomcreate from "./components/Studyroomcreate";
 import RequireAuth from "./api/requireAuth";
 
-import Chat from "./components/Chat";
+import Chat from "./components/Chat1";
 
 import VirtualRoom from "./components/VirtualRoom";
+
+import { ZIMKitManager, Common } from "@zegocloud/zimkit-react";
+import "@zegocloud/zimkit-react/index.css";
 
 
 function App() {
