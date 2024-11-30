@@ -78,7 +78,7 @@ function App() {
           <Route path="/studystats" element={<StudyStats />} />
           <Route path="/mycalendar" element={<MyCalendar />} />
           <Route path="/eventcard" element={<Eventcard />} />
-          <Route path="/virtualroom" element={<VirtualRoom />} />
+          <Route path="/virtualroom/:roomId/:userId" element={<VirtualRoom />} />
           </Route>
 
           
