@@ -233,6 +233,9 @@ import backImage from "../assets/images/back.png";
 import "../App.css";
 import { profileService } from "../api/profileService";
 
+import { db } from "../firebase"; // Removed 'storage' since it wasn't used
+import { doc, setDoc } from "firebase/firestore";
+
 const Login = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [email, setEmail] = useState("");
@@ -292,19 +295,35 @@ const Login = () => {
 
     try {
       const response = await login({ email, password });
+      // console.log("Login response:", response);
 
       // Save the token to localStorage
       localStorage.setItem("token", response.token);
       // navigate('/home');
 
       // Extract userId and profileExists from the response
-      const { userId, profileExists } = response;
-   
+      const { userId, userFname, userLname, profileExists } = response;
 
       // Redirect based on the `profileExists` field
       if (profileExists) {
+        window.location.reload();
         navigate("/home"); // Redirect to the home page
+        setTimeout(() => {
+          window.location.reload(); // Force reload after navigation
+        }, 0);
       } else {
+        const displayName = userFname + " " + userLname;
+        const uid = userFname + userId;
+        console.log("mama", uid);
+        await setDoc(doc(db, "users", uid), {
+          uid: uid,
+          displayName,
+          email,
+        });
+
+        // Create empty user chats in Firestore
+        await setDoc(doc(db, "userChats", uid), {});
+
         navigate(`/ProfileSetup1?userId=${userId}`); // Redirect to profile setup with userId as query param
       }
     } catch (error) {
@@ -324,7 +343,8 @@ const Login = () => {
     try {
       const response = await register({ email, password, firstname, lastname });
       localStorage.setItem("token", response.token);
-      window.location.reload();
+
+      // window.location.reload();
       navigate("/login");
       //  navigate('/login1');
       setIsLogin(true);
