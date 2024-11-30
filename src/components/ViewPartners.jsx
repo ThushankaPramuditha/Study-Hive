@@ -56,7 +56,7 @@ const ViewPartners = () => {
                 <tr>
                   <th className="py-2 px-4">Name</th>
                   <th className="py-2 px-4">Description</th>
-                  <th className="py-2 px-4">Sub Area</th>
+                  <th className="py-2 px-4">Studying</th>
                   <th className="py-2 px-4">Study Time</th>
                   <th className="py-2 px-4">Adaptability</th>
                   <th className="py-2 px-4">Rating</th>

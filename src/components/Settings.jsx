@@ -25,7 +25,9 @@ const Settings = () => {
         </p>
 
         <div className="container mx-auto grid grid-cols-3 gap-4 mt-6 justify-center w-[90%]">
-          <Link to="/Personal-info" className="content-card bg-white p-5 my-5 rounded-lg shadow-xl transition-transform duration-300 transform hover:scale-105 w-full h-auto relative hover:shadow-yellow">
+          {/* // <Link to="/Personal-info" className="content-card bg-white p-5 my-5 rounded-lg shadow-xl transition-transform duration-300 transform hover:scale-105 w-full h-auto relative hover:shadow-yellow"> */}
+
+          <Link to="/Personalinfo" className="content-card bg-white p-5 my-5 rounded-lg shadow-xl transition-transform duration-300 transform hover:scale-105 w-full h-40 relative hover:shadow-yellow">
             <div className="absolute top-5 left-5">
               <img src={personalinfo} alt="Personal info" className='w-6 h-6'/>
             </div>
@@ -95,4 +97,4 @@ const Settings = () => {
 };
 
 
-export default Settings;
+export default Settings;
