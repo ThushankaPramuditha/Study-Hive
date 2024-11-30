@@ -33,36 +33,34 @@ import AdminCalendar from "./components/AdminCalendar";
 import VideoCall from "./components/VideoCall";
 import Studyroomcreate from "./components/Studyroomcreate";
 import RequireAuth from "./api/requireAuth";
-import Personalinfo from './components/Personal-info';
-
-
+import Personalinfo from "./components/Personal-info";
 import Chat from "./components/Chat";
-
 import VirtualRoom from "./components/VirtualRoom";
-
 
 function App() {
   return (
     <Router>
-      {/* <SideBar sidebarToggle={sidebarToggle} setSidebarToggle={setSidebarToggle} /> */}
       <div className="App">
         <Routes>
+          {/* Public Routes */}
           <Route path="/" element={<Home />} />
           <Route path="/boxcalendar" element={<BoxCalendar />} />
           <Route path="/adminlogin" element={<AdminLogin />} />
           <Route path="/login" element={<Login1 />} />
 
+          {/* Admin Routes */}
           <Route element={<RequireAuth allowedRoles={["ADMIN"]} />}>
             <Route path="/AdminDashboard" element={<AdminDashboard />} />
             <Route path="/UserList" element={<UserList />} />
             <Route path="/CommunityList" element={<CommunityList />} />
             <Route path="/ForumList" element={<ForumList />} />
-
             <Route path="/StudyRoomList" element={<StudyRoomList />} />
             <Route path="/Inquiry" element={<Inquiry />} />
             <Route path="/AdminSetting" element={<AdminSetting />} />
             <Route path="/AdminCalendar" element={<AdminCalendar />} />
           </Route>
+
+          {/* User Routes */}
           <Route element={<RequireAuth allowedRoles={["USER"]} />}>
             <Route path="/VideoCall" element={<VideoCall />} />
             <Route path="/studyroomcreate" element={<Studyroomcreate />} />
@@ -82,6 +80,7 @@ function App() {
             <Route path="/studystats" element={<StudyStats />} />
             <Route path="/mycalendar" element={<MyCalendar />} />
             <Route path="/eventcard" element={<Eventcard />} />
+            <Route path="/virtualroom/:roomId/:userId" element={<VirtualRoom />} />
             <Route path="/chat" element={<Chat />} />
           </Route>
         </Routes>

@@ -13,6 +13,11 @@ const Forums = () => {
   const [comments, setComments] = useState([]);
   const [showCommentsPopup, setShowCommentsPopup] = useState(false);
   const [userVote, setUserVote] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState('All');
+  const [searchTerm, setSearchTerm] = useState('');
+  const [showAllQuestions, setShowAllQuestions] = useState(false);
+
+
 
   const handleVote = (commentId, type) => {
     setComments((prevComments) =>
@@ -87,9 +92,9 @@ const Forums = () => {
     };
 
     const decodeBase64 = (base64) => {
-      const decoded = atob(base64); // Decode base64 string
+      const decoded = atob(base64); 
       try {
-        return JSON.parse(decoded); // Parse as JSON
+        return JSON.parse(decoded); 
       } catch (e) {
         console.error("Failed to parse JSON:", e);
         return null;
@@ -97,25 +102,25 @@ const Forums = () => {
     };
 
     const decodedPayload = decodeBase64(base64UrlToBase64(payload));
-    return decodedPayload; // Return the decoded payload, which contains the email
+    return decodedPayload; 
   }
 
   const postQuestion = async (questionData) => {
     try {
       const token = localStorage.getItem("token");
-      const decodedPayload = decodeJWT(token); // Decode the token
+      const decodedPayload = decodeJWT(token); 
 
-      console.log("Decoded Payload:", decodedPayload); // Log decoded payload
+      console.log("Decoded Payload:", decodedPayload); 
       console.log(111);
 
-      const email = decodedPayload?.sub; // Use 'sub' as the email field
+      const email = decodedPayload?.sub;
 
       if (!email) {
         console.error("No email found in the token");
         return;
       }
 
-      // Proceed with posting the question
+      
       await axios.post("http://localhost:8090/api/questions", questionData, {
         params: { userEmail: email },
         headers: {
@@ -134,7 +139,7 @@ const Forums = () => {
       const token = localStorage.getItem("token");
       const response = await axios.get("http://localhost:8090/api/questions", {
         headers: {
-          Authorization: `Bearer ${token}`, // Use backticks and proper syntax
+          Authorization: `Bearer ${token}`,
         },
       });
       setQuestions(response.data);
@@ -147,20 +152,20 @@ const Forums = () => {
   const postComment = async (questionId, commentData) => {
     try {
       const token = localStorage.getItem("token");
-      const decodedPayload = decodeJWT(token); // Decode the token
-      const email = decodedPayload?.sub; // Use 'sub' as the email field
+      const decodedPayload = decodeJWT(token); 
+      const email = decodedPayload?.sub; 
 
       if (!email) {
         console.error("No email found in the token");
         return;
       }
 
-      // Send the commentData along with the authorEmail
+      
       await axios.post(
         `http://localhost:8090/api/questions/${questionId}/comments`,
         {
           ...commentData,
-          authorEmail: email, // Pass the decoded email to backend
+          authorEmail: email, 
         },
         {
           headers: {
@@ -170,13 +175,12 @@ const Forums = () => {
         }
       );
 
-      fetchQuestions(); // Refetch questions to update the list
+      fetchQuestions(); 
     } catch (error) {
       console.error("Error posting comment:", error);
     }
   };
 
-  // Function to fetch comments for a given question
   const fetchComments = async (questionId) => {
     try {
       const token = localStorage.getItem("token");
@@ -184,7 +188,7 @@ const Forums = () => {
         `http://localhost:8090/api/questions/${questionId}/comments`,
         {
           headers: {
-            Authorization: `Bearer ${token}`, // Pass the token in the headers
+            Authorization: `Bearer ${token}`, 
           },
         }
       );
@@ -200,7 +204,7 @@ const Forums = () => {
     setNewQuestion({
       category: "",
       content: "",
-    }); // Clear form after submission
+    }); 
   };
 
   const handleCommentSubmit = (e) => {
@@ -214,6 +218,17 @@ const Forums = () => {
   const toggleCommentsPopup = () => {
     setShowCommentsPopup((prev) => !prev);
   };
+
+  const filteredAndSearchedQuestions = questions.filter(question => {
+    const matchesCategory = selectedCategory === 'All' || question.category === selectedCategory;
+    const matchesSearch = searchTerm === '' || 
+      question.authorFullName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      question.category.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      question.content.toLowerCase().includes(searchTerm.toLowerCase());
+    return matchesCategory && matchesSearch;
+  });
+
+  const displayedQuestions = showAllQuestions ? filteredAndSearchedQuestions : filteredAndSearchedQuestions.slice(0, 3);
 
   return (
     <div>
@@ -230,6 +245,8 @@ const Forums = () => {
                   placeholder="Search Questions"
                   autoComplete="off"
                   aria-label="Search Study Rooms"
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
                 />
               </div>
             </div>
@@ -311,30 +328,41 @@ const Forums = () => {
             {categories.map((category, index) => (
               <div key={index}>
                 <button
-                  className={`flex catergory ${
-                    category === "catergory" ? "categoryselect" : ""
-                  } w-[115px] h-[40px] rounded-[20px] justify-center items-center text-sm hover:shadow-lg hover:shadow-gray-400 active:shadow-none`}
+                  className={`flex bg-[#D9E7CB] w-[115px] h-[40px] rounded-[20px] justify-center items-center text-sm hover:shadow-lg hover:shadow-gray-400 active:shadow-none ${
+                    category === selectedCategory ? 'bg-[#C5D9B1]' : ''
+                  }`}
+                  onClick={() => setSelectedCategory(category)}
                 >
                   <p>{category}</p>
                 </button>
               </div>
             ))}
           </div>
+          <div className="flex justify-end mr-10">
+            <button 
+              className="font-semibold mb-5 "
+              onClick={() => setShowAllQuestions(!showAllQuestions)}
+            >
+              {showAllQuestions ? 'Show Less' : 'See All Questions'}
+            </button>
+          </div>
+
+
           <div className="flex justify-between items-center ml-10 mr-10 mb-7">
             <div className="flex items-center">
-              <p className="text-lg font-bold text-xl">Your Questions</p>
+              <p className="text-lg font-bold text-xl">Questions</p>
             </div>
             <div>
-              <button className="category pr-4 pl-4 rounded-3xl font-semibold mr-5 hover:shadow-lg hover:shadow-gray-400 active:shadow-none">
+              <button className="bg-[#C5D9B1] pr-4 pl-4 rounded-3xl font-semibold mr-5 hover:shadow-lg hover:shadow-gray-400 active:shadow-none">
                 Newest
               </button>
-              <button className="category pr-4 pl-4 rounded-3xl font-semibold hover:shadow-lg hover:shadow-gray-400 active:shadow-none">
+              <button className="bg-[#C5D9B1] pr-4 pl-4 rounded-3xl font-semibold hover:shadow-lg hover:shadow-gray-400 active:shadow-none">
                 Popular
               </button>
             </div>
           </div>
           <div className="flex flex-col items-center ml-2 h-[800px] overflow-y-auto">
-            {questions.map((question) => (
+            {displayedQuestions.map((question) => (
               <div
                 key={question.id}
                 className="xl:w-[90%] h-auto bg-gray-100 rounded-[10px] justify-between m-2 p-2"
@@ -418,7 +446,7 @@ const Forums = () => {
                     onChange={(e) => setCommentContent(e.target.value)}
                     placeholder="Write your comment here"
                   ></textarea>
-                  <div className="flex justify-end mt-4">
+                  <div className="flex justify-center mt-4 gap-[245px]">
                     <button
                       type="button"
                       onClick={() => setShowCommentPopup(false)}
@@ -428,7 +456,7 @@ const Forums = () => {
                     </button>
                     <button
                       type="submit"
-                      className="bg-blue-500 text-white rounded-lg px-4 py-2"
+                      className="bg-questions text-white rounded-lg px-4 py-2"
                     >
                       Post Comment
                     </button>
