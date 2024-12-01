@@ -46,7 +46,7 @@ const DashboardContent = ({ userFname, userLname }) => {
 
   const Find = (event) => {
     event.preventDefault();
-    navigate('/findpartner');
+    navigate('/studypartnersearch');
   };
 
   const handleSoloStudy = () => {
@@ -282,47 +282,64 @@ const DashboardContent = ({ userFname, userLname }) => {
           </button>
         </div>
 
-        <div className="mr-20">
-          <div className="ml-[10%] xl:grid xl:grid-cols-3 gap-4">
-            {studyRooms.length > 0 ? (
-              (showAll ? studyRooms : studyRooms.slice(0, 3)).map((room) => (
-                <div
-                  key={room.id}
-                  className="flex flex-col items-center xl:m-4 m-3 xl:w-[90%] w-[100%]"
+        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {studyRooms.length > 0 ? (
+          (showAll ? studyRooms : studyRooms.slice(0, 3)).map((room) => (
+            <div
+              key={room.id}
+              className="relative bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl"
+            >
+              {/* Header Bar */}
+              <div className="h-12 bg-gradient-to-r from-yellow-500 to-yellow-400 relative">
+                <button
+                  onClick={() => handleDelete(room.id)}
+                  className="absolute top-3 right-3 text-white hover:text-gray-200 transition-colors"
+                  aria-label="Delete room"
                 >
-                  <div className="relative">
-                    <div className="h-[30px] xl:w-[100%] w-[300px] bg-yellow-600 rounded-t-[50px] pb-2">
-                      <button
-                        onClick={() => handleDelete(room.id)}
-                        className="absolute top-2 right-2 text-gray-300"
-                      >
-                        <i className="fa-solid fa-trash"></i>
-                      </button>
+                  <i className="fa-solid fa-trash"></i>
+                </button>
+              </div>
+
+              {/* Content */}
+              <div className="p-6 bg-gradient-to-b from-yellow-50 to-white">
+                <div className="min-h-[180px] flex flex-col justify-between">
+                  {/* Room Info */}
+                  <div className="space-y-4">
+                    <h3 className="text-xl font-bold text-gray-900 text-center">
+                      {room.roomName || "Room Name"}
+                    </h3>
+                    <p className="text-gray-600 text-center text-sm">
+                      {room.description || "Description"}
+                    </p>
+                  </div>
+
+                  {/* User Info */}
+                  <div className="flex flex-col items-center gap-4 mt-6">
+                    <div className="flex items-center gap-2 text-gray-600">
+                      <i className="fa-solid fa-user text-sm"></i>
+                      <span className="text-sm">{`${userFname} ${userLname}`}</span>
                     </div>
-                    <div className="h-auto xl:w-[100%] w-[300px] bg-yellow-100 rounded-b-[30px]">
-                      <p className="font-bold text-lg flex justify-center ">{room.roomName || "Room Name"}</p>
-                      <p className="ml-4 opacity-60">{room.description || "Description"}</p>
-                      <div className="flex items-center m-4 mt-10">
-                        <i className="fa-solid fa-user opacity-30 mr-4"></i>
-                        <p className="text-sm opacity-40">{userFname} {userLname}</p>
-                      </div>
-                      <div className="flex justify-center m-6 mt-10 ">
-                        <button
-                          onClick={() => handleJoinRoom(room)}
-                          className="bg-[#F6CA30] text-black text-xs font-semibold rounded-[50px] w-[100px] h-[30px] hover:shadow-lg hover:shadow-gray-400 active:shadow-none mb-4"
-                        >
-                          Join
-                        </button>
-                      </div>
-                    </div>
+
+                    {/* Join Button */}
+                    <button
+                      onClick={() => handleJoinRoom(room)}
+                      className="w-full max-w-[200px] bg-yellow-400 hover:bg-yellow-500 text-black font-semibold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105 active:scale-100 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2"
+                    >
+                      Join Room
+                    </button>
                   </div>
                 </div>
-              ))
-            ) : (
-              <p className="text-center">No study rooms available.</p>
-            )}
+              </div>
+            </div>
+          ))
+        ) : (
+          <div className="col-span-full text-center py-12">
+            <p className="text-lg text-gray-600">No study rooms available.</p>
           </div>
-        </div>
+        )}
+      </div>
+    </div>
       </div>
 
       {isPop && (
@@ -487,7 +504,7 @@ const DashboardContent = ({ userFname, userLname }) => {
       )}
       <div className="h-100 border border-gray-200 hidden xl:block"></div>
       <div className="xl:w-[25%] flex flex-col items-center ">
-        <div className="xl:h-[30%] xl:w-[90%] flex justify-center items-center w-[400px] h-[500px] p-2">
+        <div className="xl:h-[30%] xl:w-[90%] flex justify-center items-center w-[400px] h-[500px] p-2 mt-10">
           <Calendar />
         </div>
         <div className="">
