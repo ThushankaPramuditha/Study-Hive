@@ -290,6 +290,14 @@ const Login = () => {
             return;
         }
     
+        // Check if the email and password match admin's credentials
+        if (email === 'admin@gmail.com' && password === 'admin123') {
+            // Set a special admin token or role, or directly log in as admin
+            localStorage.setItem('token', 'admin-token');  // Use a mock token for the admin (or set a role flag)
+            navigate('/AdminDashboard'); // Navigate to the admin's dashboard or home page
+            return;
+        }
+    
         try {
             const response = await login({ email, password });
     
@@ -309,8 +317,6 @@ const Login = () => {
             setFormError('Login failed. Please check your credentials and try again.');
         }
     };
-    
-    
     
 
     const handleRegister = async (event) => {

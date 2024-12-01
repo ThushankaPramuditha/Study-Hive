@@ -146,6 +146,136 @@
 // export default UserList;
 
 
+// import React, { useEffect, useState } from 'react';
+// import AdminSidebar from './AdminSidebar';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faEdit, faTrash, faLock } from '@fortawesome/free-solid-svg-icons';
+// import axios from 'axios';
+
+// const UserList = () => {
+//   const [users, setUsers] = useState([]);
+//   const [statusFilter, setStatusFilter] = useState('');
+//   const [searchTerm, setSearchTerm] = useState('');
+//   const [currentPage, setCurrentPage] = useState(1);
+//   const usersPerPage = 10;
+
+//   // Fetch users from backend
+//   useEffect(() => {
+//     const fetchUsers = async () => {
+//       try {
+//         const response = await axios.get('http://localhost:8080/api/v1/users'); // Adjust URL as needed
+//         setUsers(response.data);
+//       } catch (error) {
+//         console.error('Error fetching users:', error);
+//       }
+//     };
+//     fetchUsers();
+//   }, []);
+
+//   // Filter users based on search term and status
+//   const filteredUsers = users.filter((user) => {
+//     const statusMatches = statusFilter === '' || user.status === statusFilter;
+//     const nameMatches = `${user.firstname} ${user.lastname}`.toLowerCase().includes(searchTerm.toLowerCase());
+//     return statusMatches && nameMatches;
+//   });
+
+//   // Pagination logic
+//   const indexOfLastUser = currentPage * usersPerPage;
+//   const indexOfFirstUser = indexOfLastUser - usersPerPage;
+//   const currentUsers = filteredUsers.slice(indexOfFirstUser, indexOfLastUser);
+
+//   // Change page
+//   const handlePageChange = (pageNumber) => {
+//     setCurrentPage(pageNumber);
+//   };
+
+//   return (
+//     <div className="flex">
+//       <AdminSidebar />
+//       <div className="container ml-[300px] mt-10 mr-12">
+//         <h1 className="text-2xl font-bold mb-4">Users</h1>
+//         <div className="flex mb-10">
+//           <input
+//             type="text"
+//             placeholder="Search by name..."
+//             className="w-[240px] p-2 border border-gray-300 rounded-md mr-8"
+//             value={searchTerm}
+//             onChange={(e) => setSearchTerm(e.target.value)}
+//           />
+//           {/* <select
+//             className="w-[240px] p-2 border border-gray-300 rounded-md text-[#8B909A] mr-8"
+//             value={statusFilter}
+//             onChange={(e) => setStatusFilter(e.target.value)}
+//           >
+//             <option value="">Filter by Status</option>
+//             <option value="Online">Online</option>
+//             <option value="Offline">Offline</option>
+//           </select> */}
+//         </div>
+//         <table className="min-w-full bg-white" style={{ tableLayout: 'fixed' }}>
+//           <thead className="text-left text-[#8B909A] border-b border-gray-300">
+//             <tr>
+//             <th className="py-2 font-medium">ID</th>
+//               <th className="py-2 font-medium">NAME</th>
+//               <th className="py-2 font-medium">EMAIL</th>
+//               {/* <th className="py-2 font-medium">STATUS</th> */}
+//               <th className="py-2 font-medium">ACTION</th>
+//             </tr>
+//           </thead>
+//           <tbody>
+//             {currentUsers.map((user) => (
+//               <tr key={user.id} className="border-b">
+//                  <td className="py-2">
+//                   {user.id}
+//                 </td>
+//                 <td className="py-2">
+//                   {user.firstname} {user.lastname}
+//                 </td>
+//                 <td className="py-2">{user.email}</td>
+//                 {/* <td className={`py-2 ${user.status === 'Online' ? 'text-green-500' : 'text-red-500'}`}>
+//                   {user.status}
+//                 </td> */}
+//                 {/* <td className="py-2">
+//   {user.created_date ? new Date(user.created_date).toLocaleDateString() : 'N/A'}
+// </td> */}
+
+//                 <td className="py-2 flex items-center space-x-2 text-[#8B909A]">
+//                   <button>
+//                     <FontAwesomeIcon icon={faEdit} />
+//                   </button>
+//                   <button>
+//                     <FontAwesomeIcon icon={faTrash} />
+//                   </button>
+//                   <button>
+//                     <FontAwesomeIcon icon={faLock} />
+//                   </button>
+//                 </td>
+//               </tr>
+//             ))}
+//           </tbody>
+//         </table>
+//         <div className="flex justify-between mt-4">
+//           <div>Showing {currentUsers.length} of {filteredUsers.length}</div>
+//           <div className="flex space-x-1">
+//             {Array.from({ length: Math.ceil(filteredUsers.length / usersPerPage) }, (_, index) => (
+//               <button
+//                 key={index}
+//                 className={`px-2 py-1 rounded-md ${currentPage === index + 1 ? 'bg-[#D4944C]' : 'bg-gray-200'}`}
+//                 onClick={() => handlePageChange(index + 1)}
+//               >
+//                 {index + 1}
+//               </button>
+//             ))}
+//           </div>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default UserList;
+
+
 import React, { useEffect, useState } from 'react';
 import AdminSidebar from './AdminSidebar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -189,6 +319,23 @@ const UserList = () => {
     setCurrentPage(pageNumber);
   };
 
+  // Handle delete user
+  const handleDelete = async (userId) => {
+    try {
+      await axios.delete(`http://localhost:8080/api/v1/users/${userId}`);
+      setUsers(users.filter(user => user.id !== userId)); // Remove the user from the state
+      alert('User deleted successfully');
+    } catch (error) {
+      console.error('Error deleting user:', error);
+      alert('Failed to delete user');
+    }
+  };
+  
+  <button onClick={() => handleDelete(user.id)}>
+    <FontAwesomeIcon icon={faTrash} />
+  </button>
+  
+
   return (
     <div className="flex">
       <AdminSidebar />
@@ -202,42 +349,27 @@ const UserList = () => {
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
-          <select
-            className="w-[240px] p-2 border border-gray-300 rounded-md text-[#8B909A] mr-8"
-            value={statusFilter}
-            onChange={(e) => setStatusFilter(e.target.value)}
-          >
-            <option value="">Filter by Status</option>
-            <option value="Online">Online</option>
-            <option value="Offline">Offline</option>
-          </select>
         </div>
-        <table className="min-w-full bg-white">
+        <table className="min-w-full bg-white" style={{ tableLayout: 'fixed' }}>
           <thead className="text-left text-[#8B909A] border-b border-gray-300">
             <tr>
+              <th className="py-2 font-medium">ID</th>
               <th className="py-2 font-medium">NAME</th>
               <th className="py-2 font-medium">EMAIL</th>
-              <th className="py-2 font-medium">STATUS</th>
-              <th className="py-2 font-medium">CREATED</th>
               <th className="py-2 font-medium">ACTION</th>
             </tr>
           </thead>
           <tbody>
             {currentUsers.map((user) => (
               <tr key={user.id} className="border-b">
-                <td className="py-2">
-                  {user.firstname} {user.lastname}
-                </td>
+                <td className="py-2">{user.id}</td>
+                <td className="py-2">{user.firstname} {user.lastname}</td>
                 <td className="py-2">{user.email}</td>
-                <td className={`py-2 ${user.status === 'Online' ? 'text-green-500' : 'text-red-500'}`}>
-                  {user.status}
-                </td>
-                <td className="py-2">{new Date(user.created_date).toLocaleDateString()}</td>
                 <td className="py-2 flex items-center space-x-2 text-[#8B909A]">
                   <button>
                     <FontAwesomeIcon icon={faEdit} />
                   </button>
-                  <button>
+                  <button onClick={() => handleDelete(user.id)}>
                     <FontAwesomeIcon icon={faTrash} />
                   </button>
                   <button>
