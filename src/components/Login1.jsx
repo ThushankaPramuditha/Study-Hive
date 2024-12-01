@@ -295,7 +295,7 @@ const Login = () => {
 
       // Save the token to localStorage
       localStorage.setItem("token", response.token);
-      // navigate('/home');
+      navigate('/home');
 
       // Extract userId and profileExists from the response
       const { userId, profileExists } = response;
@@ -303,7 +303,7 @@ const Login = () => {
 
       // Redirect based on the `profileExists` field
       if (profileExists) {
-        navigate("/home"); // Redirect to the home page
+        // navigate("/home"); // Redirect to the home page
       } else {
         navigate(`/ProfileSetup1?userId=${userId}`); // Redirect to profile setup with userId as query param
       }

@@ -231,6 +231,7 @@ const VirtualRoom = () => {
             >
               Group Chat
             </button>
+
           </div>
 
           {/* Leave Room Button - Now positioned at bottom right */}

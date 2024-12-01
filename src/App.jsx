@@ -1,5 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { WebSocketProvider } from "./components/WebSocketContext";
+import ErrorBoundary from "./components/ErrorBoundary";
 import Home from "./components/Home";
 import Dashboard from "./components/Dashboard";
 import StudyRooms from "./components/StudyRooms";
@@ -36,57 +38,67 @@ import RequireAuth from "./api/requireAuth";
 import Personalinfo from "./components/Personal-info";
 import Chat from "./components/Chat";
 import VirtualRoom from "./components/VirtualRoom";
+import StudyPartnerSearch from "./components/StudyPartnerSearch";
+import SoloStudyRoom from "./components/SoloStudyRoom";
 
 function App() {
   return (
     <Router>
-      <div className="App">
-        <Routes>
-          {/* Public Routes */}
-          <Route path="/" element={<Home />} />
-          <Route path="/boxcalendar" element={<BoxCalendar />} />
-          <Route path="/adminlogin" element={<AdminLogin />} />
-          <Route path="/login" element={<Login1 />} />
+      <ErrorBoundary>
 
-          {/* Admin Routes */}
-          <Route element={<RequireAuth allowedRoles={["ADMIN"]} />}>
-            <Route path="/AdminDashboard" element={<AdminDashboard />} />
-            <Route path="/UserList" element={<UserList />} />
-            <Route path="/CommunityList" element={<CommunityList />} />
-            <Route path="/ForumList" element={<ForumList />} />
-            <Route path="/StudyRoomList" element={<StudyRoomList />} />
-            <Route path="/Inquiry" element={<Inquiry />} />
-            <Route path="/AdminSetting" element={<AdminSetting />} />
-            <Route path="/AdminCalendar" element={<AdminCalendar />} />
-          </Route>
+          <div className="App">
+            <Routes>
+              {/* Public Routes */}
+              <Route path="/" element={<Home />} />
+              <Route path="/boxcalendar" element={<BoxCalendar />} />
+              <Route path="/adminlogin" element={<AdminLogin />} />
+              <Route path="/login" element={<Login1 />} />
 
-          {/* User Routes */}
-          <Route element={<RequireAuth allowedRoles={["USER"]} />}>
-            <Route path="/VideoCall" element={<VideoCall />} />
-            <Route path="/studyroomcreate" element={<Studyroomcreate />} />
-            <Route path="/forums" element={<Forums />} />
-            <Route path="/logout" element={<Logout />} />
-            <Route path="/findpartner" element={<FindPartner />} />
-            <Route path="/settings" element={<Settings />} />
-            <Route path="/ViewPartners" element={<Viewpartner />} />
-            <Route path="/profilesetup1" element={<ProfileSetup1 />} />
-            <Route path="/community" element={<Community />} />
-            <Route path="/notification" element={<Notification />} />
-            <Route path="/performance" element={<Performance />} />
-            <Route path="/statisticscard" element={<StatisticsCard />} />
-            <Route path="/reminders" element={<Reminders />} />
-            <Route path="/home" element={<Dashboard />} />
-            <Route path="/studyrooms" element={<StudyRooms />} />
-            <Route path="/studystats" element={<StudyStats />} />
-            <Route path="/mycalendar" element={<MyCalendar />} />
-            <Route path="/eventcard" element={<Eventcard />} />
-            <Route path="/virtualroom/:roomId/:userId" element={<VirtualRoom />} />
-            <Route path="/chat" element={<Chat />} />
-          </Route>
-        </Routes>
-      </div>
+              {/* Admin Routes */}
+              <Route element={<RequireAuth allowedRoles={["ADMIN"]} />}>
+                <Route path="/AdminDashboard" element={<AdminDashboard />} />
+                <Route path="/UserList" element={<UserList />} />
+                <Route path="/CommunityList" element={<CommunityList />} />
+                <Route path="/ForumList" element={<ForumList />} />
+                <Route path="/StudyRoomList" element={<StudyRoomList />} />
+                <Route path="/Inquiry" element={<Inquiry />} />
+                <Route path="/AdminSetting" element={<AdminSetting />} />
+                <Route path="/AdminCalendar" element={<AdminCalendar />} />
+              </Route>
+
+              {/* User Routes */}
+              <Route element={<RequireAuth allowedRoles={["USER"]} />}>
+                <Route path="/VideoCall" element={<VideoCall />} />
+                <Route path="/studyroomcreate" element={<Studyroomcreate />} />
+                <Route path="/forums" element={<Forums />} />
+                <Route path="/logout" element={<Logout />} />
+                <Route path="/findpartner" element={<FindPartner />} />
+                <Route path="/settings" element={<Settings />} />
+                <Route path="/ViewPartners" element={<Viewpartner />} />
+                <Route path="/profilesetup1" element={<ProfileSetup1 />} />
+                <Route path="/community" element={<Community />} />
+                <Route path="/notification" element={<Notification />} />
+                <Route path="/performance" element={<Performance />} />
+                <Route path="/statisticscard" element={<StatisticsCard />} />
+                <Route path="/reminders" element={<Reminders />} />
+                <Route path="/home" element={<Dashboard />} />
+                <Route path="/studyrooms" element={<StudyRooms />} />
+                <Route path="/studystats" element={<StudyStats />} />
+                <Route path="/mycalendar" element={<MyCalendar />} />
+                <Route path="/eventcard" element={<Eventcard />} />
+                <Route path="/virtualroom/:roomId/:userId" element={<VirtualRoom />} />
+                <Route path="/chat" element={<Chat />} />
+                <Route path="/personalinfo" element={<Personalinfo />} />
+                <Route path="/studypartnersearch" element={<StudyPartnerSearch />} />
+                <Route path="/virtualroom" element={<VirtualRoom />} />
+                <Route path="/solostudyroom" element={<SoloStudyRoom />} />
+              </Route>
+            </Routes>
+          </div>
+      </ErrorBoundary>
     </Router>
   );
 }
 
 export default App;
+
