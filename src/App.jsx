@@ -47,7 +47,7 @@ function App() {
           <Route path="/login" element={<Login1 />} />
           
 
-          <Route element={<RequireAuth allowedRoles={["ADMIN"]} />}>
+          <Route>
             <Route path="/AdminDashboard" element={<AdminDashboard />} />
             <Route path="/UserList" element={<UserList />} />
             <Route path="/CommunityList" element={<CommunityList />} />
