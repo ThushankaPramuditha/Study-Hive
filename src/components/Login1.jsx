@@ -843,6 +843,7 @@ const Login = () => {
             // Extract userId and profileExists from the response
             const { userId, profileExists } = response;
     
+            
             // Redirect based on the `profileExists` field
             if (profileExists) {
                 navigate('/home'); // Redirect to the home page
