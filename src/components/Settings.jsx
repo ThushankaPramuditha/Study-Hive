@@ -24,7 +24,7 @@ const Settings = () => {
           </span>
         </p>
 
-        <div className="container mx-auto grid grid-cols-3 gap-4 mt-6 justify-center w-[90%]">
+        <div className="container mx-auto grid grid-cols-2 gap-4 mt-6 justify-center w-[90%]">
           <Link to="/Personalinfo" className="content-card bg-white p-5 my-5 rounded-lg shadow-xl transition-transform duration-300 transform hover:scale-105 w-full h-40 relative hover:shadow-yellow">
             <div className="absolute top-5 left-5">
               <img src={personalinfo} alt="Personal info" className='w-6 h-6'/>
@@ -41,14 +41,7 @@ const Settings = () => {
             <p className="text-[#717171] text-[12px]">Update your password and secure your account</p>
           </Link>
 
-          <Link to="/settings/audio-video" className="content-card bg-white p-5 my-5 rounded-lg shadow-xl transition-transform duration-300 transform hover:scale-105 w-full h-40 relative">
-            <div className="absolute top-5 left-5">
-              <img src={audio} alt="Audio & Video" className='w-6 h-6'/>
-            </div>
-            <h3 className="text-[#222] font-bold mb-3 mt-9">Audio & Video</h3>
-            <p className="text-[#717171] text-[12px]">Review payments, payouts, coupons, and gift cards</p>
-          </Link>
-
+        
           <Link to="/settings/study-materials" className="content-card bg-white p-5 my-5 rounded-lg shadow-xl transition-transform duration-300 transform hover:scale-105 w-full h-40 relative">
             <div className="absolute top-5 left-5">
               <img src={studymaterials} alt="Study Materials" className='w-6 h-6' />
@@ -73,21 +66,7 @@ const Settings = () => {
             <p className="text-[#717171] text-[12px]">Manage your personal data, connected services, data sharing </p>
           </Link>
 
-          <Link to="/settings/global-preferences" className="content-card bg-white p-5 my-5 rounded-lg shadow-xl transition-transform duration-300 transform hover:scale-105 w-full h-40 relative">
-            <div className="absolute top-5 left-5">
-              <img src={preference} alt="Global preferences" className='w-6 h-6' />
-            </div> 
-            <h3 className=" text-[#222] font-bold mb-3 mt-9">Global preferences</h3>
-            <p className="text-[#717171] text-[12px]">Set your default language, currency, and timezone</p>
-          </Link>
-
-          <Link to="/settings/professional-hosting-tools" className="content-card bg-white p-5 my-5 rounded-lg shadow-xl transition-transform duration-300 transform hover:scale-105 w-full h-40 relative">
-            <div className="absolute top-5 left-5">
-              <img src={tools} alt="Professional hosting tools"  className='w-6 h-6'/>
-            </div>
-            <h3 className="text-[#222] font-bold mb-3 mt-9">Professional hosting tools</h3>
-            <p className="text-[#717171] text-[12px]">Access advanced tools for managing multiple resources efficiently</p>
-          </Link>
+         
         </div>
       </div>
     </div>

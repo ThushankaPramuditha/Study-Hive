@@ -31,7 +31,15 @@ export const login = async (credentials) => {
         return response.data; // Extract the response containing token, userId, and profileExists
     } catch (error) {
         console.error('Login error:', error);
-        throw new Error('Login failed'); // Throw error to handle it in the component
+        // throw new Error('Login failed'); // Throw error to handle it in the component
+
+        if (error.response && error.response.status === 403) {
+            // If account is blocked, throw a specific error message
+            throw new Error('Your account is blocked. Please contact support.');
+        }
+
+        // For all other errors (incorrect credentials, etc.), throw a generic error
+        throw new Error('Login failed. Please check your credentials and try again.');
+    
     }
 };
-
