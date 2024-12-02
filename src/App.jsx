@@ -14,7 +14,7 @@ import StatisticsCard from './components/StatisticsCard';
 import Reminders from './components/Reminders';
 import Login from './components/Login';
 import Login1 from './components/Login1';
-import Forums from './components/Forums';
+import Forums from './components/Forums1';
 import Logout from './components/Logout';
 import ProfileSetup1 from './components/ProfileSetup1';
 import Settings from './components/Settings';
@@ -31,7 +31,20 @@ import Inquiry from './components/Inquiry';
 import AdminSetting from './components/AdminSetting';
 import AdminCalendar from './components/AdminCalendar';
 import Personalinfo from './components/Personal-info';
+ import Userinquiries from "./components/userinquiries";
+ import { Navigate } from 'react-router-dom';
 
+ const ProtectedRoute = ({ children, requiredRole }) => {
+  const role = localStorage.getItem('role');
+  
+  if (!role || role !== requiredRole) {
+      // If no role or role doesn't match, redirect to login
+      return <Navigate to="/login" replace />;
+  }
+  
+  return children;
+};
+ 
 
 function App() {
   return (
@@ -60,19 +73,76 @@ function App() {
           <Route path="/settings" element={<Settings />} />
           <Route path="/Personalinfo" element={<Personalinfo />} />
           <Route path="/ViewPartners" element={<Viewpartner />} />
-          <Route path="/AdminDashboard" element={<AdminDashboard />} />
-          <Route path="/CommunityList" element={<CommunityList />} />
+          {/* <Route path="/AdminDashboard" element={<AdminDashboard />} /> */}
+          {/* <Route path="/CommunityList" element={<CommunityList />} />
           <Route path="/ForumList" element={<ForumList />} />
           <Route path="/UserList" element={<UserList />} />
           <Route path="/StudyRoomList" element={<StudyRoomList />} />
           <Route path="/Inquiry" element={<Inquiry />} />
           <Route path="/AdminSetting" element={<AdminSetting />} />
-          <Route path="/AdminCalendar" element={<AdminCalendar />} />
-          
+          <Route path="/AdminCalendar" element={<AdminCalendar />} /> */}
+          <Route path="/userinquiries" element={<Userinquiries />} />
 
-        </Routes>
-      </div>
-    </Router>
+          <Route path="/CommunityList" 
+                        element={
+                            <ProtectedRoute requiredRole="admin">
+                                <CommunityList />
+                            </ProtectedRoute>
+                        }
+                    />
+                    <Route path="/ForumList" 
+                        element={
+                            <ProtectedRoute requiredRole="admin">
+                                <ForumList />
+                            </ProtectedRoute>
+                        }
+                    />
+                    <Route path="/UserList" 
+                        element={
+                            <ProtectedRoute requiredRole="admin">
+                                <UserList />
+                            </ProtectedRoute>
+                        }
+                    />
+                    <Route path="/StudyRoomList" element={ <ProtectedRoute requiredRole="admin"><StudyRoomList /></ProtectedRoute>} />
+                    <Route path="/Inquiry" 
+                        element={
+                            <ProtectedRoute requiredRole="admin">
+                                <Inquiry />
+                            </ProtectedRoute>
+                        }
+                    />
+                    <Route path="/AdminSetting" 
+                        element={
+                            <ProtectedRoute requiredRole="admin">
+                                <AdminSetting />
+                            </ProtectedRoute>
+                        }
+                    />
+                    <Route path="/AdminCalendar" 
+                        element={
+                            <ProtectedRoute requiredRole="admin">
+                                <AdminCalendar />
+                            </ProtectedRoute>
+                        }
+                    />
+                    <Route path="/userinquiries" 
+                        element={
+                            <ProtectedRoute requiredRole="admin">
+                                <Userinquiries />
+                            </ProtectedRoute>
+                        }
+                    />
+                    <Route path="/AdminDashboard" 
+                        element={
+                            <ProtectedRoute requiredRole="admin">
+                                <AdminDashboard />
+                            </ProtectedRoute>
+                        }
+                    />
+                </Routes>
+            </div>
+        </Router>
   );
 }
 
