@@ -27,6 +27,7 @@ const Chats = () => {
   const [chats, setChats] = useState({});
   // const { currentUser } = useContext(AuthContext);
   const { dispatch } = useContext(ChatContext);
+  const { data } = useContext(ChatContext);
   const [currentUser] = useState({
     uid: fId,
     displayName: userName,
@@ -73,11 +74,11 @@ const Chats = () => {
         })
         .map(([chatId, chatData]) => (
           <div
-            className="userChat1"
+            className={`userChat1 m-2 ${data.user.displayName == chatData.userInfo.displayName ? "userChat2":""}`}
             key={chatId}
             onClick={() => handleSelect(chatData.userInfo)}
           >
-            <div className="userChatInfo1">
+            <div className={`userChatInfo1`}>
               <span>{chatData.userInfo?.displayName || "Unknown User"}</span>
               <p>{chatData.lastMessage?.text || "No message available"}</p>
             </div>

@@ -25,7 +25,7 @@ const StudyRooms = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('http://localhost:8080/api/questions', newQuestion)
+    axios.post('http://localhost:8090/api/questions', newQuestion)
       .then(response => {
         setQuestions([...questions, response.data]);
         setNewQuestion({ title: '', content: '', category: '' });

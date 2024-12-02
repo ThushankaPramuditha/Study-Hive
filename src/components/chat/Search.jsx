@@ -22,7 +22,7 @@ try {
   const user = await fetchUserRole();
   console.log("User Data:", user);
   if (user && user.firstname && user.lastname) {
-    userName = user.firstname+" "+user.lastname;
+    userName = user.firstname + " " + user.lastname;
     email = user.email;
     fId = user.firstname + user.id;
   } else {
@@ -36,8 +36,6 @@ const Search = () => {
   const [username, setUsername] = useState("");
   const [user, setUser] = useState(null);
   const [err, setErr] = useState(false);
-
-  
 
   // const { currentUser } = useContext(AuthContext);
   const [currentUser] = useState({
@@ -100,6 +98,7 @@ const Search = () => {
           [`${combinedId}.userInfo`]: {
             uid: user.uid,
             displayName: user.displayName,
+            id: currentUser.id,
           },
           [`${combinedId}.date`]: serverTimestamp(),
         });
@@ -109,6 +108,7 @@ const Search = () => {
           [`${combinedId}.userInfo`]: {
             uid: currentUser.uid,
             displayName: currentUser.displayName,
+            id: user.id,
           },
           [`${combinedId}.date`]: serverTimestamp(),
         });
@@ -125,6 +125,7 @@ const Search = () => {
   return (
     <div className="search1">
       <div className="searchForm1">
+        <i className="searchicon1 fa-solid fa-magnifying-glass mr-2"></i>
         <input
           type="text"
           placeholder="Search a user"
@@ -146,5 +147,3 @@ const Search = () => {
 };
 
 export default Search;
-
-

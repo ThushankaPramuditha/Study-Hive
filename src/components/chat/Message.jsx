@@ -41,7 +41,6 @@ const Message = ({ message }) => {
       className={`message1 ${message.senderId === currentUser.uid && "owner1"}`}
     >
       <div className="messageInfo1">
-        {/* <span>just now</span> */}
       </div>
       <div className="messageContent1">
         <p>{message.text}</p>

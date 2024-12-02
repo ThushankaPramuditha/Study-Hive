@@ -14,7 +14,7 @@ const Home = () => {
     
       <div className='home1'>
       <SideBarnNavbar/>
-      <div className="container1 xl:ml-[25%] ml-[15%] justify-center mt-[3%] ">
+      <div className="container1 xl:ml-[25%] ml-[15%] justify-center mt-[2%] ">
         <Sidebar/>
         <Chat/>
       </div>
