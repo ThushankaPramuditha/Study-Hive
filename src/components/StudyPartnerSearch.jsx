@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { io } from 'socket.io-client';
 import axios from 'axios';
-import { Client } from '@stomp/stompjs';
-import SockJS from 'sockjs-client';
 import { fetchUserRole } from "../api/fetchUserRole";
 import StudyRoomInvitation from './StudyRoomInvitation';
 import NotificationPopup from './NotificationPopup';
-
 
 const StudyPartnerSearch = () => {
   const [user, setUser] = useState(null);
@@ -22,7 +20,7 @@ const StudyPartnerSearch = () => {
   const [showInvitation, setShowInvitation] = useState(false);
   const [selectedPartner, setSelectedPartner] = useState(null);
   const [notifications, setNotifications] = useState([]);
-  const [rabbitMQConnected, setRabbitMQConnected] = useState(false);
+  const [socket, setSocket] = useState(null);
 
   useEffect(() => {
     const loadUserData = async () => {
@@ -31,7 +29,7 @@ const StudyPartnerSearch = () => {
         console.log('User data loaded:', userData);
         if (userData) {
           setUser(userData);
-          connectToRabbitMQ(userData.id);
+          connectToWebSocket(userData.id);
         } else {
           setError("Failed to load user data. Please try logging in again.");
         }
@@ -43,53 +41,41 @@ const StudyPartnerSearch = () => {
     loadUserData();
 
     return () => {
-      // Cleanup function
+      if (socket) {
+        socket.disconnect();
+      }
     };
   }, []);
 
-  const connectToRabbitMQ = (userId) => {
-    console.log('Attempting to connect to RabbitMQ...');
-    
-    const client = new Client({
-      webSocketFactory: () => new SockJS('http://localhost:8090/ws-message'),
-      connectHeaders: {
-        login: 'guest',
-        passcode: 'guest',
-      },
-      debug: function (str) {
-        console.log('STOMP: ' + str);
-      },
-      reconnectDelay: RABBITMQ_RETRY_INTERVAL,
-      heartbeatIncoming: 4000,
-      heartbeatOutgoing: 4000,
+  const connectToWebSocket = (userId) => {
+    const newSocket = io('http://localhost:8090', {
+      query: { userId: userId }
     });
-  
-    client.onConnect = function (frame) {
-      console.log('Connected to RabbitMQ');
-      setRabbitMQConnected(true);
-  
-      // Add more debug logging to confirm which subscriptions succeed
-      client.subscribe(`/queue/user.${userId}.notifications`, function (message) {
-        console.log('Notification received:', message.body);
-      });
-  
-      client.subscribe(`/queue/user.${userId}.invitations`, function (message) {
-        console.log('Invitation update received:', message.body);
-      });
-    };
-  
-    client.onWebSocketClose = function (event) {
-      console.warn('WebSocket closed:', event);
-    };
-  
-    client.onStompError = function (frame) {
-      console.error('STOMP error:', frame.headers['message']);
-      setRabbitMQConnected(false);
-    };
-  
-    client.activate();
+
+    newSocket.on('connect', () => {
+      console.log('Connected to WebSocket');
+    });
+
+    newSocket.on('notification', (message) => {
+      console.log('Notification received:', message);
+      setNotifications(prev => [...prev, { id: Date.now(), message }]);
+    });
+
+    newSocket.on('invitationUpdate', (message) => {
+      console.log('Invitation update received:', message);
+      const [status, invitationId] = message.split(':');
+      // Handle invitation update (e.g., update UI, remove from notifications list)
+      if (status === 'ACCEPTED' || status === 'DECLINED') {
+        setNotifications(prev => prev.filter(n => n.id !== parseInt(invitationId)));
+      }
+    });
+
+    newSocket.on('disconnect', () => {
+      console.log('Disconnected from WebSocket');
+    });
+
+    setSocket(newSocket);
   };
-  
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -229,7 +215,7 @@ const StudyPartnerSearch = () => {
         </div>
       )}
 
-      {!rabbitMQConnected && (
+      {!socket && (
         <div className="mb-6 p-4 bg-yellow-50 text-yellow-600 rounded-lg border border-yellow-200">
           <p className="font-semibold">Warning:</p>
           <p>Real-time notifications are currently unavailable. Please refresh the page or try again later.</p>
@@ -408,9 +394,9 @@ const StudyPartnerSearch = () => {
         />
       )}
 
-      {notifications.map((notification, index) => (
+      {notifications.map((notification) => (
         <NotificationPopup
-          key={index}
+          key={notification.id}
           notification={notification}
           onAccept={() => handleAcceptInvitation(notification.id)}
           onDecline={() => handleDeclineInvitation(notification.id)}
