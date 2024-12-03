@@ -82,6 +82,7 @@
                     ...profileData,
                     studyGoal: serializedStudyGoal,
                     preferredLanguages: serializedpreferredLanguages,
+                    profilePhotoUrl: profileData.profilePhotoUrl,
                      // Ensure it's the correct field
                   };
               
