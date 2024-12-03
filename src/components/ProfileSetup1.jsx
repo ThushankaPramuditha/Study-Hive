@@ -7,6 +7,9 @@
         import backButton from '../assets/images/backButton.png';
         import nextButton from '../assets/images/nextButton.png';
         import { profileService } from '../api/profileService';
+        import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';  // Import the default styles
+
 
         const ProfileSetup1 = () => {
             const [currentStep, setCurrentStep] = useState(1);
@@ -66,6 +69,33 @@
             const handleSubmit = async (event) => {
                 event.preventDefault();
                 
+                const requiredFields = [
+                    { name: 'username', value: profileData.username, message: 'Username is required' },
+                    { name: 'gender', value: profileData.gender, message: 'Gender is required' },
+                    { name: 'university', value: profileData.university, message: 'University name is required' },
+                    { name: 'studyingFor', value: profileData.studyingFor, message: 'Studying for field is required' },
+                    { name: 'adaptability', value: profileData.adaptability, message: 'Adaptability is required' },
+                    { name: 'preferredLanguages', value: profileData.preferredLanguages.length > 0, message: 'Preferred languages are required' },
+                    { name: 'preferredStudyTime', value: profileData.preferredStudyTime, message: 'Preferred study time is required' },
+                    { name: 'studyGoal', value: profileData.studyGoal.length > 0, message: 'Study goals are required' },
+                    { name: 'aboutMe', value: profileData.aboutMe, message: 'About Me is required' },
+                ];
+            
+                const missingFields = requiredFields.filter(field => !field.value);
+            
+                if (missingFields.length > 0) {
+                    // Toast with React component inside to handle line breaks
+                    const messages = missingFields.map(field => field.message);
+                    toast.error(
+                        <div>
+                            {messages.map((msg, index) => (
+                                <div key={index}>{msg}</div> // Display each message in a new div
+                            ))}
+                        </div>
+                    );
+                    return;
+                }
+
                 const token = localStorage.getItem('token');
                 if (!token) {
                   console.error('No token found, redirecting to login...');
