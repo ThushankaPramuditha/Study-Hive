@@ -319,7 +319,7 @@ const Login = () => {
           uid: uid,
           displayName,
           email,
-          id: userId,
+          user_id: userId,
         });
 
         // Create empty user chats in Firestore

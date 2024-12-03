@@ -87,10 +87,11 @@ const Search = () => {
 
     try {
       const res = await getDoc(doc(db, "chats", combinedId));
-      console.log(res);
+      console.log("aluth",res);
 
       if (!res.exists()) {
         // Create a chat in the chats collection
+        console.log("aluth 1",res);
         await setDoc(doc(db, "chats", combinedId), { messages: [] });
 
         // Update current user's chat data
@@ -98,7 +99,6 @@ const Search = () => {
           [`${combinedId}.userInfo`]: {
             uid: user.uid,
             displayName: user.displayName,
-            id: currentUser.id,
           },
           [`${combinedId}.date`]: serverTimestamp(),
         });
@@ -108,7 +108,6 @@ const Search = () => {
           [`${combinedId}.userInfo`]: {
             uid: currentUser.uid,
             displayName: currentUser.displayName,
-            id: user.id,
           },
           [`${combinedId}.date`]: serverTimestamp(),
         });

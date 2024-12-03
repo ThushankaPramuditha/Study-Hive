@@ -146,7 +146,11 @@ import axios from "axios";
 import { ChatContext } from "../../context/ChatContext";
 import {
   arrayUnion,
+  collection,
   doc,
+  query,
+  where,
+  getDocs,
   serverTimestamp,
   Timestamp,
   updateDoc,
@@ -159,6 +163,8 @@ const Input = () => {
   const [text, setText] = useState("");
   const [currentUser, setCurrentUser] = useState(null);
   const { data } = useContext(ChatContext);
+  const [err, setErr] = useState(false);
+  const [user1, setUser1] = useState(null);
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -183,15 +189,27 @@ const Input = () => {
 
   const handleSend = async () => {
     if (!text.trim() || !currentUser) return;
-
-    const notification = {
-      userId: currentUser.id,
-      detail: `New message from ${currentUser.displayName}`,
-      detailId: 0, // Ensure this is always set to a non-null value
-      status: "Unread",
-    };
-
+  
     try {
+      // Fetch recipient user data
+      const q = query(
+        collection(db, "users"),
+        where("displayName", "==", data.user.displayName)
+      );
+  
+      const querySnapshot = await getDocs(q);
+      if (querySnapshot.empty) {
+        setErr(true); // User not found
+        return; // Exit early
+      }
+  
+      const fetchedUser = querySnapshot.docs[0]?.data(); // Assume the first result
+      if (!fetchedUser || !fetchedUser.user_id) {
+        throw new Error("Recipient user data is invalid or missing user_id.");
+      }
+      setUser1(fetchedUser); // Update state for future use
+  
+      // Proceed with chat and notification logic
       await updateDoc(doc(db, "chats", data.chatId), {
         messages: arrayUnion({
           id: uuid(),
@@ -200,22 +218,32 @@ const Input = () => {
           date: Timestamp.now(),
         }),
       });
-
+  
       await updateDoc(doc(db, "userChats", currentUser.uid), {
         [data.chatId + ".lastMessage"]: { text },
         [data.chatId + ".date"]: serverTimestamp(),
       });
-
+  
       await updateDoc(doc(db, "userChats", data.user.uid), {
         [data.chatId + ".lastMessage"]: { text },
         [data.chatId + ".date"]: serverTimestamp(),
       });
 
+      setText("");
+  
       const token = localStorage.getItem("token");
       if (!token) {
         throw new Error("No token found. Please log in again.");
       }
-
+  
+      const notification = {
+        userId: fetchedUser.user_id, // Use fetched user ID directly
+        detail: `A New Chat From ${currentUser.displayName}`,
+        detailId: 0, // Ensure this is always set to a non-null value
+        status: "Unread",
+        type: "Chat",
+      };
+  
       const response = await axios.post(
         "http://localhost:8090/api/notifications",
         notification,
@@ -226,13 +254,15 @@ const Input = () => {
           },
         }
       );
+  
       console.log("Notification created successfully:", response.data);
-      setText("");
+      
     } catch (error) {
       console.error("Error:", error.response ? error.response.data : error.message);
       alert("Failed to send message or create notification.");
     }
   };
+  
 
   return (
     <div className="input1">
