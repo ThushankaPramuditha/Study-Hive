@@ -38,6 +38,8 @@ const StudyStats = () => {
       const [statsResponse, leaderboardResponse] = await Promise.all([
         fetch(`http://localhost:8090/api/statistics/user/${userId}`),
         fetch('http://localhost:8090/api/statistics/leaderboard')
+
+        
       ]);
 
       if (!statsResponse.ok) {
@@ -62,11 +64,16 @@ const StudyStats = () => {
 
       setStatistics(statsData);
       setLeaderboard(leaderboardData);
+      console.log("Raw statistics data:", statsData);
+      console.log("Total study hours:", statsData.totalStudyHours);
+      console.log("Average study hours:", statsData.averageStudyHours);
     } catch (err) {
       setError(err.message || 'An error occurred while fetching data');
     } finally {
       setIsLoading(false);
     }
+
+      
   }, [userId]);
 
   useEffect(() => {
@@ -200,7 +207,7 @@ const StudyStats = () => {
                   <p className="font-semibold mt-3">{entry.username}</p>
                   <div className="flex items-center gap-2">
                     <i className="fas fa-stopwatch text-yellow-500"></i>
-                    <span>{entry.totalHours} Hours</span>
+                    <span>{entry.totalHours.toFixed(2)} Hours</span>
                   </div>
                 </div>
               ))}

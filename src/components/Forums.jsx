@@ -353,12 +353,12 @@ const Forums = () => {
               <p className="text-lg font-bold text-xl">Questions</p>
             </div>
             <div>
-              <button className="bg-[#C5D9B1] pr-4 pl-4 rounded-3xl font-semibold mr-5 hover:shadow-lg hover:shadow-gray-400 active:shadow-none">
+              {/* <button className="bg-[#C5D9B1] pr-4 pl-4 rounded-3xl font-semibold mr-5 hover:shadow-lg hover:shadow-gray-400 active:shadow-none">
                 Newest
               </button>
               <button className="bg-[#C5D9B1] pr-4 pl-4 rounded-3xl font-semibold hover:shadow-lg hover:shadow-gray-400 active:shadow-none">
                 Popular
-              </button>
+              </button> */}
             </div>
           </div>
           <div className="flex flex-col items-center ml-2 h-[800px] overflow-y-auto">
@@ -375,7 +375,7 @@ const Forums = () => {
                     <div>
                       <div className="ml-3 w-[52px] h-[52px] border-2 border-yellow-400 rounded-full bg-black">
                         <img
-                          src="https://cdn.aglty.io/boys-town/quotes/ryan_20230915120925.jpg"
+                          src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
                           alt="avatar"
                           className="w-full h-full rounded-full"
                         />
@@ -419,7 +419,7 @@ const Forums = () => {
                         />
                         <p className="text-gray-400 ml-2">{question.views}</p>
                       </div>
-                      <div className="flex items-center ml-6">
+                      {/* <div className="flex items-center ml-6">
                         <i className="fa-regular fa-thumbs-up text-gray-400"></i>
                         <p className="text-gray-400 ml-2">{question.likes}</p>
                       </div>
@@ -428,7 +428,7 @@ const Forums = () => {
                         <p className="text-gray-400 ml-2">
                           {question.dislikes}
                         </p>
-                      </div>
+                      </div> */}
                     </div>
                   </div>
                 </div>
@@ -446,7 +446,7 @@ const Forums = () => {
                     onChange={(e) => setCommentContent(e.target.value)}
                     placeholder="Write your comment here"
                   ></textarea>
-                  <div className="flex justify-center mt-4 gap-[245px]">
+                  <div className="flex justify-center mt-4 gap-[230px]">
                     <button
                       type="button"
                       onClick={() => setShowCommentPopup(false)}
@@ -555,7 +555,7 @@ const Forums = () => {
                     <div>
                       <div className="ml-3 w-[52px] h-[52px] border-2 border-yellow-400 rounded-full bg-black">
                         <img
-                          src={user}
+                          src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
                           alt="avatar"
                           className="w-full h-full rounded-full"
                         />

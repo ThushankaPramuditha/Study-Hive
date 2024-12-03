@@ -195,7 +195,7 @@ const StudyRooms = () => {
         console.log("Joined successfully:", data);
         alert("Successfully joined the room!");
         navigate(`/virtualroom/${joinRoomData.roomId}/${userId}`);
-        
+
         closeJoinRoom();
         fetchGroup(userId);
       } else {
@@ -285,95 +285,51 @@ const StudyRooms = () => {
             </button>
           </div>
 
-          <div className="mr-20">
-            <div className="ml-[10%] xl:grid xl:grid-cols-3 gap-4">
+          <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {studyRooms.length > 0 ? (
                 (showAll ? studyRooms : studyRooms.slice(0, 3)).map((room) => (
                   <div
                     key={room.id}
-                    className="flex flex-col items-center xl:m-4 m-3 xl:w-[90%] w-[100%]"
+                    className="relative bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl"
                   >
-                    <div className="relative">
-                      <div className="h-[30px] xl:w-[100%] w-[300px] bg-yellow-600 rounded-t-[50px] pb-2">
-                        <button
-                          onClick={() => handleDelete(room.id)}
-                          className="absolute top-2 right-2 text-gray-300"
-                        >
-                          <i className="fa-solid fa-trash"></i>
-                        </button>
-                      </div>
-                      <div className="h-auto xl:w-[100%] w-[300px] bg-yellow-100 rounded-b-[30px]">
-                        <p className="font-bold text-lg flex justify-center ">
-                          {room.roomName || "Room Name"}
-                        </p>
-                        <p className="ml-4 opacity-60">
-                          {room.description || "Description"}
-                        </p>
-                        <div className="flex items-center m-4 mt-10">
-                          <i className="fa-solid fa-user opacity-30 mr-4"></i>
-                          <p className="text-sm opacity-40">
-                            {room.createdBy || `${userFname} ${userLname}`}
+                    {/* Header Bar */}
+                    <div className="h-12 bg-gradient-to-r from-yellow-500 to-yellow-400 relative">
+                      <button
+                        onClick={() => handleDelete(room.id)}
+                        className="absolute top-3 right-3 text-white hover:text-gray-200 transition-colors"
+                        aria-label="Delete room"
+                      >
+                        <i className="fa-solid fa-trash"></i>
+                      </button>
+                    </div>
+
+                    {/* Content */}
+                    <div className="p-6 bg-gradient-to-b from-yellow-50 to-white">
+                      <div className="min-h-[180px] flex flex-col justify-between">
+                        {/* Room Info */}
+                        <div className="space-y-4">
+                          <h3 className="text-xl font-bold text-gray-900 text-center">
+                            {room.roomName || "Room Name"}
+                          </h3>
+                          <p className="text-gray-600 text-center text-sm">
+                            {room.description || "Description"}
                           </p>
                         </div>
-                        <div className="flex justify-center m-6 mt-10 ">
-                        <button
-                          onClick={() => handleJoinRoom(room)}
-                          className="bg-[#F6CA30] text-black text-xs font-semibold rounded-[50px] w-[100px] h-[30px] hover:shadow-lg hover:shadow-gray-400 active:shadow-none mb-4"
-                        >
-                          Join
-                        </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ))
-              ) : (
-                <p className="text-center">No study rooms available.</p>
-              )}
-            </div>
-          </div>
 
+                        {/* User Info */}
+                        <div className="flex flex-col items-center gap-4 mt-6">
+                          <div className="flex items-center gap-2 text-gray-600">
+                            <i className="fa-solid fa-user text-sm"></i>
+                            <span className="text-sm">{`${userFname} ${userLname}`}</span>
+                          </div>
 
-          <div className="flex justify-between">
-            <p className="pl-[10%] mt-10 mb-2 text-gray-500  text-lg">Community Popular Study Rooms</p>
-            <button className="pl-[10%] mt-10 mb-2 text-yellow-500  text-s mr-20">See all</button>
-          </div>
-
-          <div className="mr-20">
-            <div className="ml-[10%] xl:grid xl:grid-cols-3 gap-4">
-              {popularStudyRooms.length > 0 ? (
-                (showAll ? popularStudyRooms : popularStudyRooms.slice(0, 3)).map((room) => (
-                  <div
-                    key={room.id}
-                    className="flex flex-col items-center xl:m-4 m-3 xl:w-[90%] w-[100%]"
-                  >
-                    <div className="relative">
-                      <div className="h-[30px] xl:w-[100%] w-[300px] bg-yellow-600 rounded-t-[50px] pb-2">
-                        <button
-                          onClick={() => handleDelete(room.id)}
-                          className="absolute top-2 right-2 text-gray-300"
-                        >
-                          <i className="fa-solid fa-trash"></i>
-                        </button>
-                      </div>
-                      <div className="h-auto xl:w-[100%] w-[300px] bg-yellow-100 rounded-b-[30px]">
-
-                        <p className="font-bold text-lg flex justify-center ">{room.roomName || "Room Name"}</p>
-
-
-                        <p className="ml-4 opacity-60">{room.description || "Description"}</p>
-
-                        <div className="flex items-center m-4 mt-10">
-                          <i className="fa-solid fa-user opacity-30 mr-4"></i>
-                          <p className="text-sm opacity-40">{userFname} {userLname}</p>
-                        </div>
-
-                        <div className="flex justify-center m-6 mt-10 ">
+                          {/* Join Button */}
                           <button
                             onClick={() => handleJoinRoom(room)}
-                            className="bg-[#F6CA30] text-black text-xs font-semibold rounded-[50px] w-[100px] h-[30px] hover:shadow-lg hover:shadow-gray-400 active:shadow-none mb-4"
+                            className="w-full max-w-[200px] bg-yellow-400 hover:bg-yellow-500 text-black font-semibold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105 active:scale-100 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2"
                           >
-                            Join
+                            Join Room
                           </button>
                         </div>
                       </div>
@@ -381,7 +337,72 @@ const StudyRooms = () => {
                   </div>
                 ))
               ) : (
-                <p className="text-center">No study rooms available.</p>
+                <div className="col-span-full text-center py-12">
+                  <p className="text-lg text-gray-600">No study rooms available.</p>
+                </div>
+              )}
+            </div>
+          </div>
+
+          <div className="flex justify-between">
+            <p className="pl-[10%] mt-10 mb-2 text-gray-500  text-lg">Community Popular Study Rooms</p>
+            <button className="pl-[10%] mt-10 mb-2 text-yellow-500  text-s mr-20">See all</button>
+          </div>
+          <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {popularStudyRooms.length > 0 ? (
+                (showAll ? popularStudyRooms : popularStudyRooms.slice(0, 3)).map((room) => (
+                  <div
+                    key={room.id}
+                    className="relative bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl"
+                  >
+                    {/* Header Bar */}
+                    <div className="h-12 bg-gradient-to-r from-yellow-500 to-yellow-400 relative">
+                      <button
+                        onClick={() => handleDelete(room.id)}
+                        className="absolute top-3 right-3 text-white hover:text-gray-200 transition-colors"
+                        aria-label="Delete room"
+                      >
+                        <i className="fa-solid fa-trash"></i>
+                      </button>
+                    </div>
+
+                    {/* Content */}
+                    <div className="p-6 bg-gradient-to-b from-yellow-50 to-white">
+                      <div className="min-h-[180px] flex flex-col justify-between">
+                        {/* Room Info */}
+                        <div className="space-y-4">
+                          <h3 className="text-xl font-bold text-gray-900 text-center">
+                            {room.roomName || "Room Name"}
+                          </h3>
+                          <p className="text-gray-600 text-center text-sm">
+                            {room.description || "Description"}
+                          </p>
+                        </div>
+
+                        {/* User Info */}
+                        <div className="flex flex-col items-center gap-4 mt-6">
+                          <div className="flex items-center gap-2 text-gray-600">
+                            <i className="fa-solid fa-user text-sm"></i>
+                            <span className="text-sm">{`${userFname} ${userLname}`}</span>
+                          </div>
+
+                          {/* Join Button */}
+                          <button
+                            onClick={() => handleJoinRoom(room)}
+                            className="w-full max-w-[200px] bg-yellow-400 hover:bg-yellow-500 text-black font-semibold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105 active:scale-100 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2"
+                          >
+                            Join Room
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))
+              ) : (
+                <div className="col-span-full text-center py-12">
+                  <p className="text-lg text-gray-600">No study rooms available.</p>
+                </div>
               )}
             </div>
           </div>
@@ -431,15 +452,15 @@ const StudyRooms = () => {
                   </div>
                 </div>
                 <div className="mt-5">
-              <p className="text-sm font-semibold">Study Room Key</p>
-              <input
-                type="text"
-                className="border questions rounded p-3 pl-6 w-[100%] mt-3 text-xs rounded-3xl"
-                placeholder="Enter your Study Room key"
-                value={roomKey}
-                onChange={(e) => setRoomKey(e.target.value)}
-              />
-            </div>
+                  <p className="text-sm font-semibold">Study Room Key</p>
+                  <input
+                    type="text"
+                    className="border questions rounded p-3 pl-6 w-[100%] mt-3 text-xs rounded-3xl"
+                    placeholder="Enter your Study Room key"
+                    value={roomKey}
+                    onChange={(e) => setRoomKey(e.target.value)}
+                  />
+                </div>
                 <div className="flex justify-between mt-10">
                   <div></div>
                   <div className="bg-gray-100 flex items-center justify-center space-x-4 mr-2">
@@ -476,74 +497,74 @@ const StudyRooms = () => {
                   </button>
 
                   {createRoomTerms && (
-                <button
-                  onClick={creategroupStudyRoom}
-                  className="px-4 py-2 w-[100px] bg-questions text-black text-xs font-semibold rounded hover:shadow-lg hover:shadow-gray-400 active:shadow-none"
-                >
-                  <p>Let's Go</p>
-                </button>
-              )}
+                    <button
+                      onClick={creategroupStudyRoom}
+                      className="px-4 py-2 w-[100px] bg-questions text-black text-xs font-semibold rounded hover:shadow-lg hover:shadow-gray-400 active:shadow-none"
+                    >
+                      <p>Let's Go</p>
+                    </button>
+                  )}
                 </div>
               </div>
             </div>
           )}
           {joinRoomData && (
-        <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center">
-          <div className="bg-white p-8 rounded-2xl shadow-lg h-auto w-[400px]">
-            <div className="flex flex-col justify-center items-center">
-              <h2 className="text-xl font-semibold mb-1">Join Your Room</h2>
-              <div className="h-[2px] w-[100px] bg-questions"></div>
-            </div>
-            <div className="mt-10">
-              <p className="text-sm font-semibold">Study Room Name</p>
-              <input
-                type="text"
-                value={joinRoomData.roomName}
-                readOnly
-                className="border questions rounded p-3 pl-6 w-[100%] mt-3 text-xs rounded-3xl"
-              />
-            </div>
-            <div className="mt-5">
-              <p className="text-sm font-semibold">Study Room Key</p>
-              <input
-                type="text"
-                value={joinRoomData.roomKey}
-                onChange={(e) => setJoinRoomData(prev => ({ ...prev, roomKey: e.target.value }))}
-                className="border questions rounded p-3 pl-6 w-[100%] mt-3 text-xs rounded-3xl"
-                placeholder="Enter your Study Room key"
-              />
-            </div>
+            <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center">
+              <div className="bg-white p-8 rounded-2xl shadow-lg h-auto w-[400px]">
+                <div className="flex flex-col justify-center items-center">
+                  <h2 className="text-xl font-semibold mb-1">Join Your Room</h2>
+                  <div className="h-[2px] w-[100px] bg-questions"></div>
+                </div>
+                <div className="mt-10">
+                  <p className="text-sm font-semibold">Study Room Name</p>
+                  <input
+                    type="text"
+                    value={joinRoomData.roomName}
+                    readOnly
+                    className="border questions rounded p-3 pl-6 w-[100%] mt-3 text-xs rounded-3xl"
+                  />
+                </div>
+                <div className="mt-5">
+                  <p className="text-sm font-semibold">Study Room Key</p>
+                  <input
+                    type="text"
+                    value={joinRoomData.roomKey}
+                    onChange={(e) => setJoinRoomData(prev => ({ ...prev, roomKey: e.target.value }))}
+                    className="border questions rounded p-3 pl-6 w-[100%] mt-3 text-xs rounded-3xl"
+                    placeholder="Enter your Study Room key"
+                  />
+                </div>
 
-            <div className="flex justify-center space-x-4 mr-2">
-              <label className="flex items-start space-x-2 mt-5">
-                <input
-                  type="checkbox"
-                  className="square-radio"
-                  checked={joinRoomData.isAllow}
-                  onChange={handleAllow}
-                />
-                <span className="text-xs ">Accept terms and conditions</span>
-              </label>
+                <div className="flex justify-center space-x-4 mr-2">
+                  <label className="flex items-start space-x-2 mt-5">
+                    <input
+                      type="checkbox"
+                      className="square-radio"
+                      checked={joinRoomData.isAllow}
+                      onChange={handleAllow}
+                    />
+                    <span className="text-xs ">Accept terms and conditions</span>
+                  </label>
+                </div>
+                <div className="flex space-x-[150px] mt-5">
+                  <button
+                    onClick={closeJoinRoom}
+                    className="px-4 py-2 border border-[2px] questions text-white rounded hover:shadow-lg hover:shadow-gray-400 active:shadow-none"
+                  >
+                    <p className="logo1">Cancel</p>
+                  </button>
+                  {joinRoomData.isAllow && (
+                    <button
+                      onClick={joinStudyRoom}
+                      className="px-4 py-2 w-[100px] bg-questions text-black text-xs font-semibold rounded hover:shadow-lg hover:shadow-gray-400 active:shadow-none"
+                    >
+                      <p>Let's Go</p>
+                    </button>
+                  )}
+                </div>
+              </div>
             </div>
-            <div className="flex space-x-[150px] mt-5">
-              <button
-                onClick={closeJoinRoom}
-                className="px-4 py-2 border border-[2px] questions text-white rounded hover:shadow-lg hover:shadow-gray-400 active:shadow-none"
-              >
-                <p className="logo1">Cancel</p>
-              </button>
-              {joinRoomData.isAllow && (
-                <button
-                  onClick={joinStudyRoom}
-                  className="px-4 py-2 w-[100px] bg-questions text-black text-xs font-semibold rounded hover:shadow-lg hover:shadow-gray-400 active:shadow-none"
-                >
-                  <p>Let's Go</p>
-                </button>
-              )}
-            </div>
-          </div>
-        </div>
-      )}
+          )}
         </div>
         <div className="h-100 border border-gray-200 hidden xl:block">
         </div>
