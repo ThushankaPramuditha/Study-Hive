@@ -27,20 +27,20 @@ export const register = async (registerData) => {
 
 export const login = async (credentials) => {
     try {
-        const response = await axios.post(`${API_URL}/authenticate`, credentials); // Correct endpoint for login
+        const response = await axios.post(`${API_URL}/authenticate`, credentials);
         return response.data; // Extract the response containing token, userId, and profileExists
     } catch (error) {
         console.error('Login error:', error);
-        // throw new Error('Login failed'); // Throw error to handle it in the component
 
-        if (error.response && error.response.status === 403) {
-            // If account is blocked, throw a specific error message
-            throw new Error('Your account is blocked. Please contact support.');
+        if (error.response) {
+            if (error.response.status === 423) {
+                throw new Error(error.response.data.message || 'Your account is blocked. Please contact support.');
+            } else if (error.response.status === 401) {
+                throw new Error('Invalid credentials. Please try again.');
+            }
         }
-        
 
-        // For all other errors (incorrect credentials, etc.), throw a generic error
         throw new Error('Login failed. Please check your credentials and try again.');
-    
     }
 };
+    

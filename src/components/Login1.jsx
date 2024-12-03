@@ -731,6 +731,8 @@ import backImage from '../assets/images/back.png';
 import '../App.css';
 import { profileService } from '../api/profileService';
 
+import { toast } from 'react-toastify';
+
 const Login = () => {
     const [isLogin, setIsLogin] = useState(true);
     const [email, setEmail] = useState('');
@@ -815,6 +817,47 @@ const Login = () => {
     //     }
     // };
 
+    // const handleLogin = async (event) => {
+    //     event.preventDefault();
+    //     const errors = validateLogin();
+    //     if (Object.keys(errors).length > 0) {
+    //         setErrors(errors);
+    //         return;
+    //     }
+    
+    //     // Check if the email and password match admin's credentials
+    //     if (email === 'admin@gmail.com' && password === 'admin123') {
+    //         // Store a special admin flag in localStorage (or token)
+    //         localStorage.setItem('token', 'admin-token');
+    //         localStorage.setItem('role', 'admin'); // Store role as 'admin'
+    //         navigate('/AdminDashboard'); // Navigate to the admin's dashboard or home page
+    //         return;
+    //     }
+    
+    //     try {
+    //         const response = await login({ email, password });
+
+        
+    //         // Save the token and role to localStorage
+    //         localStorage.setItem('token', response.token);
+    //         localStorage.setItem('role', response.role); // Assuming `role` is returned in the response
+    
+    //         // Extract userId and profileExists from the response
+    //         const { userId, profileExists } = response;
+    
+            
+    //         // Redirect based on the `profileExists` field
+    //         if (profileExists) {
+    //             navigate('/home'); // Redirect to the home page
+    //         } else {
+    //             navigate(`/ProfileSetup1?userId=${userId}`); // Redirect to profile setup with userId as query param
+    //         }
+    //     } catch (error) {
+    //         setFormError(error.message); 
+    //     }
+    // };
+    
+
     const handleLogin = async (event) => {
         event.preventDefault();
         const errors = validateLogin();
@@ -825,33 +868,28 @@ const Login = () => {
     
         // Check if the email and password match admin's credentials
         if (email === 'admin@gmail.com' && password === 'admin123') {
-            // Store a special admin flag in localStorage (or token)
             localStorage.setItem('token', 'admin-token');
-            localStorage.setItem('role', 'admin'); // Store role as 'admin'
-            navigate('/AdminDashboard'); // Navigate to the admin's dashboard or home page
+            localStorage.setItem('role', 'admin');
+            navigate('/AdminDashboard');
             return;
         }
     
         try {
             const response = await login({ email, password });
-
-        
-            // Save the token and role to localStorage
-            localStorage.setItem('token', response.token);
-            localStorage.setItem('role', response.role); // Assuming `role` is returned in the response
     
-            // Extract userId and profileExists from the response
+            localStorage.setItem('token', response.token);
+            localStorage.setItem('role', response.role);
+            toast.success('Login successful!', { autoClose: 3000 });
+    
             const { userId, profileExists } = response;
     
-            
-            // Redirect based on the `profileExists` field
             if (profileExists) {
-                navigate('/home'); // Redirect to the home page
+                navigate('/home');
             } else {
-                navigate(`/ProfileSetup1?userId=${userId}`); // Redirect to profile setup with userId as query param
+                navigate(`/ProfileSetup1?userId=${userId}`);
             }
         } catch (error) {
-            setFormError(error.message); 
+            toast.error(error.message, { autoClose: 3000 }); // Display the error message returned by the `login` function
         }
     };
     
@@ -869,9 +907,10 @@ const Login = () => {
             const response = await register({ email, password, firstname, lastname });
             localStorage.setItem('token', response.token);
           //  navigate('/login1');
+          toast.success('Registration successful! You can now log in.', { autoClose: 3000 });
             setIsLogin(true);
         } catch (error) {
-            setFormError('Registration failed. Please try again.');
+            toast.error('Registration failed. Please try again.', { autoClose: 3000 });
         }
     };
 

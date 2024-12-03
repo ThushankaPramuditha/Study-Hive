@@ -33,6 +33,8 @@ import AdminCalendar from './components/AdminCalendar';
 import Personalinfo from './components/Personal-info';
  import Userinquiries from "./components/userinquiries";
  import { Navigate } from 'react-router-dom';
+ import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
  const ProtectedRoute = ({ children, requiredRole }) => {
   const role = localStorage.getItem('role');
@@ -51,6 +53,7 @@ function App() {
     <Router>
       {/* <SideBar sidebarToggle={sidebarToggle} setSidebarToggle={setSidebarToggle} /> */}
       <div className="App">
+      <ToastContainer position="top-right" autoClose={3000} />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/home" element={<Dashboard />} />
