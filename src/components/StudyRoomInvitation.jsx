@@ -10,45 +10,47 @@ const StudyRoomInvitation = ({ onSend, onClose }) => {
   };
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
       <div className="bg-white p-6 rounded-lg">
-        <h2 className="text-2xl font-bold mb-4">Send Study Room Invitation</h2>
+        <h2 className="text-xl font-bold mb-4">Send Study Room Invitation</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label htmlFor="roomId" className="block mb-2">
               Room ID
             </label>
             <input
+              id="roomId"
               type="text"
               value={roomId}
               onChange={(e) => setRoomId(e.target.value)}
-              className="w-full border rounded-lg p-2"
+              className="w-full border p-2 rounded"
               required
             />
           </div>
           <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label htmlFor="roomKey" className="block mb-2">
               Room Key
             </label>
             <input
+              id="roomKey"
               type="text"
               value={roomKey}
               onChange={(e) => setRoomKey(e.target.value)}
-              className="w-full border rounded-lg p-2"
+              className="w-full border p-2 rounded"
               required
             />
           </div>
-          <div className="flex justify-end space-x-4">
+          <div className="flex justify-end">
             <button
               type="button"
               onClick={onClose}
-              className="px-4 py-2 bg-gray-200 rounded-lg"
+              className="mr-2 px-4 py-2 bg-gray-200 rounded"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="px-4 py-2 bg-blue-500 text-white rounded-lg"
+              className="px-4 py-2 bg-blue-500 text-white rounded"
             >
               Send Invitation
             </button>
