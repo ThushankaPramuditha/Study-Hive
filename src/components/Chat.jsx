@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 
 import "react-calendar/dist/Calendar.css";
 import { ZIMKitManager, Common } from "@zegocloud/zimkit-react";
-import "@zegocloud/zimkit-react/index.css";
-import "../index.css?v=1";
+// import "@zegocloud/zimkit-react/index.css";
+// import "../index.css?v=1";
 import SideBarnNavbar from "./SideBarnNavbar";
 import { userFname, userId } from "./const";
 
