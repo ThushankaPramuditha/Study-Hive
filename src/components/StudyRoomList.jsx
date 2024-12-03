@@ -1,30 +1,45 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import AdminSidebar from './AdminSidebar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEdit, faTrash, faLock } from '@fortawesome/free-solid-svg-icons';
+import { faEye, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 const StudyRoomList = () => {
-  const rooms = [
-    { name: 'Study Room A', participants: 5, created: '6 April 2023' },
-    { name: 'Study Room B', participants: 3, created: '5 April 2023' },
-    { name: 'Study Room C', participants: 4, created: '4 April 2023' },
-    { name: 'Study Room D', participants: 6, created: '3 April 2023' },
-    { name: 'Study Room E', participants: 2, created: '2 April 2023' },
-    { name: 'Study Room F', participants: 7, created: '1 April 2023' },
-    { name: 'Study Room G', participants: 8, created: '31 March 2023' },
-    { name: 'Study Room H', participants: 5, created: '30 March 2023' },
-    { name: 'Study Room I', participants: 4, created: '29 March 2023' },
-    { name: 'Study Room J', participants: 6, created: '28 March 2023' },
-    // Add more rooms as needed
-  ];
-
+  const [rooms, setRooms] = useState([]); // State to hold study rooms
   const [searchTerm, setSearchTerm] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
+  const [selectedRoom, setSelectedRoom] = useState(null); // State to hold selected room details for "View More"
+  const [showModal, setShowModal] = useState(false); // State to control modal visibility
   const roomsPerPage = 10;
 
-  // Filter rooms based on search term
+  // Fetch study rooms from the backend
+  const fetchRooms = async () => {
+    try {
+      const response = await fetch('http://localhost:8080/api/studyrooms'); // Adjust endpoint as necessary
+      const data = await response.json();
+      console.log('Fetched study rooms:', data); // Log the response to check alignment
+
+      // Map data to match UI format
+      const formattedData = data.map((room) => ({
+        ...room,
+        created: new Date(room.createdDate).toLocaleDateString('en-GB', {
+          day: '2-digit',
+          month: 'long',
+          year: 'numeric',
+        }),
+      }));
+
+      setRooms(formattedData); // Update state with the new data
+    } catch (error) {
+      console.error('Error fetching study rooms:', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchRooms(); // Initial fetch when component mounts
+  }, []); // Run only once when component is mounted
+
   const filteredRooms = rooms.filter((room) =>
-    room.name.toLowerCase().includes(searchTerm.toLowerCase())
+    room.roomName?.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   // Pagination logic
@@ -35,6 +50,34 @@ const StudyRoomList = () => {
   // Change page
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
+  };
+
+  // Handle "View More" button click
+  const handleViewMore = (room) => {
+    setSelectedRoom(room); // Set selected room details
+    setShowModal(true); // Show modal
+  };
+
+  // Handle delete room
+  const handleDelete = async (roomId) => {
+    const confirmDelete = window.confirm('Are you sure you want to delete this room?');
+    if (confirmDelete) {
+      try {
+        const response = await fetch(`http://localhost:8080/api/studyrooms/${roomId}`, {
+          method: 'DELETE', // Make DELETE request to the server
+        });
+
+        if (response.ok) {
+          alert('Room deleted successfully!');
+          fetchRooms(); // Refetch the rooms after deletion to get the updated list
+        } else {
+          alert('Failed to delete the room.');
+        }
+      } catch (error) {
+        console.error('Error deleting room:', error);
+        alert('Error deleting room.');
+      }
+    }
   };
 
   return (
@@ -63,21 +106,15 @@ const StudyRoomList = () => {
           <tbody>
             {currentRooms.map((room, index) => (
               <tr key={index} className="border-b text-center">
-                <td className="py-2 font-regular">{room.name}</td>
-                <td className="py-2">{room.participants}</td>
+                <td className="py-2 font-regular">{room.roomName}</td>
+                <td className="py-2">{room.participantCount}</td>
                 <td className="py-2">{room.created}</td>
-                <td className="py-2 flex justify-center space-x-2 text-[#8B909A] gap-1">
-                  <button className="">
-                    <FontAwesomeIcon icon={faEdit} className="w-4 h-4" />
+                <td className="py-2 flex justify-center space-x-3 text-[#8B909A] gap-1">
+                  <button onClick={() => handleViewMore(room)}>
+                    <FontAwesomeIcon icon={faEye} />
                   </button>
-                  <button className="">
+                  <button onClick={() => handleDelete(room.id)}>
                     <FontAwesomeIcon icon={faTrash} className="w-4 h-4" />
-                  </button>
-                  <button className="">
-                    <FontAwesomeIcon icon={faLock} className="w-4 h-4" />
-                  </button>
-                  <button className="text-[#D4944C] text-[13px]">
-                    <span>View more...</span>
                   </button>
                 </td>
               </tr>
@@ -99,6 +136,30 @@ const StudyRoomList = () => {
           </div>
         </div>
       </div>
+
+      {/* Modal to show room details */}
+      {showModal && selectedRoom && (
+        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center">
+          <div className="bg-white p-6 rounded-lg w-[500px]">
+            <h2 className="text-2xl font-bold mb-4">Study Room Details</h2>
+            <div>
+              <p><strong>ID:</strong> {selectedRoom.id}</p>
+              <p><strong>Room Name:</strong> {selectedRoom.roomName}</p>
+              <p><strong>Accept Terms:</strong> {selectedRoom.acceptTerms ? 'Yes' : 'No'}</p>
+              <p><strong>Created Date:</strong> {selectedRoom.created}</p>
+              <p><strong>Description:</strong> {selectedRoom.description}</p>
+              <p><strong>Public:</strong> {selectedRoom.isPublic ? 'Yes' : 'No'}</p>
+              <p><strong>Participants:</strong> {selectedRoom.participantCount}</p>
+            </div>
+            <button
+              onClick={() => setShowModal(false)}
+              className="mt-4 px-4 py-2 bg-[#D4944C] rounded-lg"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
