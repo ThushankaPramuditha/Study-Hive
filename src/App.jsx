@@ -1,6 +1,5 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { WebSocketProvider } from "./components/WebSocketContext";
 import ErrorBoundary from "./components/ErrorBoundary";
 import Home from "./components/Home";
 import Dashboard from "./components/Dashboard";
@@ -45,7 +44,6 @@ function App() {
   return (
     <Router>
       <ErrorBoundary>
-
           <div className="App">
             <Routes>
               {/* Public Routes */}

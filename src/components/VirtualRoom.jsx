@@ -11,6 +11,7 @@ const VirtualRoom = () => {
   const [isVideoCallOpen, setIsVideoCallOpen] = useState(false);
   const [isGroupChatOpen, setIsGroupChatOpen] = useState(false);
   const [showConfirmLeave, setShowConfirmLeave] = useState(false);
+  const [isFindingPartner, setIsFindingPartner] = useState(false);
   const navigate = useNavigate();
   const { roomId, userId } = useParams();
 
@@ -21,13 +22,14 @@ const VirtualRoom = () => {
     "Dream it. Believe it. Build it.",
   ];
 
+
   useEffect(() => {
     if (!roomId || !userId) {
       console.error('Room ID or User ID is missing');
       navigate('/home');
       return;
     }
-
+    
     const randomQuote = motivationalQuotes[Math.floor(Math.random() * motivationalQuotes.length)];
     setQuote(randomQuote);
 
@@ -134,7 +136,7 @@ const VirtualRoom = () => {
             padding: "20px", 
             borderRadius: "10px",
             border: "1px solid #FFD700"
-          }}>
+            }}>
             <h3 style={{ color: "#FFD700", marginBottom: "15px" }}>Session Goals</h3>
             <div style={{ marginBottom: "15px" }}>
               <input
@@ -150,7 +152,7 @@ const VirtualRoom = () => {
                   borderRadius: "5px",
                   color: "white",
                   marginBottom: "10px"
-                }}
+              }}
               />
               <button 
                 onClick={handleAddGoal}
@@ -218,7 +220,7 @@ const VirtualRoom = () => {
               Video Call
             </button>
             <button
-              onClick={() => setIsGroupChatOpen(true)}
+              onClick={() => setIsFindingPartner(true)}
               style={{ 
                 padding: "12px 24px",
                 backgroundColor: "#FFD700",
@@ -229,7 +231,7 @@ const VirtualRoom = () => {
                 fontWeight: "bold"
               }}
             >
-              Group Chat
+              Find Study Partner
             </button>
 
           </div>
@@ -383,6 +385,50 @@ const VirtualRoom = () => {
             <iframe src="/groupchat" style={{ width: "100%", height: "calc(100% - 60px)", border: "none" }}></iframe>
             <button 
               onClick={() => setIsGroupChatOpen(false)}
+              style={{ 
+                position: "absolute",
+                top: "20px",
+                right: "20px",
+                padding: "8px 16px",
+                backgroundColor: "#FF0000",
+                color: "white",
+                border: "none",
+                borderRadius: "5px",
+                cursor: "pointer"
+              }}
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
+
+      {isFindingPartner && (
+        <div style={{ 
+          position: "fixed",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          backgroundColor: "rgba(0, 0, 0, 0.9)",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          zIndex: 20
+        }}>
+          <div style={{ 
+            width: "90%",
+            height: "90%",
+            backgroundColor: "black",
+            border: "2px solid #FFD700",
+            borderRadius: "10px",
+            padding: "20px",
+            position: "relative"
+          }}>
+            <h2 style={{ color: "#FFD700" }}>Find Study Partner</h2>
+            <iframe src="/studypartnersearch" style={{ width: "100%", height: "calc(100% - 60px)", border: "none" }}></iframe>
+            <button 
+              onClick={() => setIsFindingPartner(false)}
               style={{ 
                 position: "absolute",
                 top: "20px",
