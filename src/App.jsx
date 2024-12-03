@@ -39,6 +39,7 @@ import Chat from "./components/Chat";
 import VirtualRoom from "./components/VirtualRoom";
 import StudyPartnerSearch from "./components/StudyPartnerSearch";
 import SoloStudyRoom from "./components/SoloStudyRoom";
+import CommunityPage from "./pages/CommunityPage";
 
 function App() {
   return (
@@ -90,6 +91,7 @@ function App() {
                 <Route path="/studypartnersearch" element={<StudyPartnerSearch />} />
                 <Route path="/virtualroom" element={<VirtualRoom />} />
                 <Route path="/solostudyroom" element={<SoloStudyRoom />} />
+                <Route path="/communitypage" element={<CommunityPage />} />
               </Route>
             </Routes>
           </div>
