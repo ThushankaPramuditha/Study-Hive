@@ -89,6 +89,9 @@
               
                   console.log('Profile created successfully', response.data);
                   navigate('/home');
+                  setTimeout(() => {
+                    window.location.reload(); // Force reload after navigation
+                  }, 0);
                 } catch (error) {
                   console.error('Error creating profile:', error);
                 }
