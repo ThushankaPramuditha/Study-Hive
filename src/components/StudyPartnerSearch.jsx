@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { fetchUserRole } from '../api/fetchUserRole';
+import { Client } from '@stomp/stompjs';
+import SockJS from 'sockjs-client';
+import { fetchUserRole } from "../api/fetchUserRole";
+import StudyRoomInvitation from './StudyRoomInvitation';
+import NotificationPopup from './NotificationPopup';
+
 
 const StudyPartnerSearch = () => {
   const [user, setUser] = useState(null);
@@ -14,19 +19,77 @@ const StudyPartnerSearch = () => {
   const [matchingPartners, setMatchingPartners] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [showInvitation, setShowInvitation] = useState(false);
+  const [selectedPartner, setSelectedPartner] = useState(null);
+  const [notifications, setNotifications] = useState([]);
+  const [rabbitMQConnected, setRabbitMQConnected] = useState(false);
 
   useEffect(() => {
     const loadUserData = async () => {
       try {
         const userData = await fetchUserRole();
-        setUser(userData);
+        console.log('User data loaded:', userData);
+        if (userData) {
+          setUser(userData);
+          connectToRabbitMQ(userData.id);
+        } else {
+          setError("Failed to load user data. Please try logging in again.");
+        }
       } catch (error) {
         console.error("Error loading user data:", error);
-        setError("Failed to load user data. Please try again later.");
+        setError("An error occurred while loading user data. Please try again later.");
       }
     };
     loadUserData();
+
+    return () => {
+      // Cleanup function
+    };
   }, []);
+
+  const connectToRabbitMQ = (userId) => {
+    console.log('Attempting to connect to RabbitMQ...');
+    
+    const client = new Client({
+      webSocketFactory: () => new SockJS('http://localhost:8090/ws-message'),
+      connectHeaders: {
+        login: 'guest',
+        passcode: 'guest',
+      },
+      debug: function (str) {
+        console.log('STOMP: ' + str);
+      },
+      reconnectDelay: RABBITMQ_RETRY_INTERVAL,
+      heartbeatIncoming: 4000,
+      heartbeatOutgoing: 4000,
+    });
+  
+    client.onConnect = function (frame) {
+      console.log('Connected to RabbitMQ');
+      setRabbitMQConnected(true);
+  
+      // Add more debug logging to confirm which subscriptions succeed
+      client.subscribe(`/queue/user.${userId}.notifications`, function (message) {
+        console.log('Notification received:', message.body);
+      });
+  
+      client.subscribe(`/queue/user.${userId}.invitations`, function (message) {
+        console.log('Invitation update received:', message.body);
+      });
+    };
+  
+    client.onWebSocketClose = function (event) {
+      console.warn('WebSocket closed:', event);
+    };
+  
+    client.onStompError = function (frame) {
+      console.error('STOMP error:', frame.headers['message']);
+      setRabbitMQConnected(false);
+    };
+  
+    client.activate();
+  };
+  
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -47,6 +110,7 @@ const StudyPartnerSearch = () => {
         throw new Error('No authentication token found');
       }
 
+      console.log('Submitting form data:', formData);
       const response = await axios.post(
         'http://localhost:8090/api/matching/find-partners',
         formData,
@@ -58,42 +122,98 @@ const StudyPartnerSearch = () => {
           timeout: 10000
         }
       );
-      console.log("Request sent with token:", token);
-      console.log("Matching partners:", response.data);
-
+      console.log('Matching partners response:', response.data);
       setMatchingPartners(response.data);
     } catch (err) {
       console.error("Error finding matching partners:", err);
-      if (err.response) {
-        // The request was made and the server responded with a status code
-        // that falls out of the range of 2xx
-        console.error("Response data:", err.response.data);
-        console.error("Response status:", err.response.status);
-        console.error("Response headers:", err.response.headers);
-        setError(`Server error: ${err.response.data.message || err.response.statusText}`);
-      } else if (err.request) {
-        // The request was made but no response was received
-        console.error("No response received:", err.request);
-        setError("No response received from the server. Please try again later.");
-      } else {
-        // Something happened in setting up the request that triggered an Error
-        console.error("Error setting up the request:", err.message);
-        setError("An unexpected error occurred. Please try again later.");
-      }
+      setError(err.response?.data?.message || "An unexpected error occurred while finding partners. Please try again later.");
     } finally {
       setIsLoading(false);
     }
   };
 
-  const handleConnect = async (partnerId) => {
-    // Implement connection logic here
-    console.log(`Connecting with partner ${partnerId}`);
+  const handleConnect = (partner) => {
+    console.log('Connecting with partner:', partner);
+    setSelectedPartner(partner);
+    setShowInvitation(true);
+  };
+
+  const handleSendInvitation = async (roomId, roomKey) => {
+    try {
+      const token = localStorage.getItem('token');
+      console.log('Sending invitation:', { receiverId: selectedPartner.userId, roomId, roomKey });
+      await axios.post(
+        'http://localhost:8090/api/invitations/send',
+        {
+          receiverId: selectedPartner.userId,
+          roomId,
+          roomKey
+        },
+        {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          }
+        }
+      );
+      console.log('Invitation sent successfully');
+      setShowInvitation(false);
+    } catch (error) {
+      console.error("Error sending invitation:", error);
+      setError("Failed to send invitation. Please try again.");
+    }
+  };
+
+  const handleAcceptInvitation = async (invitationId) => {
+    try {
+      const token = localStorage.getItem('token');
+      console.log('Accepting invitation:', invitationId);
+      await axios.post(
+        `http://localhost:8090/api/invitations/${invitationId}/accept`,
+        {},
+        {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          }
+        }
+      );
+      console.log('Invitation accepted successfully');
+      setNotifications(prev => prev.filter(n => n.id !== invitationId));
+    } catch (error) {
+      console.error("Error accepting invitation:", error);
+      setError("Failed to accept invitation. Please try again.");
+    }
+  };
+
+  const handleDeclineInvitation = async (invitationId) => {
+    try {
+      const token = localStorage.getItem('token');
+      console.log('Declining invitation:', invitationId);
+      await axios.post(
+        `http://localhost:8090/api/invitations/${invitationId}/decline`,
+        {},
+        {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          }
+        }
+      );
+      console.log('Invitation declined successfully');
+      setNotifications(prev => prev.filter(n => n.id !== invitationId));
+    } catch (error) {
+      console.error("Error declining invitation:", error);
+      setError("Failed to decline invitation. Please try again.");
+    }
   };
 
   if (!user) {
-    return <div className="flex justify-center items-center h-screen">
-      <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-yellow-400"></div>
-    </div>;
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-yellow-400"></div>
+      </div>
+    );
   }
 
   return (
@@ -109,13 +229,21 @@ const StudyPartnerSearch = () => {
         </div>
       )}
 
+      {!rabbitMQConnected && (
+        <div className="mb-6 p-4 bg-yellow-50 text-yellow-600 rounded-lg border border-yellow-200">
+          <p className="font-semibold">Warning:</p>
+          <p>Real-time notifications are currently unavailable. Please refresh the page or try again later.</p>
+        </div>
+      )}
+
       <form onSubmit={handleSubmit} className="space-y-6 bg-white shadow-md rounded-lg p-6">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label htmlFor="studyingFor" className="block text-sm font-medium text-gray-700 mb-2">
               Subject Area
             </label>
             <select
+              id="studyingFor"
               name="studyingFor"
               value={formData.studyingFor}
               onChange={handleInputChange}
@@ -131,10 +259,11 @@ const StudyPartnerSearch = () => {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label htmlFor="preferredStudyTime" className="block text-sm font-medium text-gray-700 mb-2">
               Preferred Study Time
             </label>
             <select
+              id="preferredStudyTime"
               name="preferredStudyTime"
               value={formData.preferredStudyTime}
               onChange={handleInputChange}
@@ -150,10 +279,11 @@ const StudyPartnerSearch = () => {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label htmlFor="adaptability" className="block text-sm font-medium text-gray-700 mb-2">
               Learning Pace
             </label>
             <select
+              id="adaptability"
               name="adaptability"
               value={formData.adaptability}
               onChange={handleInputChange}
@@ -169,11 +299,12 @@ const StudyPartnerSearch = () => {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
+          <label htmlFor="studyGoal" className="block text-sm font-medium text-gray-700 mb-2">
             Study Goal
           </label>
           <input
             type="text"
+            id="studyGoal"
             name="studyGoal"
             value={formData.studyGoal}
             onChange={handleInputChange}
@@ -184,10 +315,11 @@ const StudyPartnerSearch = () => {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
+          <label htmlFor="additionalInfo" className="block text-sm font-medium text-gray-700 mb-2">
             Additional Information
           </label>
           <textarea
+            id="additionalInfo"
             name="additionalInfo"
             value={formData.additionalInfo}
             onChange={handleInputChange}
@@ -256,7 +388,7 @@ const StudyPartnerSearch = () => {
                     <div className="text-sm text-gray-500">Match</div>
                   </div>
                   <button
-                    onClick={() => handleConnect(partner.userId)}
+                    onClick={() => handleConnect(partner)}
                     className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition duration-200 ease-in-out
                                focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
                   >
@@ -268,6 +400,22 @@ const StudyPartnerSearch = () => {
           </div>
         </div>
       )}
+
+      {showInvitation && (
+        <StudyRoomInvitation
+          onSend={handleSendInvitation}
+          onClose={() => setShowInvitation(false)}
+        />
+      )}
+
+      {notifications.map((notification, index) => (
+        <NotificationPopup
+          key={index}
+          notification={notification}
+          onAccept={() => handleAcceptInvitation(notification.id)}
+          onDecline={() => handleDeclineInvitation(notification.id)}
+        />
+      ))}
     </div>
   );
 };

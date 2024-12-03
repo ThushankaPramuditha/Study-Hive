@@ -50,7 +50,7 @@ const DashboardContent = ({ userFname, userLname }) => {
   };
 
   const handleSoloStudy = () => {
-    navigate("/virtualroom");
+    navigate("/solostudyroom");
   };
 
   const createRoom = () => {
@@ -303,7 +303,7 @@ const DashboardContent = ({ userFname, userLname }) => {
 
               {/* Content */}
               <div className="p-6 bg-gradient-to-b from-yellow-50 to-white">
-                <div className="min-h-[180px] flex flex-col justify-between">
+                <div className="min-h-[180px] max-h-[220px] flex flex-col justify-between">
                   {/* Room Info */}
                   <div className="space-y-4">
                     <h3 className="text-xl font-bold text-gray-900 text-center">
@@ -504,26 +504,10 @@ const DashboardContent = ({ userFname, userLname }) => {
       )}
       <div className="h-100 border border-gray-200 hidden xl:block"></div>
       <div className="xl:w-[25%] flex flex-col items-center ">
-        <div className="xl:h-[30%] xl:w-[90%] flex justify-center items-center w-[400px] h-[500px] p-2 mt-10">
+        <div className="xl:h-[30%] xl:w-[90%] flex justify-center items-center w-[400px] h-[500px] p-2 mt-20">
           <Calendar />
         </div>
-        <div className="">
-          <div>
-            <p className="m-10 ml-4 mb-4 font-bold text-2xl">Schedule</p>
-          </div>
-          <div className="flex flex-col items-center ">
-            <div className="flex justify-between items-center xl:w-[100%] w-[300px] h-auto bg-gray-100 rounded-[10px] m-2 p-1">
-              <div className="xl:ml-3 ml-7 w-2 h-2 bg-yellow-600 rounded"></div>
-              <div className="flex flex-col">
-                <p className="text-xl font-bold mb-3">English Classes</p>
-                <p className="opacity-40"></p>
-              </div>
-              <div className="mr-10 opacity-40">
-                <i className="fa-solid fa-angle-right"></i>
-              </div>
-            </div>
-          </div>
-        </div>
+       
       </div>
     </div>
   );

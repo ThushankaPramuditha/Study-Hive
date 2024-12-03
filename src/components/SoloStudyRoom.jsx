@@ -8,6 +8,7 @@ const SoloStudyRoom = () => {
   const [newGoal, setNewGoal] = useState("");
   const [quote, setQuote] = useState("");
   const [showConfirmLeave, setShowConfirmLeave] = useState(false);
+  const [showConfirmLeaveRoom, setShowConfirmLeaveRoom] = useState(false);
   const [studySessions, setStudySessions] = useState([]);
   const [showStats, setShowStats] = useState(false);
 
@@ -63,6 +64,26 @@ const SoloStudyRoom = () => {
 
   const formatTime = (seconds) => {
     return new Date(seconds * 1000).toISOString().substr(11, 8);
+  };
+
+  const leaveRoom = async () => {
+    try {
+      const response = await fetch(`http://localhost:8090/api/studyrooms/${roomId}/leave?userId=${userId}&timeSpent=${time}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (response.ok) {
+        navigate('/home');
+      } else {
+        const errorText = await response.text();
+        console.error('Failed to leave room:', errorText);
+      }
+    } catch (error) {
+      console.error('Error leaving room:', error);
+    }
   };
 
   return (
@@ -137,6 +158,24 @@ const SoloStudyRoom = () => {
                   End Session
                 </button>
               )}
+
+        <div style={{ marginTop: "auto" }}>
+                    <button
+                      onClick={() => setShowConfirmLeaveRoom(true)}
+                      style={{ 
+                        padding: "15px 30px",
+                        backgroundColor: "#FF0000",
+                        color: "white",
+                        border: "none",
+                        borderRadius: "8px",
+                        cursor: "pointer",
+                        fontSize: "18px",
+                        fontWeight: "bold"
+                      }}
+                    >
+                      Leave Room
+                    </button>
+                  </div>
             </div>
           </div>
 
@@ -191,6 +230,63 @@ const SoloStudyRoom = () => {
                 className="px-6 py-2 bg-yellow-400 text-black rounded font-bold hover:bg-yellow-500"
               >
                 Continue Studying
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+{showConfirmLeaveRoom && (
+        <div style={{ 
+          position: "fixed",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          backgroundColor: "rgba(0, 0, 0, 0.9)",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          zIndex: 30
+        }}>
+          <div style={{ 
+            backgroundColor: "black",
+            border: "2px solid #FFD700",
+            borderRadius: "10px",
+            padding: "30px",
+            textAlign: "center",
+            maxWidth: "400px"
+          }}>
+            <h2 style={{ color: "#FFD700", marginBottom: "20px" }}>Leave Room?</h2>
+            <p style={{ color: "white", marginBottom: "30px" }}>Your time spent will be recorded.</p>
+            <div style={{ display: "flex", justifyContent: "center", gap: "20px" }}>
+              <button
+                onClick={leaveRoom}
+                style={{ 
+                  padding: "12px 24px",
+                  backgroundColor: "#FF0000",
+                  color: "white",
+                  border: "none",
+                  borderRadius: "5px",
+                  cursor: "pointer",
+                  fontWeight: "bold"
+                }}
+              >
+                Yes, Leave
+              </button>
+              <button
+                onClick={() => setShowConfirmLeave(false)}
+                style={{ 
+                  padding: "12px 24px",
+                  backgroundColor: "#FFD700",
+                  color: "black",
+                  border: "none",
+                  borderRadius: "5px",
+                  cursor: "pointer",
+                  fontWeight: "bold"
+                }}
+              >
+                Stay
               </button>
             </div>
           </div>
