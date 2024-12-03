@@ -4,6 +4,8 @@ import solo from "../assets/images/Solostudy.png";
 import group from "../assets/images/Groupstudy.png";
 import Calendar from "./BoxCalendar";
 import { fetchUserRole } from "../api/fetchUserRole";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const DashboardContent = ({ userFname, userLname }) => {
   const navigate = useNavigate();
@@ -27,10 +29,10 @@ const DashboardContent = ({ userFname, userLname }) => {
           setUserId(user.id);
           setUserStatus(user.status);
         } else {
-          console.error("Invalid user data received:", user);
+          toast.error("Invalid user data received:", user);
         }
       } catch (error) {
-        console.error("Error fetching user role:", error.message);
+        toast.error("Error fetching user role:", error.message);
       }
     };
 
@@ -91,7 +93,7 @@ const DashboardContent = ({ userFname, userLname }) => {
 
       if (response.ok) {
         const data = await response.json();
-        alert("Study room created successfully!");
+        toast.success("Study room created successfully!");
         setIsPop(false);
         fetchGroup(userId);
         console.log("Created room:", data);
