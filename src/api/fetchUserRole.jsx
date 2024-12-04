@@ -26,3 +26,7 @@ export const fetchUserRole = async () => {
     return null;
   }
 };
+
+export const reload =  () => {
+  window.location.reload();
+};
