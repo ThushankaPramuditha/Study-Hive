@@ -37,7 +37,7 @@ const Chat1 = () => {
       try {
         if (userId) {
           const response = await axios.get(
-            `http://localhost:8090/api/notifications/user/${userId}?status=Unread`
+            http://localhost:8090/api/notifications/user/${userId}?status=Unread
           );
           setNotifications(response.data); // Save notifications
           console.log("Notifications:", response.data);
@@ -64,7 +64,7 @@ const Chat1 = () => {
   const updateNotificationStatus = async (id) => {
     try {
       const response = await axios.put(
-        `http://localhost:8090/api/notifications/${id}/status?status=Read`
+        http://localhost:8090/api/notifications/${id}/status?status=Read
       );
       console.log("Updated Notification:", response.data);
     } catch (error) {

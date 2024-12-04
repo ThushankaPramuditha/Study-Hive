@@ -17,6 +17,7 @@
     "@fortawesome/free-solid-svg-icons": "^6.6.0",
     "@fortawesome/react-fontawesome": "^0.2.2",
     "@mui/material": "^6.1.8",
+    "@stomp/stompjs": "^7.0.0",
     "@zegocloud/zego-uikit-prebuilt": "^2.12.3",
     "@zegocloud/zimkit-react": "^1.2.1",
     "axios": "^1.7.5",
@@ -26,6 +27,7 @@
     "jwt-decode": "^4.0.0",
     "net": "^1.0.2",
     "prop-type": "^0.0.1",
+    "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-big-calendar": "^1.13.0",
     "react-calendar": "^5.0.0",
@@ -44,6 +46,13 @@
     "sass": "^1.54.8",
     "uuid": "^8.3.2",
     "web-vitals": "^2.1.4"
+    "react-toastify": "^10.0.6",
+    "recharts": "^2.13.3",
+    "socket.io-client": "^4.8.1",
+    "sockjs-client": "^1.6.1",
+    "stompjs": "^2.3.3",
+    "study-hive": "file:",
+    "uuid": "^11.0.3"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",

@@ -27,7 +27,7 @@ const Navbar = ({ sidebarToggle }) => {
     const fetchNotifications = async () => {
       try {
         const response = await axios.get(
-        `http://localhost:8090/api/notifications/user/${userId}`,{
+        http://localhost:8090/api/notifications/user/${userId},{
           params: { status: "Unread" }
         }
         );
@@ -58,7 +58,7 @@ const Navbar = ({ sidebarToggle }) => {
         sidebarToggle ? "" : "ml-[263px]"
       } pl-10 w-full px-4 py-3 flex justify-between`}
     >
-      <div className={`flex item-center text-x1 mr-10`}></div>
+      <div className={flex item-center text-x1 mr-10}></div>
       <div className="flex">
         <div className="relative inline-block">
           <button className="group hover:shadow-lg hover:shadow-gray-400 active:shadow-none relative">
@@ -100,7 +100,7 @@ const Navbar = ({ sidebarToggle }) => {
         </div>
         <div className="flex items-center justify-center w-10 h-10 rounded mr-10 ml-5">
           <img
-            src="https://cdn.aglty.io/boys-town/quotes/ryan_20230915120925.jpg"
+            src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
             alt="avatar"
             className="w-full h-full rounded-full"
           />

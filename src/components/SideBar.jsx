@@ -46,9 +46,8 @@ const SideBar = ({ sidebarToggle, setSidebarToggle }) => {
     { icon: "fa-calendar-days", label: "Study Rooms", path: "/studyrooms" },
     { icon: "fa-chart-simple", label: "Study Status", path: "/studystats" },
     { icon: "fa-envelope", label: "Forums", path: "/forums" },
-    { icon: "fa-users", label: "Community", path: "/community" },
-    { icon: "fa-calendar-days", label: "Calendar" , path: "/mycalendar"},
     { icon: "fa-inbox", label: "Inbox", path: "/chat" },
+    { icon: "fa-users", label: "Community", path: "/communitypage" },
     { icon: "fa-gear", label: "Settings", path: "/settings" },
     { icon: "fa-right-from-bracket", label: "Logout", marginTop: "", isLogout: true },
   ];
