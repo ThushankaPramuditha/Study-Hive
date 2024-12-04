@@ -231,7 +231,7 @@ const DashboardContent = ({ userFname, userLname }) => {
           <p className="text-gray-400">Have a good day!</p>
         </div>
         <div className="mt-10 w-[100%]">
-          <div className="flex justify-center items-center mb-4">
+          {/* <div className="flex justify-center items-center mb-4">
             <p className="text-blue-900 text-4xl text-center mr-8">
               Let's Find a Study Partner
             </p>
@@ -241,7 +241,7 @@ const DashboardContent = ({ userFname, userLname }) => {
             >
               Let's Go
             </button>
-          </div>
+          </div> */}
           <div className="xl:flex xl:felx-col xl:justify-between pl-[10%] pr-[10%] pt-[3%] ">
             <div
               className="flex flex-col justify-center border-2 w-[420px] h-[340px] rounded-[50px] items-center"
