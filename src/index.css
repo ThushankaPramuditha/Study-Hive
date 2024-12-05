@@ -6,5 +6,103 @@
 /* .SchedulePageRateCard{
     @apply border-2 border-black rounded-md bg-yellow-200 p-10 mt-2 relative w-2/6 flex justify-center items-center mb-4;
 } */
-
-
+/* General Reset */
+/* General Reset */
+body, html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:'inter', sans-serif;
+  }
+  
+  /* Chat App Layout */
+  .zimkit-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #fffbea; /* Light yellow background */
+  }
+  
+  /* Header Styles */
+  .zimkit-header {
+    background-color: #ffc107; /* Bright yellow */
+    color: black; /* Dark text for contrast */
+    padding: 10px 20px;
+    font-size: 18px;
+    text-align: center;
+    font-weight: bold;
+  }
+  
+  /* Chat List */
+  .zimkit-chat-list {
+    flex: 1;
+    overflow-y: auto;
+    background: #fffdf5; /* Slightly off-white yellow */
+    padding: 10px;
+  }
+  
+  .zimkit-chat-item {
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 8px;
+    background-color: #ffed9a; /* Pale yellow for chat items */
+    display: flex;
+    align-items: center;
+  }
+  
+  .zimkit-chat-item:hover {
+    background-color: #ffe066; /* Brighter yellow on hover */
+    cursor: pointer;
+  }
+  
+  /* Message Bubble */
+  .zimkit-message {
+    padding: 10px 15px;
+    border-radius: 15px;
+    margin: 5px 0;
+    max-width: 70%;
+  }
+  
+  .zimkit-message-sent {
+    background-color: #ffc107; /* Bright yellow for sent messages */
+    color: black; /* Dark text for contrast */
+    align-self: flex-end;
+  }
+  
+  .zimkit-message-received {
+    background-color: #fff9cc; /* Light yellow for received messages */
+    color: black;
+    align-self: flex-start;
+  }
+  
+  /* Footer Styles */
+  .zimkit-footer {
+    background: #fffdf5; /* Slightly off-white yellow */
+    padding: 10px;
+    display: flex;
+    gap: 10px;
+    border-top: 1px solid #ddd;
+  }
+  
+  .zimkit-footer input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fffbea; /* Light yellow input */
+    color: black;
+  }
+  
+  .zimkit-footer button {
+    padding: 10px 20px;
+    background-color: #ffc107; /* Bright yellow */
+    color: black; /* Dark text */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .zimkit-footer button:hover {
+    background-color: #ffca28; /* Slightly darker yellow on hover */
+  }
+  
