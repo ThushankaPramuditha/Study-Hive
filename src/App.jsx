@@ -42,6 +42,7 @@ import CommunityReg from "./components/community/CommunityReg.jsx";
 import ComEvent from "./components/community/ComEvent.jsx";
 import StudyPartnerSearch from "./components/StudyPartnerSearch";
 import SoloStudyRoom from "./components/SoloStudyRoom";
+import CommunityPage from "./pages/CommunityPage";
 
 function App() {
   return (
@@ -67,40 +68,36 @@ function App() {
               <Route path="/AdminCalendar" element={<AdminCalendar />} />
             </Route>
 
-            {/* User Routes */}
-            <Route element={<RequireAuth allowedRoles={["USER"]} />}>
-              <Route path="/VideoCall" element={<VideoCall />} />
-              <Route path="/studyroomcreate" element={<Studyroomcreate />} />
-              <Route path="/forums" element={<Forums />} />
-              <Route path="/logout" element={<Logout />} />
-              <Route path="/findpartner" element={<FindPartner />} />
-              <Route path="/settings" element={<Settings />} />
-              <Route path="/ViewPartners" element={<Viewpartner />} />
-              <Route path="/profilesetup1" element={<ProfileSetup1 />} />
-              <Route path="/community" element={<Community />} />
-              <Route path="/notification" element={<Notification />} />
-              <Route path="/performance" element={<Performance />} />
-              <Route path="/statisticscard" element={<StatisticsCard />} />
-              <Route path="/reminders" element={<Reminders />} />
-              <Route path="/home" element={<Dashboard />} />
-              <Route path="/studyrooms" element={<StudyRooms />} />
-              <Route path="/studystats" element={<StudyStats />} />
-              <Route path="/mycalendar" element={<MyCalendar />} />
-              <Route path="/eventcard" element={<Eventcard />} />
-              <Route path="/virtualroom/:roomId/:userId" element={<VirtualRoom />} />
-              <Route path="/chat" element={<Chat />} />
-              <Route path="/personalinfo" element={<Personalinfo />} />
-              <Route path="/studypartnersearch" element={<StudyPartnerSearch />} />
-              <Route path="/virtualroom" element={<VirtualRoom />} />
-              <Route path="/solostudyroom" element={<SoloStudyRoom />} />
-            </Route>
-
-            {/* Community Routes */}
-            <Route path="/ComLand" element={<CommunityLand />} />
-            <Route path="/ComReg" element={<CommunityReg />} />
-            <Route path="/ComEve" element={<ComEvent />} />
-          </Routes>
-        </div>
+              {/* User Routes */}
+              <Route element={<RequireAuth allowedRoles={["USER"]} />}>
+                <Route path="/VideoCall" element={<VideoCall />} />
+                <Route path="/studyroomcreate" element={<Studyroomcreate />} />
+                <Route path="/forums" element={<Forums />} />
+                <Route path="/logout" element={<Logout />} />
+                <Route path="/findpartner" element={<FindPartner />} />
+                <Route path="/settings" element={<Settings />} />
+                <Route path="/ViewPartners" element={<Viewpartner />} />
+                <Route path="/profilesetup1" element={<ProfileSetup1 />} />
+                <Route path="/community" element={<Community />} />
+                <Route path="/notification" element={<Notification />} />
+                <Route path="/performance" element={<Performance />} />
+                <Route path="/statisticscard" element={<StatisticsCard />} />
+                <Route path="/reminders" element={<Reminders />} />
+                <Route path="/home" element={<Dashboard />} />
+                <Route path="/studyrooms" element={<StudyRooms />} />
+                <Route path="/studystats" element={<StudyStats />} />
+                <Route path="/mycalendar" element={<MyCalendar />} />
+                <Route path="/eventcard" element={<Eventcard />} />
+                <Route path="/virtualroom/:roomId/:userId" element={<VirtualRoom />} />
+                <Route path="/chat" element={<Chat />} />
+                <Route path="/personalinfo" element={<Personalinfo />} />
+                <Route path="/studypartnersearch" element={<StudyPartnerSearch />} />
+                <Route path="/virtualroom" element={<VirtualRoom />} />
+                <Route path="/solostudyroom" element={<SoloStudyRoom />} />
+                <Route path="/communitypage" element={<CommunityPage />} />
+              </Route>
+            </Routes>
+          </div>
       </ErrorBoundary>
     </Router>
   );

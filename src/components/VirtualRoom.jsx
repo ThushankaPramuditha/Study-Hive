@@ -46,17 +46,29 @@ const VirtualRoom = () => {
 
   const fetchAcceptedUsers = async () => {
     try {
-      const response = await fetch(`http://localhost:8090/api/studyrooms/${roomId}/accepted-users`);
+      const token = localStorage.getItem("token");
+      const response = await fetch(`http://localhost:8090/api/studyrooms/${roomId}/accepted-users`, {
+        method: 'GET',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
+      });
+  
       if (response.ok) {
         const users = await response.json();
         const uniqueUsers = Array.from(new Set(users.map(user => user.userId)))
           .map(userId => users.find(user => user.userId === userId));
         setAcceptedUsers(uniqueUsers);
+        console.log(uniqueUsers);
+      } else {
+        console.error('Failed to fetch accepted users:', response.statusText);
       }
     } catch (error) {
       console.error('Error fetching accepted users:', error);
     }
   };
+  
 
   const leaveRoom = async () => {
     try {
@@ -125,7 +137,7 @@ const VirtualRoom = () => {
             <ul style={{ listStyle: "none", padding: 0 }}>
               {acceptedUsers.map((user) => (
                 <li key={user.id} style={{ padding: "8px 0", borderBottom: "1px solid rgba(255, 215, 0, 0.2)" }}>
-                  {user.userId}
+                  {user.firstName} {user.lastName}
                 </li>
               ))}
             </ul>

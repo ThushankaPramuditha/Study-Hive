@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import SideBar from "./SideBarnNavbar";
-import user from "../assets/images/user1.jpg";
+import Calendar from "./BoxCalendar";
 
 const Forums = () => {
   const [questions, setQuestions] = useState([]);
@@ -257,15 +257,15 @@ const Forums = () => {
                 <div></div>
                 <div>
                   <div className="flex xl:justify-end justify-center mb-[-15px]">
-                    <p className="text-5xl font-semibold mr-2">Throw</p>
+                    <p className="text-4xl font-semibold mr-2">Throw</p>
                   </div>
                   <div className="flex xl:justify-end justify-center">
-                    <p className="text-5xl font-semibold mr-2 text-white">
+                    <p className="text-4xl font-semibold mr-2 text-white">
                       Your
                     </p>
                   </div>
                   <div className="flex xl:justify-end justify-center mt-[-15px]">
-                    <p className="text-5xl font-semibold mr-2">Questions</p>
+                    <p className="text-4xl font-semibold mr-2">Questions</p>
                   </div>
                 </div>
               </div>
@@ -388,9 +388,9 @@ const Forums = () => {
                       <p className="text-gray-400">{question.category}</p>
                     </div>
                   </div>
-                  <div className="flex ml-20 mr-5">
+                  {/* <div className="flex ml-20 mr-5">
                     <i className="text-gray-400 fa-solid fa-angle-down text-2xl"></i>
-                  </div>
+                  </div> */}
                 </div>
                 <div className="">
                   <div className="border-l border-gray-500 h-auto ml-14 mt-4 p-2 mr-10 mb-3">
@@ -482,7 +482,7 @@ const Forums = () => {
                             By {comment.author}
                           </p>
 
-                          <div className="flex items-center space-x-6">
+                          {/* <div className="flex items-center space-x-6">
                             <div
                               className="flex items-center space-x-2 cursor-pointer"
                               onClick={() => handleVote(comment.id, "upvote")}
@@ -510,7 +510,7 @@ const Forums = () => {
                               ></i>
                               <p>{comment.downvote}</p>
                             </div>
-                          </div>
+                          </div> */}
                         </div>
                         <p className="mt-2">{comment.content}</p>
                       </div>
@@ -533,11 +533,11 @@ const Forums = () => {
           )}
         </div>
         <div className="h-100 border border-gray-200 hidden xl:block"></div>
-        <div className="xl:w-[25%]">
-          <div>
+        <div className="xl:w-[25%] mt-10">
+        <Calendar />
+          {/* <div>
             <p className="m-10 mb-4 font-semibold text-2xl">Notifications</p>
             <div className="flex flex-col items-center ml-2">
-              {/* Example notifications, adapt as needed */}
               {[
                 "Pramukha Thenuwara",
                 "Thushanka Pramuditha",
@@ -571,7 +571,7 @@ const Forums = () => {
                 </div>
               ))}
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

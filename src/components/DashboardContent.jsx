@@ -4,6 +4,8 @@ import solo from "../assets/images/Solostudy.png";
 import group from "../assets/images/Groupstudy.png";
 import Calendar from "./BoxCalendar";
 import { fetchUserRole } from "../api/fetchUserRole";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const DashboardContent = ({ userFname, userLname }) => {
   const navigate = useNavigate();
@@ -27,10 +29,10 @@ const DashboardContent = ({ userFname, userLname }) => {
           setUserId(user.id);
           setUserStatus(user.status);
         } else {
-          console.error("Invalid user data received:", user);
+          toast.error("Invalid user data received:", user);
         }
       } catch (error) {
-        console.error("Error fetching user role:", error.message);
+        toast.error("Error fetching user role:", error.message);
       }
     };
 
@@ -91,7 +93,7 @@ const DashboardContent = ({ userFname, userLname }) => {
 
       if (response.ok) {
         const data = await response.json();
-        alert("Study room created successfully!");
+        toast.success("Study room created successfully!");
         setIsPop(false);
         fetchGroup(userId);
         console.log("Created room:", data);
@@ -229,7 +231,7 @@ const DashboardContent = ({ userFname, userLname }) => {
           <p className="text-gray-400">Have a good day!</p>
         </div>
         <div className="mt-10 w-[100%]">
-          <div className="flex justify-center items-center mb-4">
+          {/* <div className="flex justify-center items-center mb-4">
             <p className="text-blue-900 text-4xl text-center mr-8">
               Let's Find a Study Partner
             </p>
@@ -239,7 +241,7 @@ const DashboardContent = ({ userFname, userLname }) => {
             >
               Let's Go
             </button>
-          </div>
+          </div> */}
           <div className="xl:flex xl:felx-col xl:justify-between pl-[10%] pr-[10%] pt-[3%] ">
             <div
               className="flex flex-col justify-center border-2 w-[420px] h-[340px] rounded-[50px] items-center"
